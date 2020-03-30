@@ -24,6 +24,8 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
 
+  flutter_spinkit: ^4.1.2+1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -33,6 +35,10 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
+  assets:
+    - assets/icons/intro.jpg
+    - assets/icons/login.png
+
   fonts:
     - family: Pacifito
       fonts:
