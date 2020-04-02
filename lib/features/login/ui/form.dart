@@ -59,6 +59,7 @@ class _LoginFormState extends State<LoginForm> {
                   focusNode: passwordFocusNode,
                   textInputAction: TextInputAction.done,
                   obscureText: true,
+                  onFieldSubmitted: onSubmit,
                   validator: (value) {
                     if (value.isEmpty) {
                       return "Password is cannot be empty";

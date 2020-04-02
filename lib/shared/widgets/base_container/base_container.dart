@@ -18,7 +18,7 @@ class BaseContainer extends StatelessWidget {
     this.width,
     this.decoration,
     this.constraints,
-    this.margin,
+    this.margin = const EdgeInsets.symmetric(vertical: 10),
   });
 
   @override
@@ -26,7 +26,7 @@ class BaseContainer extends StatelessWidget {
     return Container(
       margin: margin,
       constraints: constraints,
-      padding: EdgeInsets.symmetric(vertical: 20, horizontal: 15),
+      padding: EdgeInsets.symmetric(horizontal: 15),
       color: color,
       alignment: alignment,
       height: height,

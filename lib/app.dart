@@ -1,3 +1,4 @@
+import 'package:afc_mobile/features/login/login.dart';
 import 'package:afc_mobile/features/register/register.dart';
 import 'package:afc_mobile/routes.dart';
 import 'package:afc_mobile/styles.dart';
@@ -13,9 +14,8 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<RegisterBloc>(
-          create: (context) => sl<RegisterBloc>(),
-        )
+        BlocProvider<RegisterBloc>(create: (context) => sl<RegisterBloc>()),
+        BlocProvider<LoginBloc>(create: (context) => sl<LoginBloc>())
       ],
       child: MaterialApp(
         title: 'AFC',
