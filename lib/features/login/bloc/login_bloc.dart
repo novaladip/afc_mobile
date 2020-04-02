@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:afc_mobile/features/auth/bloc/auth_bloc.dart';
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
@@ -10,8 +11,12 @@ part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   final LoginService _loginService;
+  final AuthBloc _authBloc;
 
-  LoginBloc(this._loginService);
+  LoginBloc(
+    this._loginService,
+    this._authBloc,
+  );
 
   @override
   LoginState get initialState => LoginInitial();
@@ -30,8 +35,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       yield LoginLoading();
       final bearerToken = await _loginService(dto);
       // @TODO store bearer token with sharedPreferences
-      print(bearerToken);
-      yield LoginSuccess();
+      _authBloc.add(LoggedIn(bearerToken));
     } on DioError catch (e) {
       yield LoginFailure(e);
     }

@@ -5,17 +5,22 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:afc_mobile/features/register/register.dart';
 import 'package:afc_mobile/shared/utils/utils.dart';
 
+import 'features/auth/auth.dart';
 import 'features/login/login.dart';
 
 final sl = GetIt.instance;
 
 Future<void> init() async {
+  // Auth Bloc
+  sl.registerLazySingleton(() => AuthBloc(sl(), sl()));
+  sl.registerLazySingleton<AuthService>(() => AuthServiceImpl(sl()));
+
   // Register Bloc
   sl.registerLazySingleton(() => RegisterBloc(sl()));
   sl.registerLazySingleton<RegisterService>(() => RegisterServiceImpl(sl()));
 
   // Login Bloc
-  sl.registerLazySingleton(() => LoginBloc(sl()));
+  sl.registerLazySingleton(() => LoginBloc(sl(), sl()));
   sl.registerLazySingleton<LoginService>(() => LoginServiceImpl(sl()));
 
   // Internal
