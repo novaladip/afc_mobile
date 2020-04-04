@@ -1,8 +1,10 @@
-import 'package:afc_mobile/features/auth/auth.dart';
-import 'package:afc_mobile/features/login/login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+
+import 'package:afc_mobile/features/auth/auth.dart';
+import 'package:afc_mobile/features/intro/intro.dart';
+import 'package:afc_mobile/features/student/student.dart';
 
 class SplashScreen extends StatelessWidget {
   static const routeName = '/';
@@ -13,11 +15,14 @@ class SplashScreen extends StatelessWidget {
       body: BlocListener<AuthBloc, AuthState>(
         listener: (context, state) {
           if (state is AuthAuthenticated) {
-            // TODO push home screen
+            if (state.user.role == "STUDENT") {
+              Navigator.of(context)
+                  .pushReplacementNamed(BottomAppStudent.routeName);
+            }
           }
 
           if (state is AuthUnauthenticated) {
-            Navigator.of(context).pushReplacementNamed(LoginPage.routeName);
+            Navigator.of(context).pushReplacementNamed(IntroPage.routeName);
           }
         },
         child: BlocBuilder<AuthBloc, AuthState>(

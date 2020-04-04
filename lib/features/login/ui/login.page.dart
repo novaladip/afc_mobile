@@ -1,3 +1,5 @@
+import 'package:afc_mobile/features/auth/auth.dart';
+import 'package:afc_mobile/features/student/student.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,7 +17,53 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  void handleOnListener(BuildContext context, LoginState state) {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: MultiBlocListener(
+        listeners: [
+          BlocListener<LoginBloc, LoginState>(
+            listener: handleLoginStateListener,
+          ),
+          BlocListener<AuthBloc, AuthState>(
+            listener: handleAuthStateListener,
+          )
+        ],
+        child: BlocBuilder<LoginBloc, LoginState>(
+          builder: (context, state) {
+            final isLoading = state is LoginLoading ? true : false;
+
+            return SafeArea(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  Expanded(
+                    child: LoginForm(
+                      isLoading: isLoading,
+                      onSubmit: handleOnSubmit,
+                    ),
+                  ),
+                  Footer(),
+                ],
+              ),
+            );
+          },
+        ),
+      ),
+    );
+  }
+
+  void handleAuthStateListener(BuildContext context, AuthState state) {
+    if (state is AuthAuthenticated) {
+      if (state.user.role == "STUDENT") {
+        Navigator.of(context).pushReplacementNamed(BottomAppStudent.routeName);
+      } else {
+        // TODO
+      }
+    }
+  }
+
+  void handleLoginStateListener(BuildContext context, LoginState state) {
     if (state is LoginFailure) {
       if (state.error.type == DioErrorType.RESPONSE) {
         Scaffold.of(context).removeCurrentSnackBar();
@@ -36,33 +84,5 @@ class _LoginPageState extends State<LoginPage> {
 
   void handleOnSubmit(LoginDto dto) {
     BlocProvider.of<LoginBloc>(context).add(LoginButtonPressed(dto));
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        body: BlocListener<LoginBloc, LoginState>(
-      listener: handleOnListener,
-      child: BlocBuilder<LoginBloc, LoginState>(
-        builder: (context, state) {
-          final isLoading = state is LoginLoading ? true : false;
-
-          return SafeArea(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                Expanded(
-                  child: LoginForm(
-                    isLoading: isLoading,
-                    onSubmit: handleOnSubmit,
-                  ),
-                ),
-                Footer(),
-              ],
-            ),
-          );
-        },
-      ),
-    ));
   }
 }

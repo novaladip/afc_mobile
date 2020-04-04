@@ -13,7 +13,7 @@ class Api {
 
   void setDefaultAuthHeader(String jwt) {
     http.options.headers = {
-      'Authorization': jwt,
+      'Authorization': 'Bearer ' + jwt,
     };
   }
 }
@@ -22,4 +22,5 @@ class URL {
   static String login() => '/user/login';
   static String registerStudent() => '/user/register/student';
   static String registerTeacher() => '/user/register/teacher';
+  static String studentCourse() => '/course';
 }

@@ -1,3 +1,4 @@
+import 'package:afc_mobile/features/student/course/course.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -18,7 +19,9 @@ class App extends StatelessWidget {
           create: (context) => sl<AuthBloc>()..add(AppStarted()),
         ),
         BlocProvider<RegisterBloc>(create: (context) => sl<RegisterBloc>()),
-        BlocProvider<LoginBloc>(create: (context) => sl<LoginBloc>())
+        BlocProvider<LoginBloc>(create: (context) => sl<LoginBloc>()),
+        BlocProvider<CourseStudentBloc>(
+            create: (context) => sl<CourseStudentBloc>())
       ],
       child: MaterialApp(
         title: 'AFC',
