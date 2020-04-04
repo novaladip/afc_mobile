@@ -38,6 +38,6 @@ Future<void> init() async {
   final sharedPreferences = await SharedPreferences.getInstance();
   sl.registerLazySingleton(() => sharedPreferences);
 
-  final dio = Dio(BaseOptions(baseUrl: API_URL_LOCAL));
+  final dio = Dio(BaseOptions(baseUrl: API_URL_DEV));
   sl.registerLazySingleton(() => dio);
 }

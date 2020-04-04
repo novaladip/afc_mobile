@@ -1,3 +1,4 @@
+import 'package:afc_mobile/features/student/course/ui/course_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -37,7 +38,7 @@ class _CourseState extends State<Course> {
             );
           }
 
-          return Center(child: Text('Loading'));
+          return CourseLoading();
         },
       ),
     );
