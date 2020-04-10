@@ -1,3 +1,4 @@
+import 'package:afc_mobile/features/student/enrollment/enrollment.dart';
 import 'package:flutter/material.dart';
 import 'package:afc_mobile/features/student/course/course.dart';
 
@@ -11,6 +12,8 @@ class BottomAppStudent extends StatefulWidget {
 class _BottomAppStudentState extends State<BottomAppStudent> {
   int index = 0;
 
+  void setIndex(int newIndex) => setState(() => index = newIndex);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,7 +21,7 @@ class _BottomAppStudentState extends State<BottomAppStudent> {
         index: index,
         children: <Widget>[
           Course(),
-          Container(),
+          EnrollmentScreen(),
           Container(),
         ],
       ),
@@ -42,6 +45,4 @@ class _BottomAppStudentState extends State<BottomAppStudent> {
       ),
     );
   }
-
-  void setIndex(int newIndex) => setState(() => index = newIndex);
 }
