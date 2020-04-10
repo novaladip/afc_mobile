@@ -23,6 +23,7 @@ class URL {
   static String registerStudent() => '/user/register/student';
   static String registerTeacher() => '/user/register/teacher';
   static String studentCourse() => '/course';
+  static String teacherCourse() => '/course';
   static String enrollCourse(String courseId) => '/enrollment/$courseId';
-  static String getCourse() => '/enrollment';
+  static String getEnrollment() => '/enrollment';
 }

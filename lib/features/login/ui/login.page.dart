@@ -1,5 +1,6 @@
 import 'package:afc_mobile/features/auth/auth.dart';
 import 'package:afc_mobile/features/student/student.dart';
+import 'package:afc_mobile/features/teacher/teacher.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -57,8 +58,10 @@ class _LoginPageState extends State<LoginPage> {
     if (state is AuthAuthenticated) {
       if (state.user.role == "STUDENT") {
         Navigator.of(context).pushReplacementNamed(BottomAppStudent.routeName);
+        return;
       } else {
-        // TODO
+        Navigator.of(context).pushReplacementNamed(HomeScreenTeacher.routeName);
+        return;
       }
     }
   }

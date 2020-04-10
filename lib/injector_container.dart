@@ -1,3 +1,4 @@
+import 'package:afc_mobile/features/teacher/course/course.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -42,6 +43,11 @@ Future<void> init() async {
   // Enrollment Bloc
   sl.registerLazySingleton(() => EnrollmentBloc(sl()));
   sl.registerLazySingleton<IEnrollmentService>(() => EnrollmentService(sl()));
+
+  // Course Teacher Bloc
+  sl.registerLazySingleton(() => CourseTeacherBloc(sl()));
+  sl.registerLazySingleton<ICourseTeacherService>(
+      () => CourseTeacherService(sl()));
 
   // Internal
   sl.registerLazySingleton(() => Api(sl()));

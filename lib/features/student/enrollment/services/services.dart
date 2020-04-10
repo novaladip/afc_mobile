@@ -24,7 +24,7 @@ class EnrollmentService implements IEnrollmentService {
   @override
   Future<List<Enrollment>> fetch() async {
     try {
-      final res = await _api.http.get(URL.getCourse());
+      final res = await _api.http.get(URL.getEnrollment());
       final enrollments =
           (res.data as List).map((item) => Enrollment.fromJSON(item));
       return enrollments.toList();
