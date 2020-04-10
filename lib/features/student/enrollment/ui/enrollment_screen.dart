@@ -1,4 +1,5 @@
 import 'package:afc_mobile/features/student/enrollment/enrollment.dart';
+import 'package:afc_mobile/features/student/enrollment/ui/enrollment_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -16,22 +17,7 @@ class _EnrollmentScreenState extends State<EnrollmentScreen> {
       ),
       body: BlocBuilder<EnrollmentBloc, EnrollmentState>(
         builder: (context, state) {
-          print(state.enrollments.length);
-          if (state.isLoading) {
-            return Center(
-              child: Text('Loading'),
-            );
-          }
-
-          if (state.isFailure) {
-            return Center(
-              child: Text('Failure'),
-            );
-          }
-
-          return Center(
-            child: Text('Loaded'),
-          );
+          return EnrollmentList(state);
         },
       ),
     );
