@@ -26,6 +26,15 @@ class EnrollmentBloc extends Bloc<EnrollmentEvent, EnrollmentState> {
     if (event is FetchEnrollment) {
       yield* _mapFetchEnrollment();
     }
+
+    if (event is NewEnrollment) {
+      yield* _mapNewEnrollment(event.enrollment);
+    }
+  }
+
+  Stream<EnrollmentState> _mapNewEnrollment(Enrollment newEnrollment) async* {
+    final enrollments = [newEnrollment, ...state.enrollments];
+    yield EnrollmentState.loaded(enrollments);
   }
 
   Stream<EnrollmentState> _mapFetchEnrollment() async* {

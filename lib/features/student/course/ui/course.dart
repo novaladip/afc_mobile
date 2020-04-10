@@ -1,4 +1,6 @@
 import 'package:afc_mobile/features/student/course/ui/course_loading.dart';
+import 'package:afc_mobile/features/student/enroll_course/bloc/enroll_course_bloc.dart';
+import 'package:afc_mobile/shared/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -17,29 +19,49 @@ class _CourseState extends State<Course> {
       appBar: AppBar(
         title: Text('Course'),
       ),
-      body: BlocBuilder<CourseStudentBloc, CourseStudentState>(
-        builder: (context, state) {
-          if (state is CourseStudentFailure) {
-            return Center(
-              child: Text('Failure'),
-            );
+      body: BlocListener<EnrollCourseBloc, EnrollCourseState>(
+        listener: (context, state) {
+          if (state is EnrollCourseFailure) {
+            Scaffold.of(context).removeCurrentSnackBar();
+            Scaffold.of(context).showSnackBar(snackbarNotification(
+              type: SnackBarNotificationType.ERROR,
+              title: "Failed to enroll course",
+              message: "Please try again",
+            ));
           }
 
-          if (state is CourseStudentLoaded) {
-            return ListView.builder(
-              padding: EdgeInsets.symmetric(horizontal: 15),
-              itemCount: state.courses.length,
-              itemBuilder: (context, index) {
-                return CourseItem(
-                  key: Key(state.courses[index].id),
-                  course: state.courses[index],
-                );
-              },
-            );
+          if (state is EnrollCourseSuccess) {
+            Scaffold.of(context).removeCurrentSnackBar();
+            Scaffold.of(context).showSnackBar(snackbarNotification(
+              type: SnackBarNotificationType.SUCCESS,
+              title: "Course Enrolled",
+            ));
           }
-
-          return CourseLoading();
         },
+        child: BlocBuilder<CourseStudentBloc, CourseStudentState>(
+          builder: (context, state) {
+            if (state is CourseStudentFailure) {
+              return Center(
+                child: Text('Failure'),
+              );
+            }
+
+            if (state is CourseStudentLoaded) {
+              return ListView.builder(
+                padding: EdgeInsets.symmetric(horizontal: 15),
+                itemCount: state.courses.length,
+                itemBuilder: (context, index) {
+                  return CourseItem(
+                    key: Key(state.courses[index].id),
+                    course: state.courses[index],
+                  );
+                },
+              );
+            }
+
+            return CourseLoading();
+          },
+        ),
       ),
     );
   }

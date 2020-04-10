@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'features/student/enroll_course/enroll_course.dart';
 import 'features/student/enrollment/enrollment.dart';
 import 'shared/utils/utils.dart';
 import 'features/auth/auth.dart';
@@ -31,6 +32,12 @@ Future<void> init() async {
   sl.registerLazySingleton(() => CourseStudentBloc(sl()));
   sl.registerLazySingleton<ICourseStudentService>(
       () => CourseStudentService(sl()));
+
+  // EnrollCourse Bloc
+  sl.registerLazySingleton(
+      () => EnrollCourseBloc(enrollCourseService: sl(), enrollmentBloc: sl()));
+  sl.registerLazySingleton<IEnrollCourseService>(
+      () => EnrollCourseService(sl()));
 
   // Enrollment Bloc
   sl.registerLazySingleton(() => EnrollmentBloc(sl()));
