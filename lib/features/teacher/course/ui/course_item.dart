@@ -1,3 +1,4 @@
+import 'package:afc_mobile/features/teacher/course_detail/course_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -19,7 +20,8 @@ class CourseItem extends StatelessWidget {
     return Card(
       margin: EdgeInsets.only(top: 4, bottom: 4),
       child: InkWell(
-        onTap: () => Navigator.of(context).pushNamed("/"),
+        onTap: () => Navigator.of(context)
+            .pushNamed(CourseDetailPage.routeName, arguments: course.id),
         highlightColor: Theme.of(context).primaryColor.withOpacity(0.1),
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),

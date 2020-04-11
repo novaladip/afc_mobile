@@ -36,7 +36,8 @@ class CourseDetailModel extends Equatable {
           .map((section) => Section.fromJSON(section))
           .toList(),
       students: (json['students'] as List)
-          .map((student) => User.fromJson(student['student'])),
+          .map((student) => User.fromJson(student['student']))
+          .toList(),
     );
   }
 

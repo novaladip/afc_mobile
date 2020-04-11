@@ -24,6 +24,7 @@ class CourseDetailBloc extends Bloc<CourseDetailEvent, CourseDetailState> {
       try {
         yield CourseDetailLoading();
         final courseDetail = await _courseDetailService.fetch(event.courseId);
+        await Future.delayed(Duration(seconds: 2));
         yield CourseDetailLoaded(courseDetail);
       } catch (e) {
         yield CourseDetailFailure();
