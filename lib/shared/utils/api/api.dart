@@ -26,4 +26,5 @@ class URL {
   static String teacherCourse() => '/course';
   static String enrollCourse(String courseId) => '/enrollment/$courseId';
   static String getEnrollment() => '/enrollment';
+  static String getCourseById(String courseId) => '/course/$courseId';
 }

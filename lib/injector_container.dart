@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'features/student/enroll_course/enroll_course.dart';
 import 'features/student/enrollment/enrollment.dart';
+import 'features/teacher/course_detail/course_detail.dart';
 import 'shared/utils/utils.dart';
 import 'features/auth/auth.dart';
 import 'features/login/login.dart';
@@ -48,6 +49,11 @@ Future<void> init() async {
   sl.registerLazySingleton(() => CourseTeacherBloc(sl()));
   sl.registerLazySingleton<ICourseTeacherService>(
       () => CourseTeacherService(sl()));
+
+  // Course Detail Bloc
+  sl.registerLazySingleton(() => CourseDetailBloc(sl()));
+  sl.registerLazySingleton<ICourseDetailService>(
+      () => CourseDetailService(sl()));
 
   // Internal
   sl.registerLazySingleton(() => Api(sl()));
