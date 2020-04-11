@@ -27,6 +27,10 @@ class SectionList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (sections.isEmpty) {
+      return EmptySection();
+    }
+
     return Expanded(
       child: ListView.builder(
         padding: EdgeInsets.symmetric(horizontal: 15),
@@ -58,6 +62,24 @@ class SectionList extends StatelessWidget {
             ),
           );
         },
+      ),
+    );
+  }
+}
+
+class EmptySection extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 15),
+        child: Center(
+          child: Text(
+            'Oops there is not section yet, start adding some.',
+            style: TextStyle(fontSize: 24),
+            textAlign: TextAlign.center,
+          ),
+        ),
       ),
     );
   }
