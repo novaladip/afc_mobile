@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:afc_mobile/features/teacher/course_detail/course_detail.dart';
 import 'package:afc_mobile/features/teacher/course_detail/services/services.dart';
 import 'package:afc_mobile/shared/models/models.dart';
 import 'package:bloc/bloc.dart';
@@ -28,6 +29,22 @@ class CourseDetailBloc extends Bloc<CourseDetailEvent, CourseDetailState> {
         yield CourseDetailLoaded(courseDetail);
       } catch (e) {
         yield CourseDetailFailure();
+      }
+    }
+
+    if (event is RefreshCourseDetail) {
+      final currentState = state;
+      if (currentState is CourseDetailLoaded) {
+        try {
+          yield CourseDetailLoading();
+          final courseDetail = await _courseDetailService.fetch(
+            currentState.courseDetail.id,
+          );
+          await Future.delayed(Duration(seconds: 2));
+          yield CourseDetailLoaded(courseDetail);
+        } catch (e) {
+          yield CourseDetailFailure();
+        }
       }
     }
   }

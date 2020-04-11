@@ -1,6 +1,7 @@
 import 'package:afc_mobile/features/student/course/course.dart';
 import 'package:afc_mobile/features/student/enroll_course/bloc/enroll_course_bloc.dart';
 import 'package:afc_mobile/features/student/enrollment/enrollment.dart';
+import 'package:afc_mobile/features/teacher/add_section/add_section.dart';
 import 'package:afc_mobile/features/teacher/course/course.dart';
 import 'package:afc_mobile/features/teacher/course_detail/course_detail.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +25,7 @@ class App extends StatelessWidget {
         ),
         BlocProvider<RegisterBloc>(create: (context) => sl<RegisterBloc>()),
         BlocProvider<LoginBloc>(create: (context) => sl<LoginBloc>()),
+        BlocProvider<AddSectionBloc>(create: (context) => sl<AddSectionBloc>()),
         BlocProvider<EnrollmentBloc>(
           create: (context) => sl<EnrollmentBloc>(),
           lazy: false,

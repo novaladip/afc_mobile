@@ -17,3 +17,5 @@ class FetchCourseDetail extends CourseDetailEvent {
   @override
   List<Object> get props => [courseId];
 }
+
+class RefreshCourseDetail extends CourseDetailEvent {}

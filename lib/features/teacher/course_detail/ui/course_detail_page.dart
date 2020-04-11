@@ -1,3 +1,4 @@
+import 'package:afc_mobile/features/teacher/add_section/add_section.dart';
 import 'package:afc_mobile/features/teacher/course_detail/course_detail.dart';
 import 'package:afc_mobile/features/teacher/course_detail/ui/loading.dart';
 import 'package:afc_mobile/features/teacher/course_detail/ui/section_list.dart';
@@ -14,42 +15,77 @@ class CourseDetailPage extends StatefulWidget {
 }
 
 class _CourseDetailPageState extends State<CourseDetailPage> {
+  String courseId;
   bool isInitial = true;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Course Detail'),
-        centerTitle: true,
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () {},
-      ),
-      body: BlocBuilder<CourseDetailBloc, CourseDetailState>(
-        builder: (context, state) {
-          if (state is CourseDetailFailure) {
-            return CourseDetailError();
-          }
+    return BlocConsumer<AddSectionBloc, AddSectionState>(
+      listener: (context, state) {},
+      builder: (context, addSectionState) {
+        return BlocBuilder<CourseDetailBloc, CourseDetailState>(
+          builder: (context, courseDetailState) {
+            final isLoading =
+                courseDetailState is CourseDetailLoading ? true : false;
+            final isAddingSection =
+                addSectionState is AddSectionLoading ? true : false;
 
-          if (state is CourseDetailLoaded) {
-            return Column(
-              children: <Widget>[
-                SizedBox(height: 15),
-                Text(
-                  state.courseDetail.name,
-                  style: TextStyle(
-                    fontSize: 24,
-                  ),
-                ),
-                SectionList(sections: state.courseDetail.sections),
-              ],
+            return Scaffold(
+              appBar: AppBar(
+                title: Text('Course Detail'),
+                centerTitle: true,
+              ),
+              floatingActionButton: isLoading || isAddingSection
+                  ? null
+                  : FloatingActionButton(
+                      child: Icon(Icons.add),
+                      onPressed: () => addSection(courseDetailState
+                              is CourseDetailLoaded
+                          ? courseDetailState.courseDetail.sections.length + 1
+                          : 0),
+                    ),
+              body: buildBody(courseDetailState),
             );
-          }
+          },
+        );
+      },
+    );
+  }
 
-          return Loading();
-        },
+  Widget buildBody(CourseDetailState state) {
+    if (state is CourseDetailFailure) {
+      return CourseDetailError();
+    }
+
+    if (state is CourseDetailLoaded) {
+      return Column(
+        children: <Widget>[
+          SizedBox(height: 15),
+          Text(
+            state.courseDetail.name,
+            style: TextStyle(
+              fontSize: 24,
+            ),
+          ),
+          SectionList(sections: state.courseDetail.sections),
+        ],
+      );
+    }
+
+    return Loading();
+  }
+
+  void addSection(int count) {
+    if (count == 0) {
+      return;
+    }
+
+    BlocProvider.of<AddSectionBloc>(context).add(
+      AddSectionButtonPressed(
+        AddSectionDto(
+          count: count,
+          courseId: courseId,
+        ),
       ),
     );
   }
@@ -64,7 +100,7 @@ class _CourseDetailPageState extends State<CourseDetailPage> {
   }
 
   void init() {
-    final String courseId = ModalRoute.of(context).settings.arguments;
+    courseId = ModalRoute.of(context).settings.arguments;
     BlocProvider.of<CourseDetailBloc>(context).add(FetchCourseDetail(courseId));
   }
 }
