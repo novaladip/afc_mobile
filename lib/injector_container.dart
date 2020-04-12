@@ -7,6 +7,7 @@ import 'features/student/enroll_course/enroll_course.dart';
 import 'features/student/enrollment/enrollment.dart';
 import 'features/teacher/add_section/add_section.dart';
 import 'features/teacher/course_detail/course_detail.dart';
+import 'features/teacher/section/section.dart';
 import 'shared/utils/utils.dart';
 import 'features/auth/auth.dart';
 import 'features/login/login.dart';
@@ -59,6 +60,10 @@ Future<void> init() async {
   // Add Section Bloc
   sl.registerLazySingleton(() => AddSectionBloc(sl(), sl()));
   sl.registerLazySingleton<IAddSectionService>(() => AddSectionService(sl()));
+
+  // Section Bloc
+  sl.registerLazySingleton(() => SectionBloc(sl()));
+  sl.registerLazySingleton<ISectionService>(() => SectionService(sl()));
 
   // Internal
   sl.registerLazySingleton(() => Api(sl()));

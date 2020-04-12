@@ -1,3 +1,4 @@
+import 'package:afc_mobile/features/teacher/section/section.dart';
 import 'package:flutter/material.dart';
 
 import 'package:afc_mobile/features/intro/intro.dart';
@@ -17,5 +18,6 @@ Map<String, Widget Function(BuildContext)> buildRoutes() {
     BottomAppStudent.routeName: (context) => BottomAppStudent(),
     CourseDetailPage.routeName: (context) => CourseDetailPage(),
     HomeScreenTeacher.routeName: (context) => HomeScreenTeacher(),
+    SectionPage.routeName: (context) => SectionPage(),
   };
 }

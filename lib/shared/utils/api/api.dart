@@ -28,4 +28,5 @@ class URL {
   static String getEnrollment() => '/enrollment';
   static String getCourseById(String courseId) => '/course/$courseId';
   static String addSection() => '/section';
+  static String getSectionById(String sectionId) => '/section/$sectionId';
 }

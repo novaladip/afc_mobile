@@ -1,3 +1,4 @@
+import 'package:afc_mobile/features/teacher/section/section.dart';
 import 'package:afc_mobile/shared/models/models.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -37,34 +38,41 @@ class SectionList extends StatelessWidget {
         itemCount: sections.length,
         itemBuilder: (context, index) {
           final section = sections[index];
-          return Container(
-            margin: EdgeInsets.symmetric(vertical: 9),
-            padding: EdgeInsets.all(15),
-            decoration: boxDecoration,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text(
-                  'Section ${section.count}',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
+          return InkWell(
+            onTap: () => onPressed(context, section.id),
+            child: Container(
+              margin: EdgeInsets.symmetric(vertical: 9),
+              padding: EdgeInsets.all(15),
+              decoration: boxDecoration,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Text(
+                    'Section ${section.count}',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-                Text(
-                  formatDate(section.date),
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
+                  Text(
+                    formatDate(section.date),
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           );
         },
       ),
     );
   }
+
+  void onPressed(BuildContext context, String sectionId) =>
+      Navigator.of(context)
+          .pushNamed(SectionPage.routeName, arguments: sectionId);
 }
 
 class EmptySection extends StatelessWidget {
