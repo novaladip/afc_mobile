@@ -1,49 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
-import 'package:afc_mobile/routes.dart';
-import 'package:afc_mobile/styles.dart';
-import 'package:afc_mobile/features/auth/auth.dart';
-import 'package:afc_mobile/features/login/login.dart';
-import 'package:afc_mobile/features/register/register.dart';
-import 'package:afc_mobile/features/student/course/course.dart';
-import 'package:afc_mobile/features/student/enroll_course/enroll_course.dart';
-import 'package:afc_mobile/features/student/enrollment/enrollment.dart';
-import 'package:afc_mobile/features/teacher/add_section/add_section.dart';
-import 'package:afc_mobile/features/teacher/course/course.dart';
-import 'package:afc_mobile/features/teacher/course_detail/course_detail.dart';
-import 'package:afc_mobile/features/teacher/section/section.dart';
-
-import 'injector_container.dart';
 
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider<AuthBloc>(
-          create: (context) => sl<AuthBloc>()..add(AppStarted()),
+    return MaterialApp(
+      home: Scaffold(
+        body: Center(
+          child: Text('App'),
         ),
-        BlocProvider<RegisterBloc>(create: (context) => sl<RegisterBloc>()),
-        BlocProvider<LoginBloc>(create: (context) => sl<LoginBloc>()),
-        BlocProvider<AddSectionBloc>(create: (context) => sl<AddSectionBloc>()),
-        BlocProvider<SectionBloc>(create: (context) => sl<SectionBloc>()),
-        BlocProvider<EnrollmentBloc>(
-            create: (context) => sl<EnrollmentBloc>(), lazy: false),
-        BlocProvider<EnrollCourseBloc>(
-            create: (context) => sl<EnrollCourseBloc>()),
-        BlocProvider<CourseStudentBloc>(
-            create: (context) => sl<CourseStudentBloc>()),
-        BlocProvider<CourseTeacherBloc>(
-            create: (context) => sl<CourseTeacherBloc>()),
-        BlocProvider<CourseDetailBloc>(
-            create: (context) => sl<CourseDetailBloc>()),
-      ],
-      child: MaterialApp(
-        title: 'AFC',
-        theme: Styles.theme,
-        initialRoute: "/",
-        routes: buildRoutes(),
       ),
     );
   }
