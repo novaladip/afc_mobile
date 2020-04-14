@@ -22,7 +22,7 @@ class AuthRemoteDataProvider {
 
   Future<void> registerStudent(RegisterDtoModel dto) async {
     try {
-      await _api.dio.post('/user/register/student', data: dto.toFormData);
+      await _api.dio.post('/user/register/student', data: await dto.toFormData);
     } catch (e) {
       throw e;
     }
@@ -30,7 +30,7 @@ class AuthRemoteDataProvider {
 
   Future<void> registerTeacher(RegisterDtoModel dto) async {
     try {
-      await _api.dio.post('/user/register/teacher', data: dto.toFormData);
+      await _api.dio.post('/user/register/teacher', data: await dto.toFormData);
     } catch (e) {
       throw e;
     }

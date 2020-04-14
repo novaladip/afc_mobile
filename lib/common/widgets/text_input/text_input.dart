@@ -15,6 +15,9 @@ class TextInput extends StatelessWidget {
   final Function(String) onSaved;
   final String helperText;
   final void Function() onTap;
+  final Color color;
+  final Color valueColor;
+  final Color labelColor;
 
   const TextInput({
     Key key,
@@ -32,13 +35,19 @@ class TextInput extends StatelessWidget {
     this.errorText,
     this.helperText,
     this.onTap,
+    this.color,
+    this.valueColor = Colors.black,
+    this.labelColor = Colors.grey,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final _color = color != null ? color : Theme.of(context).primaryColor;
+
     return Container(
       margin: EdgeInsets.symmetric(vertical: marginVertical),
       child: TextFormField(
+        style: TextStyle(color: valueColor),
         enabled: enabled,
         onTap: onTap,
         controller: controller,
@@ -50,8 +59,24 @@ class TextInput extends StatelessWidget {
         textInputAction: textInputAction,
         onFieldSubmitted: (_) => onFieldSubmitted(),
         decoration: InputDecoration(
+          contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+          labelStyle: TextStyle(color: labelColor),
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: _color,
+              width: 1,
+            ),
+            borderRadius: BorderRadius.all(Radius.circular(15)),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: _color,
+              width: 2,
+            ),
+            borderRadius: BorderRadius.all(Radius.circular(15)),
+          ),
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(50)),
+            borderRadius: BorderRadius.all(Radius.circular(15)),
           ),
           filled: true,
           labelText: labelText,

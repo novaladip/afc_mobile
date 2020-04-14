@@ -22,8 +22,8 @@ class RegisterDtoModel extends RegisterDto {
   Future<FormData> get toFormData async {
     return FormData.fromMap({
       'email': email,
-      'firstName': firstName,
-      'lastName': lastName,
+      'first_name': firstName,
+      'last_name': lastName,
       'password': password,
       'avatar': await MultipartFile.fromFile(
         avatar.path,

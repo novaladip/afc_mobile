@@ -49,6 +49,8 @@ flutter:
     - assets/icons/intro.jpg
     - assets/icons/login.png
     - assets/login_background.png
+    - assets/register_background.png
+    - assets/avatar_placeholder.png
 
   fonts:
     - family: Pacifito

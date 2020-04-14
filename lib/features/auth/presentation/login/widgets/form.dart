@@ -5,6 +5,7 @@ import 'package:afc_mobile/common/widgets/widgets.dart';
 import 'package:afc_mobile/features/auth/presentation/login/bloc/login_bloc.dart';
 import 'package:afc_mobile/features/auth/presentation/login/widgets/widgets.dart';
 import 'package:afc_mobile/features/auth/infrastructure/models/login_dto_model.dart';
+import 'package:afc_mobile/features/auth/presentation/presentation.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({
@@ -27,6 +28,7 @@ class _LoginFormState extends State<LoginForm> {
       listener: handleListener,
       builder: (context, state) {
         final isLoading = state is LoginStateLoading ? true : false;
+        final primaryColor = Theme.of(context).primaryColor;
 
         return buildBaseLayout(
           child: SingleChildScrollView(
@@ -35,6 +37,7 @@ class _LoginFormState extends State<LoginForm> {
               child: Column(
                 children: <Widget>[
                   TextInput(
+                    labelColor: primaryColor,
                     labelText: 'Email',
                     controller: emailController,
                     textInputAction: TextInputAction.next,
@@ -42,6 +45,7 @@ class _LoginFormState extends State<LoginForm> {
                     validator: (v) => validate(v, 'Email'),
                   ),
                   TextInput(
+                    labelColor: primaryColor,
                     labelText: 'Password',
                     obscureText: true,
                     controller: passwordController,
@@ -52,7 +56,9 @@ class _LoginFormState extends State<LoginForm> {
                   LoginFormCaption(
                     text: "Don't have an account? ",
                     actionText: "Sign up",
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).pushNamed(RegisterPage.routeName);
+                    },
                   ),
                   LoginFormCaption(
                     text: 'Forgot your password? ',

@@ -10,6 +10,7 @@ import 'package:afc_mobile/features/auth/infrastructure/repositories/auth_reposi
 import 'package:afc_mobile/features/auth/application/auth_facade_service.dart';
 import 'package:afc_mobile/features/auth/api/api.dart';
 import 'package:afc_mobile/features/auth/presentation/login/bloc/login_bloc.dart';
+import 'package:afc_mobile/features/auth/presentation/register/bloc/register_bloc.dart';
 import 'package:get_it/get_it.dart';
 
 void $initGetIt(GetIt g, {String environment}) {
@@ -21,5 +22,7 @@ void $initGetIt(GetIt g, {String environment}) {
   g.registerFactory<AuthFacadeService>(
       () => AuthFacadeService(repository: g<AuthRepository>()));
   g.registerFactory<AuthApi>(() => AuthApi(g<AuthFacadeService>()));
-  g.registerFactory<LoginBloc>(() => LoginBloc(authApi: g<AuthApi>()));
+  g.registerLazySingleton<LoginBloc>(() => LoginBloc(authApi: g<AuthApi>()));
+  g.registerLazySingleton<RegisterBloc>(
+      () => RegisterBloc(authApi: g<AuthApi>()));
 }

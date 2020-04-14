@@ -1,4 +1,5 @@
 import 'package:afc_mobile/features/auth/presentation/login/bloc/login_bloc.dart';
+import 'package:afc_mobile/features/auth/presentation/register/bloc/register_bloc.dart';
 import 'package:flutter/material.dart';
 
 import 'package:afc_mobile/config/config.dart';
@@ -12,7 +13,10 @@ class App extends StatelessWidget {
       providers: [
         BlocProvider<LoginBloc>(
           create: (_) => getIt<LoginBloc>(),
-        )
+        ),
+        BlocProvider<RegisterBloc>(
+          create: (_) => getIt<RegisterBloc>(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

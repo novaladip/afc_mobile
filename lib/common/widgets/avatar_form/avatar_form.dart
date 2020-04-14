@@ -17,23 +17,9 @@ class AvatarForm extends StatelessWidget {
 
   ImageProvider get backgroundImage {
     if (value == null) {
-      return AssetImage('/assets/avatar_placeholder.png');
+      return AssetImage('assets/avatar_placeholder.png');
     }
     return FileImage(value);
-  }
-
-  Widget get child {
-    if (value == null) {
-      return Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          Text(value != null ? '' : 'Avatar'),
-          Icon(Icons.photo),
-        ],
-      );
-    }
-
-    return Container();
   }
 
   Future<void> getImage(bool useCamera) async {
@@ -80,7 +66,6 @@ class AvatarForm extends StatelessWidget {
             child: CircleAvatar(
               backgroundImage: backgroundImage,
               radius: appTheme.height * 0.1,
-              child: child,
             ),
           ),
         );
