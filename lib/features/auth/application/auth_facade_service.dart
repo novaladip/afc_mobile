@@ -14,14 +14,26 @@ class AuthFacadeService {
   });
 
   Future<String> getAccessToken(LoginDtoModel dto) {
-    return this.repository.getAccessToken(dto);
+    return repository.getAccessToken(dto);
   }
 
   Future<void> registerTeacher(RegisterDtoModel dto) {
-    return this.repository.registerTeaher(dto);
+    return repository.registerTeaher(dto);
   }
 
   Future<void> registerStudent(RegisterDtoModel dto) {
-    return this.repository.regiterStudent(dto);
+    return repository.regiterStudent(dto);
+  }
+
+  String getToken() {
+    return repository.getToken();
+  }
+
+  Future<void> persistToken(String token) {
+    return repository.persistToken(token);
+  }
+
+  Future<void> removeToken() {
+    return repository.removeToken();
   }
 }

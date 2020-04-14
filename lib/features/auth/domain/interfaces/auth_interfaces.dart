@@ -5,4 +5,7 @@ abstract class AuthInterface {
   Future<String> getAccessToken(LoginDto dto);
   Future<void> regiterStudent(RegisterDto dto);
   Future<void> registerTeaher(RegisterDto dto);
+  Future<void> persistToken(String token);
+  Future<void> removeToken();
+  String getToken();
 }

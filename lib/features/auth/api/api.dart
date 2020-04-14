@@ -21,4 +21,16 @@ class AuthApi {
   Future<void> registerStudent(RegisterDtoModel dto) {
     return this.authFacade.registerStudent(dto);
   }
+
+  String getToken() {
+    return authFacade.getToken();
+  }
+
+  Future<void> persistToken(String token) {
+    return authFacade.persistToken(token);
+  }
+
+  Future<void> removeToken() {
+    return authFacade.removeToken();
+  }
 }
