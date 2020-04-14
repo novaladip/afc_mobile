@@ -45,4 +45,9 @@ class AuthRepository implements AuthInterface {
   Future<void> removeToken() {
     return authLocalDataSource.removeToken();
   }
+
+  @override
+  void setDefaultAuthHeader(String token) {
+    return authLocalDataSource.setDefaultAuthHeader(token);
+  }
 }

@@ -27,4 +27,8 @@ class AuthLocalDataSource {
   Future<void> removeToken() async {
     await sharedPreferences.remove(Env.jwtKey);
   }
+
+  void setDefaultAuthHeader(String token) {
+    api.setDefaultAuthHeader(token);
+  }
 }

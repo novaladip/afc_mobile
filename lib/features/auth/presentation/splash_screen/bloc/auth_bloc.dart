@@ -32,6 +32,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     if (event is CheckAuth) {
       yield* _mapCheckAuth();
     }
+
+    if (event is LoggedIn) {
+      yield* _mapLoggedIn(event.token);
+    }
   }
 
   Stream<AuthState> _mapCheckAuth() async* {
@@ -49,9 +53,16 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         return;
       }
       api.setDefaultAuthHeader(token);
-      yield AuthStateAuthentication(jwtPayload);
+      yield AuthStateAuthenticated(jwtPayload);
     } catch (e) {
       yield AuthStateUnauthentication();
     }
+  }
+
+  Stream<AuthState> _mapLoggedIn(String token) async* {
+    await authApi.persistToken(token);
+    authApi.setDefaultAuthHeader(token);
+    final jwtPayload = JwtPayloadModel.fromToken(token);
+    yield AuthStateAuthenticated(jwtPayload);
   }
 }

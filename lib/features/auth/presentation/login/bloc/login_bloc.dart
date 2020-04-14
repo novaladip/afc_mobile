@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:afc_mobile/features/auth/presentation/splash_screen/bloc/auth_bloc.dart';
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:equatable/equatable.dart';
@@ -12,9 +13,11 @@ part 'login_state.dart';
 
 @lazySingleton
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
+  final AuthBloc authBloc;
   final AuthApi authApi;
 
   LoginBloc({
+    @required this.authBloc,
     @required this.authApi,
   });
 
@@ -34,8 +37,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     try {
       yield LoginStateLoading();
       final accessToken = await authApi.getAccessToken(dto);
-      print(accessToken);
-      yield LoginStateSuccess();
+
+      authBloc.add(LoggedIn(accessToken));
     } catch (e) {
       yield LoginStateFailure();
     } finally {

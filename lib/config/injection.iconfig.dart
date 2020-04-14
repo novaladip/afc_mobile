@@ -34,7 +34,8 @@ Future<void> $initGetIt(GetIt g, {String environment}) async {
   g.registerFactory<AuthApi>(() => AuthApi(g<AuthFacadeService>()));
   g.registerLazySingleton<AuthBloc>(
       () => AuthBloc(authApi: g<AuthApi>(), api: g<Api>()));
-  g.registerLazySingleton<LoginBloc>(() => LoginBloc(authApi: g<AuthApi>()));
+  g.registerLazySingleton<LoginBloc>(
+      () => LoginBloc(authBloc: g<AuthBloc>(), authApi: g<AuthApi>()));
   g.registerLazySingleton<RegisterBloc>(
       () => RegisterBloc(authApi: g<AuthApi>()));
 }

@@ -33,4 +33,8 @@ class AuthApi {
   Future<void> removeToken() {
     return authFacade.removeToken();
   }
+
+  void setDefaultAuthHeader(String token) {
+    return authFacade.setDefaultAuthHeader(token);
+  }
 }

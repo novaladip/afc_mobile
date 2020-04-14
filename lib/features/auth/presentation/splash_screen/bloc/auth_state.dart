@@ -9,10 +9,10 @@ abstract class AuthState extends Equatable {
 
 class AuthStateInitial extends AuthState {}
 
-class AuthStateAuthentication extends AuthState {
+class AuthStateAuthenticated extends AuthState {
   final JwtPayloadModel user;
 
-  AuthStateAuthentication(this.user);
+  AuthStateAuthenticated(this.user);
 
   @override
   List<Object> get props => [user];

@@ -36,4 +36,8 @@ class AuthFacadeService {
   Future<void> removeToken() {
     return repository.removeToken();
   }
+
+  void setDefaultAuthHeader(String token) {
+    return repository.setDefaultAuthHeader(token);
+  }
 }

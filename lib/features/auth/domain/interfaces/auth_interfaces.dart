@@ -7,5 +7,6 @@ abstract class AuthInterface {
   Future<void> registerTeaher(RegisterDto dto);
   Future<void> persistToken(String token);
   Future<void> removeToken();
+  void setDefaultAuthHeader(String token);
   String getToken();
 }
