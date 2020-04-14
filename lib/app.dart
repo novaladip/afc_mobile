@@ -1,13 +1,25 @@
+import 'package:afc_mobile/features/auth/presentation/login/bloc/login_bloc.dart';
 import 'package:flutter/material.dart';
+
+import 'package:afc_mobile/config/config.dart';
+import 'package:afc_mobile/features/auth/auth.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('App'),
-        ),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<LoginBloc>(
+          create: (_) => getIt<LoginBloc>(),
+        )
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'AFC',
+        theme: Style.lightTheme,
+        routes: buildRoutes(),
+        home: LoginPage(),
       ),
     );
   }
