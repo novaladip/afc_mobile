@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:afc_mobile/common/widgets/widgets.dart';
-
 import 'bloc/course_detail_bloc.dart';
+import 'package:afc_mobile/common/widgets/widgets.dart';
+import 'package:afc_mobile/features/course/presentation/course_detail/widgets/widgets.dart';
 
 class CourseDetailPage extends StatefulWidget {
   static const routeName = '/course-detail';
@@ -31,7 +31,7 @@ class _CourseDetailPageState extends State<CourseDetailPage> {
             return LoadingIndicator();
           }
 
-          return Container();
+          return CourseDetailBaseLayout();
         },
       ),
     );

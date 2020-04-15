@@ -55,6 +55,7 @@ flutter:
     - assets/avatar_placeholder.png
     - assets/splash_screen_background.png
     - assets/course_background.png
+    - assets/classroom.jpg
 
   fonts:
     - family: Pacifito
