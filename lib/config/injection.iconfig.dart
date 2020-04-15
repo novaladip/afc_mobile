@@ -15,6 +15,7 @@ import 'package:afc_mobile/features/auth/infrastructure/repositories/auth_reposi
 import 'package:afc_mobile/features/course/application/course_facade_service.dart';
 import 'package:afc_mobile/features/auth/application/auth_facade_service.dart';
 import 'package:afc_mobile/features/course/api/api.dart';
+import 'package:afc_mobile/features/course/presentation/course_detail/bloc/course_detail_bloc.dart';
 import 'package:afc_mobile/features/course/presentation/course_teacher/bloc/course_teacher_bloc.dart';
 import 'package:afc_mobile/features/auth/api/api.dart';
 import 'package:afc_mobile/features/auth/presentation/splash_screen/bloc/auth_bloc.dart';
@@ -44,6 +45,8 @@ Future<void> $initGetIt(GetIt g, {String environment}) async {
       () => AuthFacadeService(repository: g<AuthRepository>()));
   g.registerLazySingleton<CourseApi>(
       () => CourseApi(courseFacadeService: g<CourseFacadeService>()));
+  g.registerLazySingleton<CourseDetailBloc>(
+      () => CourseDetailBloc(courseApi: g<CourseApi>()));
   g.registerLazySingleton<CourseTeacherBloc>(
       () => CourseTeacherBloc(courseApi: g<CourseApi>()));
   g.registerFactory<AuthApi>(() => AuthApi(g<AuthFacadeService>()));

@@ -2,6 +2,7 @@ import 'package:meta/meta.dart';
 import 'package:injectable/injectable.dart';
 
 import 'package:afc_mobile/features/course/domain/entities/course.dart';
+import 'package:afc_mobile/features/course/domain/entities/course_detail.dart';
 import 'package:afc_mobile/features/course/infrastructure/repositories/course_repository.dart';
 
 @lazySingleton
@@ -15,5 +16,9 @@ class CourseFacadeService {
 
   Future<List<Course>> fetchCourses() {
     return courseRepository.getCourses();
+  }
+
+  Future<CourseDetail> fetchCourseDetail(String courseId) {
+    return courseRepository.getCourseDetail(courseId);
   }
 }

@@ -1,3 +1,4 @@
+import 'package:afc_mobile/features/course/presentation/presentation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:afc_mobile/common/utils/utils.dart';
@@ -23,7 +24,10 @@ class CourseItem extends StatelessWidget {
           child: InkWell(
             splashColor: appTheme.primaryColor.withOpacity(0.3),
             onTap: () {
-              // @TODO
+              Navigator.of(context).pushNamed(
+                CourseDetailPage.routeName,
+                arguments: course.id,
+              );
             },
             child: Container(
               padding: EdgeInsets.symmetric(vertical: 8, horizontal: 15),
