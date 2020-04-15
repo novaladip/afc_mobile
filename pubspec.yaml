@@ -46,6 +46,7 @@ dev_dependencies:
 # The following section is specific to Flutter.
 flutter:
   assets:
+    - assets/icons/error.png
     - assets/icons/robot.png
     - assets/icons/intro.jpg
     - assets/icons/login.png
@@ -53,6 +54,7 @@ flutter:
     - assets/register_background.png
     - assets/avatar_placeholder.png
     - assets/splash_screen_background.png
+    - assets/course_background.png
 
   fonts:
     - family: Pacifito
