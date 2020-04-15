@@ -37,7 +37,9 @@ class SplashScreen extends StatelessWidget {
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
         if (state is AuthStateAuthenticated) {
-          // @TODO
+          Future.delayed(Duration(milliseconds: 1500)).then((_) =>
+              Navigator.of(context)
+                  .pushReplacementNamed(AuthenticatedPage.routeName));
         }
 
         if (state is AuthStateUnauthentication) {

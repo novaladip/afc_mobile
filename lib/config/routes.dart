@@ -7,5 +7,6 @@ Map<String, Widget Function(BuildContext)> buildRoutes() {
     SplashScreen.routeName: (_) => SplashScreen(),
     LoginPage.routeName: (_) => LoginPage(),
     RegisterPage.routeName: (_) => RegisterPage(),
+    AuthenticatedPage.routeName: (_) => AuthenticatedPage(),
   };
 }
