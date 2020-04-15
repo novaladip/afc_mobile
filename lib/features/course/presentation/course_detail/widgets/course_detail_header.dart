@@ -51,7 +51,7 @@ class CourseDetailHeader extends StatelessWidget {
                         Text(
                           course.name,
                           style: TextStyle(
-                            fontSize: 20,
+                            fontSize: 30,
                             fontFamily: 'Pacifito',
                             color: Colors.white,
                             fontWeight: FontWeight.w500,
@@ -87,8 +87,10 @@ class CourseDetailHeader extends StatelessWidget {
     return Text(
       text,
       style: TextStyle(
-        fontSize: 16,
+        fontSize: 18,
         color: Colors.white,
+        fontFamily: 'Comic Neue',
+        fontWeight: FontWeight.bold,
       ),
     );
   }

@@ -12,7 +12,7 @@ class SectionModel extends Section {
   factory SectionModel.fromJson(Map<String, dynamic> json) {
     return SectionModel(
       id: json['id'],
-      count: json[' count'],
+      count: json['count'],
       date: json['date'],
     );
   }

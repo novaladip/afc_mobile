@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'section_list.dart';
 import 'course_detail_header.dart';
 import 'package:afc_mobile/common/widgets/widgets.dart';
 
@@ -43,6 +44,7 @@ class CourseDetailBaseLayout extends StatelessWidget {
               alignment: Alignment.center,
               width: appTheme.width * 0.98,
               height: appTheme.height * 0.72,
+              child: SectionList(),
             ),
           ],
         );
