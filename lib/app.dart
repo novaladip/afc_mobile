@@ -1,3 +1,5 @@
+import 'package:afc_mobile/features/course/presentation/section_detail/bloc/class_photo_form_bloc/section_photo_form_bloc.dart';
+import 'package:afc_mobile/features/course/presentation/section_detail/bloc/section_detail_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -28,6 +30,12 @@ class App extends StatelessWidget {
         ),
         BlocProvider<CourseDetailBloc>(
           create: (_) => getIt<CourseDetailBloc>(),
+        ),
+        BlocProvider<SectionDetailBloc>(
+          create: (_) => getIt<SectionDetailBloc>(),
+        ),
+        BlocProvider<SectionPhotoFormBloc>(
+          create: (_) => getIt<SectionPhotoFormBloc>(),
         )
       ],
       child: MaterialApp(

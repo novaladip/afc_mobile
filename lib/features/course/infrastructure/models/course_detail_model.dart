@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 
 import 'package:afc_mobile/shared/models/models.dart';
 import 'package:afc_mobile/features/course/domain/entities/course_detail.dart';
-import 'package:afc_mobile/features/course/infrastructure/models/section_detail_model.dart';
+import 'package:afc_mobile/features/course/infrastructure/models/section_model.dart';
 
 class CourseDetailModel extends CourseDetail {
   CourseDetailModel({

@@ -1,3 +1,4 @@
+import 'package:afc_mobile/features/course/domain/entities/section_detail.dart';
 import 'package:meta/meta.dart';
 import 'package:injectable/injectable.dart';
 
@@ -23,5 +24,10 @@ class CourseRepository implements CourseInterface {
   @override
   Future<CourseDetail> getCourseDetail(String courseId) {
     return courseRemoteDataProvider.fetchCourseDetail(courseId);
+  }
+
+  @override
+  Future<SectionDetail> getSectionDetail(String sectionId) {
+    return courseRemoteDataProvider.fetchSectionDetail(sectionId);
   }
 }

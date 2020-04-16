@@ -5,10 +5,11 @@ import 'package:afc_mobile/features/course/course.dart';
 
 Map<String, Widget Function(BuildContext)> buildRoutes() {
   return {
-    SplashScreen.routeName: (_) => SplashScreen(),
     LoginPage.routeName: (_) => LoginPage(),
+    SplashScreen.routeName: (_) => SplashScreen(),
     RegisterPage.routeName: (_) => RegisterPage(),
-    AuthenticatedPage.routeName: (_) => AuthenticatedPage(),
     CourseDetailPage.routeName: (_) => CourseDetailPage(),
+    AuthenticatedPage.routeName: (_) => AuthenticatedPage(),
+    SectionDetailPage.routeName: (_) => SectionDetailPage(),
   };
 }

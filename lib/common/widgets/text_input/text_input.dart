@@ -18,6 +18,8 @@ class TextInput extends StatelessWidget {
   final Color color;
   final Color valueColor;
   final Color labelColor;
+  final String initialValue;
+  final Function(String) onChanged;
 
   const TextInput({
     Key key,
@@ -28,7 +30,7 @@ class TextInput extends StatelessWidget {
     this.keyboardType = TextInputType.text,
     this.textInputAction = TextInputAction.unspecified,
     this.onFieldSubmitted,
-    @required this.controller,
+    this.controller,
     this.marginVertical = 15,
     this.obscureText = false,
     this.onSaved,
@@ -38,6 +40,8 @@ class TextInput extends StatelessWidget {
     this.color,
     this.valueColor = Colors.black,
     this.labelColor = Colors.grey,
+    this.initialValue,
+    this.onChanged,
   }) : super(key: key);
 
   @override
@@ -47,6 +51,7 @@ class TextInput extends StatelessWidget {
     return Container(
       margin: EdgeInsets.symmetric(vertical: marginVertical),
       child: TextFormField(
+        initialValue: initialValue,
         style: TextStyle(color: valueColor),
         enabled: enabled,
         onTap: onTap,
@@ -57,6 +62,7 @@ class TextInput extends StatelessWidget {
         validator: validator,
         keyboardType: keyboardType,
         textInputAction: textInputAction,
+        onChanged: onChanged,
         onFieldSubmitted: (_) => onFieldSubmitted(),
         decoration: InputDecoration(
           contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),

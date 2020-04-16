@@ -1,7 +1,6 @@
 import 'package:meta/meta.dart';
 
 import 'package:afc_mobile/shared/models/models.dart';
-import 'package:afc_mobile/shared/entities/entities.dart';
 import 'package:afc_mobile/features/course/domain/entities/course.dart';
 
 class CourseModel extends Course {
@@ -11,7 +10,7 @@ class CourseModel extends Course {
     @required String createdAt,
     @required String name,
     @required String teacherId,
-    @required User teacher,
+    @required UserModel teacher,
   }) : super(
             id: id,
             closeDate: closeDate,
