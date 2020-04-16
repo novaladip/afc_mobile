@@ -4,7 +4,7 @@ import 'package:injectable/injectable.dart';
 import 'package:afc_mobile/config/config.dart';
 
 final baseOption = BaseOptions(
-  baseUrl: Env.baseURL,
+  baseUrl: Env.baseURL + '/api',
 );
 
 @injectable
