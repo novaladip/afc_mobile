@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:afc_mobile/common/widgets/widgets.dart';
+import 'package:afc_mobile/features/auth/presentation/presentation.dart';
 import 'package:afc_mobile/features/auth/presentation/login/bloc/login_bloc.dart';
 import 'package:afc_mobile/features/auth/presentation/login/widgets/widgets.dart';
 import 'package:afc_mobile/features/auth/infrastructure/models/login_dto_model.dart';
-import 'package:afc_mobile/features/auth/presentation/presentation.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({
@@ -115,10 +115,6 @@ class _LoginFormState extends State<LoginForm> {
   }
 
   void handleListener(BuildContext context, LoginState state) {
-    if (state is LoginStateSuccess) {
-      form.currentState.reset();
-    }
-
     if (state is LoginStateFailure) {
       Scaffold.of(context)
         ..removeCurrentSnackBar()
@@ -137,7 +133,6 @@ class _LoginFormState extends State<LoginForm> {
 
   @override
   void dispose() {
-    form.currentState.dispose();
     emailController.dispose();
     passwordController.dispose();
     passwordFocusNode.dispose();
