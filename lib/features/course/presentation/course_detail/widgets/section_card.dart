@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:afc_mobile/common/utils/utils.dart';
+import 'package:afc_mobile/features/course/course.dart';
 import 'package:afc_mobile/features/course/domain/entities/section.dart';
 
 class SectionCard extends StatelessWidget {
@@ -16,7 +17,10 @@ class SectionCard extends StatelessWidget {
     return Card(
       margin: EdgeInsets.only(top: 8, bottom: 8),
       child: InkWell(
-        onTap: () {},
+        onTap: () => Navigator.of(context).pushNamed(
+          SectionDetailPage.routeName,
+          arguments: section.id,
+        ),
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
           child: Row(

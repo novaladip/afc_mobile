@@ -1,8 +1,10 @@
+import 'package:afc_mobile/features/course/domain/entities/course_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:afc_mobile/common/widgets/widgets.dart';
 import 'package:afc_mobile/features/course/presentation/course_detail/bloc/course_detail_bloc.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class CourseDetailHeader extends StatelessWidget {
   const CourseDetailHeader({
@@ -12,21 +14,6 @@ class CourseDetailHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<CourseDetailBloc, CourseDetailState>(
-      condition: (oldState, state) {
-        if (oldState.course.name != state.course.name) {
-          return true;
-        }
-
-        if (oldState.course.sections.length != state.course.sections.length) {
-          return true;
-        }
-
-        if (oldState.course.students.length != state.course.students.length) {
-          return true;
-        }
-
-        return false;
-      },
       builder: (context, state) {
         return ThemeBuilder(
           builder: (context, appTheme) {
@@ -42,33 +29,44 @@ class CourseDetailHeader extends StatelessWidget {
                 children: <Widget>[
                   buildBackButton(context),
                   SizedBox(height: 15),
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: 30),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: <Widget>[
-                        Text(
-                          course.name,
-                          style: TextStyle(
-                            fontSize: 30,
-                            fontFamily: 'Pacifito',
-                            color: Colors.white,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                        SizedBox(height: 8),
-                        buildCaption(
-                            'You have ${course.sections.length} sections & ${course.students.length} students'),
-                      ],
-                    ),
-                  ),
+                  state.isLoading ? loadingIndicator : buildContent(course),
                 ],
               ),
             );
           },
         );
       },
+    );
+  }
+
+  Widget get loadingIndicator {
+    return SpinKitWave(
+      color: Colors.white,
+      size: 50,
+    );
+  }
+
+  Widget buildContent(CourseDetail course) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 30),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
+          Text(
+            course.name,
+            style: TextStyle(
+              fontSize: 30,
+              fontFamily: 'Pacifito',
+              color: Colors.white,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+          SizedBox(height: 8),
+          buildCaption(
+              'You have ${course.sections.length} sections & ${course.students.length} students'),
+        ],
+      ),
     );
   }
 

@@ -19,16 +19,14 @@ class _CourseDetailPageState extends State<CourseDetailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocConsumer<CourseDetailBloc, CourseDetailState>(
-        listener: (context, state) {},
+        listener: (context, state) {
+          print(state.isLoading);
+        },
         builder: (context, state) {
           if (state.isFailure) {
             return ErrorScreen(
               onRetry: getCourseDetail,
             );
-          }
-
-          if (state.isLoading) {
-            return LoadingIndicator();
           }
 
           return CourseDetailBaseLayout();
@@ -44,14 +42,6 @@ class _CourseDetailPageState extends State<CourseDetailPage> {
       initial = false;
       getCourseDetail();
     }
-  }
-
-  @override
-  void deactivate() {
-    // Clear state
-    context.bloc<CourseDetailBloc>().add(ClearCourseDetailState());
-
-    super.deactivate();
   }
 
   void getCourseDetail() {
