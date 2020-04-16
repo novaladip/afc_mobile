@@ -7,17 +7,19 @@ import 'package:meta/meta.dart';
 
 import 'package:afc_mobile/features/course/api/api.dart';
 import 'package:afc_mobile/features/course/domain/entities/section_detail.dart';
+import 'package:afc_mobile/features/course/presentation/section_detail/bloc/attendance_form_bloc/attendance_form_bloc.dart';
 
 part 'section_detail_event.dart';
 part 'section_detail_state.dart';
 
 @lazySingleton
-@injectable
 class SectionDetailBloc extends Bloc<SectionDetailEvent, SectionDetailState> {
   final CourseApi courseApi;
+  final AttendanceFormBloc attendanceFormBloc;
 
   SectionDetailBloc({
     @required this.courseApi,
+    @required this.attendanceFormBloc,
   });
 
   @override
@@ -37,6 +39,7 @@ class SectionDetailBloc extends Bloc<SectionDetailEvent, SectionDetailState> {
       yield SectionDetailStateLoading();
       await Future.delayed(Duration(seconds: 2));
       final section = await courseApi.getSectionDetail(sectionId);
+      attendanceFormBloc.add(PopulateAttendanceFromSectionDetail(section));
       yield SectionDetailStateLoaded(section);
     } catch (e) {
       yield SectionDetailStateFailure();

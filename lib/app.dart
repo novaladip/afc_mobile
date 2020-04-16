@@ -1,5 +1,3 @@
-import 'package:afc_mobile/features/course/presentation/section_detail/bloc/class_photo_form_bloc/section_photo_form_bloc.dart';
-import 'package:afc_mobile/features/course/presentation/section_detail/bloc/section_detail_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -8,7 +6,10 @@ import 'package:afc_mobile/features/auth/presentation/login/bloc/login_bloc.dart
 import 'package:afc_mobile/features/auth/presentation/register/bloc/register_bloc.dart';
 import 'package:afc_mobile/features/auth/presentation/splash_screen/bloc/auth_bloc.dart';
 import 'package:afc_mobile/features/course/presentation/course_detail/bloc/course_detail_bloc.dart';
+import 'package:afc_mobile/features/course/presentation/section_detail/bloc/section_detail_bloc.dart';
 import 'package:afc_mobile/features/course/presentation/course_teacher/bloc/course_teacher_bloc.dart';
+import 'package:afc_mobile/features/course/presentation/section_detail/bloc/attendance_form_bloc/attendance_form_bloc.dart';
+import 'package:afc_mobile/features/course/presentation/section_detail/bloc/class_photo_form_bloc/section_photo_form_bloc.dart';
 
 class App extends StatelessWidget {
   @override
@@ -36,6 +37,9 @@ class App extends StatelessWidget {
         ),
         BlocProvider<SectionPhotoFormBloc>(
           create: (_) => getIt<SectionPhotoFormBloc>(),
+        ),
+        BlocProvider<AttendanceFormBloc>(
+          create: (_) => getIt<AttendanceFormBloc>(),
         )
       ],
       child: MaterialApp(
