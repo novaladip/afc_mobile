@@ -7,18 +7,30 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 
 class PhotoForm extends StatefulWidget {
+  final bool isLoading;
+
+  const PhotoForm({
+    Key key,
+    @required this.isLoading,
+  }) : super(key: key);
+
   @override
   _PhotoFormState createState() => _PhotoFormState();
 }
 
 class _PhotoFormState extends State<PhotoForm> {
   final photoController = TextEditingController();
+  SectionPhotoFormBloc _sectionPhotoFormBloc;
   bool initial = true;
 
   @override
   Widget build(BuildContext context) {
     return ThemeBuilder(
       builder: (context, appTheme) {
+        if (widget.isLoading) {
+          return Container();
+        }
+
         return BlocBuilder<SectionPhotoFormBloc, SectionPhotoFormState>(
           builder: (context, state) {
             return Container(
@@ -92,22 +104,21 @@ class _PhotoFormState extends State<PhotoForm> {
     context.bloc<SectionPhotoFormBloc>().add(OnChangePhotoForm(image));
   }
 
-  @override
-  void didChangeDependencies() {
-    if (initial) {
-      initial = false;
-      clearPhotoForm();
-    }
-
-    super.didChangeDependencies();
+  void clearPhotoForm() {
+    _sectionPhotoFormBloc.add(ClearPhotoForm());
   }
 
-  void clearPhotoForm() {
-    context.bloc<SectionPhotoFormBloc>().add(ClearPhotoForm());
+  @override
+  void initState() {
+    if (_sectionPhotoFormBloc == null) {
+      _sectionPhotoFormBloc = context.bloc<SectionPhotoFormBloc>();
+    }
+    super.initState();
   }
 
   @override
   void dispose() {
+    clearPhotoForm();
     photoController.dispose();
     super.dispose();
   }

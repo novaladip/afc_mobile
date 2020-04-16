@@ -1,9 +1,9 @@
-import 'package:afc_mobile/common/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'widgets/widgets.dart';
 import 'bloc/section_detail_bloc.dart';
+import 'package:afc_mobile/common/widgets/widgets.dart';
 
 class SectionDetailPage extends StatefulWidget {
   static const routeName = '/section-detail';
@@ -15,11 +15,7 @@ class SectionDetailPage extends StatefulWidget {
 class _SectionDetailPageState extends State<SectionDetailPage> {
   bool initial = true;
 
-  List<Widget> get loadedWiget => [
-        PhotoForm(),
-      ];
-
-  Widget get loadingIndicator => Expanded(child: LoadingIndicator());
+  Widget get loadingIndicator => LoadingIndicator();
 
   @override
   Widget build(BuildContext context) {
@@ -28,12 +24,17 @@ class _SectionDetailPageState extends State<SectionDetailPage> {
         final isLoading = state is SectionDetailStateLoading;
 
         return Scaffold(
-          body: Column(
-            children: <Widget>[
-              SectionDetailHeader(),
-              if (isLoading) loadingIndicator,
-              if (!isLoading) ...loadedWiget,
-            ],
+          body: SingleChildScrollView(
+            physics: ScrollPhysics(),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: <Widget>[
+                SectionDetailHeader(),
+                if (isLoading) loadingIndicator,
+                PhotoForm(isLoading: isLoading),
+                AttendancesListForm(isLoading: isLoading),
+              ],
+            ),
           ),
         );
       },

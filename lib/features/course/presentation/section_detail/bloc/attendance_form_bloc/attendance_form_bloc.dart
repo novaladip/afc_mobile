@@ -41,6 +41,7 @@ class AttendanceFormBloc
         name: attendances[index].name,
         id: attendances[index].id,
         status: event.status,
+        avatar: attendances[index].avatar,
       );
 
       yield currentState.copyWith(
@@ -51,8 +52,14 @@ class AttendanceFormBloc
     if (event is PopulateAttendanceFromSectionDetail) {
       final section = event.sectionDetail;
       final attendances = section.attendance
-          .map((a) => AttendanceForm(
-              id: a.id, status: a.status, name: a.student.fullName))
+          .map(
+            (a) => AttendanceForm(
+              id: a.id,
+              status: a.status,
+              name: a.student.fullName,
+              avatar: a.student.avatar,
+            ),
+          )
           .toList();
 
       yield currentState.copyWith(
