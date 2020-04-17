@@ -26,7 +26,6 @@ class _RobotIconState extends State<RobotIcon> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    print('initState');
     colorController =
         AnimationController(duration: Duration(milliseconds: 500), vsync: this);
     colorAnimation =
