@@ -1,6 +1,7 @@
 part of 'section_photo_form_bloc.dart';
 
 class SectionPhotoFormState extends Equatable {
+  final RecognizeResult result;
   final String photoPath;
   final bool isSubmiting;
   final bool isFailure;
@@ -9,6 +10,7 @@ class SectionPhotoFormState extends Equatable {
   String get fileName => photoPath?.split('/')?.last ?? 'No photo selected';
 
   const SectionPhotoFormState({
+    this.result,
     @required this.photoPath,
     @required this.isSubmiting,
     @required this.isFailure,
@@ -25,12 +27,14 @@ class SectionPhotoFormState extends Equatable {
   }
 
   SectionPhotoFormState copyWith({
+    RecognizeResult result,
     String photo,
     bool isSubmiting,
     bool isFailure,
     bool isSuccess,
   }) {
     return SectionPhotoFormState(
+      result: result ?? this.result,
       photoPath: photo ?? this.photoPath,
       isSubmiting: isSubmiting ?? this.isSubmiting,
       isFailure: isFailure ?? this.isFailure,
@@ -39,10 +43,6 @@ class SectionPhotoFormState extends Equatable {
   }
 
   @override
-  String toString() {
-    return 'SectionPhotoFormState $fileName';
-  }
-
-  @override
-  List<Object> get props => [photoPath, isSubmiting, isFailure, isSuccess];
+  List<Object> get props =>
+      [photoPath, isSubmiting, isFailure, isSuccess, result];
 }

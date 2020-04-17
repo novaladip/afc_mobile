@@ -31,7 +31,12 @@ class _SectionDetailPageState extends State<SectionDetailPage> {
               children: <Widget>[
                 SectionDetailHeader(),
                 if (isLoading) loadingIndicator,
-                PhotoForm(isLoading: isLoading),
+                PhotoForm(
+                  isLoading: isLoading,
+                  sectionId: state is SectionDetailStateLoaded
+                      ? state.section.id
+                      : null,
+                ),
                 AttendancesListForm(isLoading: isLoading),
               ],
             ),

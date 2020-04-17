@@ -1,9 +1,11 @@
-import 'package:afc_mobile/features/course/domain/entities/section_detail.dart';
+import 'dart:io';
 import 'package:meta/meta.dart';
 import 'package:injectable/injectable.dart';
 
 import 'package:afc_mobile/features/course/domain/entities/course.dart';
 import 'package:afc_mobile/features/course/domain/entities/course_detail.dart';
+import 'package:afc_mobile/features/course/domain/entities/section_detail.dart';
+import 'package:afc_mobile/features/course/domain/entities/recognize_result.dart';
 import 'package:afc_mobile/features/course/domain/interfaces/course_interface.dart';
 import 'package:afc_mobile/features/course/infrastructure/data_sources/course_remote_data_provider.dart';
 
@@ -29,5 +31,10 @@ class CourseRepository implements CourseInterface {
   @override
   Future<SectionDetail> getSectionDetail(String sectionId) {
     return courseRemoteDataProvider.fetchSectionDetail(sectionId);
+  }
+
+  @override
+  Future<RecognizeResult> recognizeStudent(String sectionId, File photo) {
+    return courseRemoteDataProvider.recognizeStudent(sectionId, photo);
   }
 }

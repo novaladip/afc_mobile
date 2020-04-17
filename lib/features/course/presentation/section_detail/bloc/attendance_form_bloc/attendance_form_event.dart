@@ -18,6 +18,15 @@ class PopulateAttendanceFromSectionDetail extends AttendanceFormEvent {
   List<Object> get props => [sectionDetail];
 }
 
+class PopulateFromRecognizeResult extends AttendanceFormEvent {
+  final List<AttendanceResult> attendanceResult;
+
+  const PopulateFromRecognizeResult(this.attendanceResult);
+
+  @override
+  List<Object> get props => [attendanceResult];
+}
+
 class OnChangeAttendanceStatus extends AttendanceFormEvent {
   final String status;
   final int index;

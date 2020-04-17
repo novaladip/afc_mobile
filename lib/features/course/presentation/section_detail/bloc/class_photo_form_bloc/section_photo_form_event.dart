@@ -17,3 +17,12 @@ class OnChangePhotoForm extends SectionPhotoFormEvent {
   @override
   List<Object> get props => [photo];
 }
+
+class RecognizeButtonPressed extends SectionPhotoFormEvent {
+  final String sectionId;
+
+  const RecognizeButtonPressed(this.sectionId);
+
+  @override
+  List<Object> get props => [sectionId];
+}

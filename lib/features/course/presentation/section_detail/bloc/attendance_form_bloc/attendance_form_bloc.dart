@@ -8,6 +8,7 @@ import 'package:injectable/injectable.dart';
 import 'package:afc_mobile/features/course/api/api.dart';
 import 'package:afc_mobile/features/course/domain/entities/section_detail.dart';
 import 'package:afc_mobile/features/course/domain/entities/attendance_form.dart';
+import 'package:afc_mobile/features/course/domain/entities/recognize_result.dart';
 
 part 'attendance_form_event.dart';
 part 'attendance_form_state.dart';
@@ -65,6 +66,22 @@ class AttendanceFormBloc
       yield currentState.copyWith(
         attendances: attendances,
       );
+    }
+
+    if (event is PopulateFromRecognizeResult) {
+      final attendances = currentState.attendances.map((a) {
+        final index =
+            event.attendanceResult.indexWhere((n) => n.attendanceId == a.id);
+        final result = event.attendanceResult[index];
+        return AttendanceForm(
+          id: a.id,
+          name: a.name,
+          avatar: a.avatar,
+          status: result.isMatch ? 'M' : 'TH',
+        );
+      }).toList();
+
+      yield currentState.copyWith(attendances: attendances);
     }
   }
 }

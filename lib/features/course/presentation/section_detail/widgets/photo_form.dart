@@ -1,17 +1,19 @@
-import 'dart:io';
-
-import 'package:afc_mobile/common/widgets/widgets.dart';
-import 'package:afc_mobile/features/course/presentation/section_detail/bloc/class_photo_form_bloc/section_photo_form_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:photo_view/photo_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 
+import 'package:afc_mobile/common/widgets/widgets.dart';
+import 'package:afc_mobile/features/course/presentation/section_detail/bloc/class_photo_form_bloc/section_photo_form_bloc.dart';
+
 class PhotoForm extends StatefulWidget {
   final bool isLoading;
+  final String sectionId;
 
   const PhotoForm({
     Key key,
     @required this.isLoading,
+    @required this.sectionId,
   }) : super(key: key);
 
   @override
@@ -31,7 +33,29 @@ class _PhotoFormState extends State<PhotoForm> {
           return Container();
         }
 
-        return BlocBuilder<SectionPhotoFormBloc, SectionPhotoFormState>(
+        return BlocConsumer<SectionPhotoFormBloc, SectionPhotoFormState>(
+          listener: (context, state) {
+            if (state.isSuccess) {
+              Scaffold.of(context)
+                ..removeCurrentSnackBar()
+                ..showSnackBar(
+                  SnackBar(
+                    backgroundColor: Colors.green,
+                    content: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text('We found ${state.result.facesFound} faces'),
+                        Text(
+                          'Student list form has been automatically updated',
+                        ),
+                      ],
+                    ),
+                    behavior: SnackBarBehavior.floating,
+                  ),
+                );
+            }
+          },
           builder: (context, state) {
             return Container(
               padding: EdgeInsets.only(bottom: 30, left: 15, right: 15),
@@ -39,10 +63,9 @@ class _PhotoFormState extends State<PhotoForm> {
               child: Form(
                 child: Column(
                   children: <Widget>[
-                    if (state.photoPath.isNotEmpty)
-                      Image.file(
-                        File(state.photoPath),
-                        height: 100,
+                    if (state.result?.photo != null)
+                      ResultPhotoViewer(
+                        url: state.result.photo,
                       ),
                     GestureDetector(
                       onTap: _showDialog,
@@ -56,7 +79,8 @@ class _PhotoFormState extends State<PhotoForm> {
                     ),
                     SizedBox(height: 5),
                     MainButton(
-                      onPressed: () {},
+                      loading: state.isSubmiting,
+                      onPressed: state.photoPath.isEmpty ? null : onSubmit,
                       text: 'Recognize Student',
                     )
                   ],
@@ -93,6 +117,12 @@ class _PhotoFormState extends State<PhotoForm> {
     );
   }
 
+  void onSubmit() {
+    _sectionPhotoFormBloc.add(
+      RecognizeButtonPressed(widget.sectionId),
+    );
+  }
+
   Future<void> getImage(bool useCamera) async {
     final image = await ImagePicker.pickImage(
         source: useCamera ? ImageSource.camera : ImageSource.gallery);
@@ -121,5 +151,32 @@ class _PhotoFormState extends State<PhotoForm> {
     clearPhotoForm();
     photoController.dispose();
     super.dispose();
+  }
+}
+
+class ResultPhotoViewer extends StatelessWidget {
+  final String url;
+
+  const ResultPhotoViewer({
+    Key key,
+    @required this.url,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BaseContainer(
+      color: Colors.transparent,
+      width: double.infinity,
+      height: 200,
+      child: ClipRect(
+        child: PhotoView(
+          backgroundDecoration: BoxDecoration(color: Colors.transparent),
+          imageProvider: NetworkImage(url),
+          maxScale: PhotoViewComputedScale.covered * 2.0,
+          minScale: PhotoViewComputedScale.contained * 0.8,
+          initialScale: PhotoViewComputedScale.covered,
+        ),
+      ),
+    );
   }
 }
