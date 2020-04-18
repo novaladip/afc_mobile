@@ -25,6 +25,29 @@ class _PhotoFormState extends State<PhotoForm> {
   SectionPhotoFormBloc _sectionPhotoFormBloc;
   bool initial = true;
 
+  void showSnackBar({
+    @required String title,
+    @required String message,
+    Color color = Colors.green,
+  }) {
+    Scaffold.of(context)
+      ..removeCurrentSnackBar()
+      ..showSnackBar(
+        SnackBar(
+          backgroundColor: color,
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(title),
+              Text(message),
+            ],
+          ),
+          behavior: SnackBarBehavior.floating,
+        ),
+      );
+  }
+
   @override
   Widget build(BuildContext context) {
     return ThemeBuilder(
@@ -36,24 +59,18 @@ class _PhotoFormState extends State<PhotoForm> {
         return BlocConsumer<SectionPhotoFormBloc, SectionPhotoFormState>(
           listener: (context, state) {
             if (state.isSuccess) {
-              Scaffold.of(context)
-                ..removeCurrentSnackBar()
-                ..showSnackBar(
-                  SnackBar(
-                    backgroundColor: Colors.green,
-                    content: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Text('We found ${state.result.facesFound} faces'),
-                        Text(
-                          'Student list form has been automatically updated',
-                        ),
-                      ],
-                    ),
-                    behavior: SnackBarBehavior.floating,
-                  ),
-                );
+              showSnackBar(
+                  title: 'We found ${state.result.facesFound} faces',
+                  message: 'Student list form has been automatically updated');
+            }
+
+            if (state.isFailure) {
+              showSnackBar(
+                color: Colors.red,
+                title: "Failed",
+                message:
+                    "You can try again, if the error persist you can manually absent the students.",
+              );
             }
           },
           builder: (context, state) {
