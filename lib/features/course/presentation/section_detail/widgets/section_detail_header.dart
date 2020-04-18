@@ -1,3 +1,4 @@
+import 'package:afc_mobile/features/course/presentation/section_detail/bloc/attendance_form_bloc/attendance_form_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -36,7 +37,9 @@ class _SectionDetailHeaderState extends State<SectionDetailHeader> {
               ),
               actions: <Widget>[
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    context.bloc<AttendanceFormBloc>().add(SaveButtonPressed());
+                  },
                   icon: Icon(Icons.save),
                 )
               ],

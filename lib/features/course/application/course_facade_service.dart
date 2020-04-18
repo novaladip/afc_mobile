@@ -5,6 +5,7 @@ import 'package:injectable/injectable.dart';
 import 'package:afc_mobile/features/course/domain/entities/course.dart';
 import 'package:afc_mobile/features/course/domain/entities/course_detail.dart';
 import 'package:afc_mobile/features/course/domain/entities/section_detail.dart';
+import 'package:afc_mobile/features/course/domain/entities/attendance_form.dart';
 import 'package:afc_mobile/features/course/domain/entities/recognize_result.dart';
 import 'package:afc_mobile/features/course/infrastructure/repositories/course_repository.dart';
 
@@ -31,5 +32,9 @@ class CourseFacadeService {
 
   Future<RecognizeResult> recognizeStudent(String sectionId, File photo) {
     return courseRepository.recognizeStudent(sectionId, photo);
+  }
+
+  Future<void> saveAttendances(List<AttendanceForm> attendances) {
+    return courseRepository.saveAttendances(attendances);
   }
 }

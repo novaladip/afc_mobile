@@ -5,6 +5,7 @@
 // **************************************************************************
 
 import 'package:afc_mobile/common/api/api.dart';
+import 'package:afc_mobile/features/course/infrastructure/data_sources/attendance_remote_data_provider.dart';
 import 'package:afc_mobile/features/auth/infrastructure/data_sources/auth_remote_data_provider.dart';
 import 'package:afc_mobile/features/course/infrastructure/data_sources/course_remote_data_provider.dart';
 import 'package:afc_mobile/features/course/infrastructure/repositories/course_repository.dart';
@@ -29,12 +30,15 @@ import 'package:get_it/get_it.dart';
 Future<void> $initGetIt(GetIt g, {String environment}) async {
   final registerModule = _$RegisterModule();
   g.registerFactory<Api>(() => Api());
+  g.registerLazySingleton<AttendanceRemoteDataProvider>(
+      () => AttendanceRemoteDataProvider(api: g<Api>()));
   g.registerFactory<AuthRemoteDataProvider>(
       () => AuthRemoteDataProvider(g<Api>()));
   g.registerLazySingleton<CourseRemoteDataProvider>(
       () => CourseRemoteDataProvider(api: g<Api>()));
   g.registerLazySingleton<CourseRepository>(() => CourseRepository(
-      courseRemoteDataProvider: g<CourseRemoteDataProvider>()));
+      courseRemoteDataProvider: g<CourseRemoteDataProvider>(),
+      attendanceRemoteDataProvider: g<AttendanceRemoteDataProvider>()));
   final sharedPreferences = await registerModule.prefs;
   g.registerFactory<SharedPreferences>(() => sharedPreferences);
   g.registerFactory<AuthLocalDataSource>(() => AuthLocalDataSource(

@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
@@ -19,8 +17,11 @@ class AttendanceForm extends Equatable {
   @override
   List<Object> get props => [id, status, name, this.avatar];
 
-  get toJson {
-    return json
-        .decode({'id': 'id', 'status': 'status', 'name': name}.toString());
+  // Used for dto when saving attendances
+  get toMap {
+    return {
+      'id': id,
+      'status': status,
+    };
   }
 }

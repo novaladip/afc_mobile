@@ -9,6 +9,8 @@ abstract class AttendanceFormEvent extends Equatable {
 
 class ClearAttendanceFormState extends AttendanceFormEvent {}
 
+class SaveButtonPressed extends AttendanceFormEvent {}
+
 class PopulateAttendanceFromSectionDetail extends AttendanceFormEvent {
   final SectionDetail sectionDetail;
 

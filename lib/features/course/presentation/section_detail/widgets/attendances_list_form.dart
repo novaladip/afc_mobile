@@ -1,8 +1,9 @@
-import 'package:afc_mobile/common/widgets/widgets.dart';
-import 'package:afc_mobile/features/course/presentation/section_detail/bloc/attendance_form_bloc/attendance_form_bloc.dart';
-import 'package:afc_mobile/features/course/presentation/section_detail/widgets/attendance_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'package:afc_mobile/common/widgets/widgets.dart';
+import 'package:afc_mobile/features/course/presentation/section_detail/widgets/attendance_item.dart';
+import 'package:afc_mobile/features/course/presentation/section_detail/bloc/attendance_form_bloc/attendance_form_bloc.dart';
 
 class AttendancesListForm extends StatefulWidget {
   final bool isLoading;
@@ -36,7 +37,23 @@ class _AttendancesListFormState extends State<AttendancesListForm> {
     return ThemeBuilder(
       builder: (context, appTheme) {
         return BlocConsumer<AttendanceFormBloc, AttendanceFormState>(
-          listener: (context, state) {},
+          listener: (context, state) {
+            if (state.isFailure) {
+              showSnackBar(
+                color: Colors.red,
+                title: "Failed to update",
+                message: "Please try agian",
+              );
+            }
+
+            if (state.isSuccess) {
+              showSnackBar(
+                color: Colors.green,
+                title: "Success",
+                message: "Attedances data has been updated",
+              );
+            }
+          },
           builder: (context, state) {
             return Container(
               padding: EdgeInsets.symmetric(horizontal: 20),
@@ -73,6 +90,29 @@ class _AttendancesListFormState extends State<AttendancesListForm> {
         );
       },
     );
+  }
+
+  void showSnackBar({
+    @required String title,
+    @required String message,
+    Color color = Colors.green,
+  }) {
+    Scaffold.of(context)
+      ..removeCurrentSnackBar()
+      ..showSnackBar(
+        SnackBar(
+          backgroundColor: color,
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(title),
+              Text(message),
+            ],
+          ),
+          behavior: SnackBarBehavior.floating,
+        ),
+      );
   }
 
   void handleOnChange(BuildContext context, String status, int index) {

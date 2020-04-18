@@ -31,6 +31,24 @@ class AttendanceFormBloc
   ) async* {
     final currentState = state;
 
+    if (event is SaveButtonPressed) {
+      try {
+        yield currentState.copyWith(isSubmiting: true);
+        await courseApi.saveAttendances(currentState.attendances);
+        yield currentState.copyWith(isSuccess: true);
+      } catch (e) {
+        yield currentState.copyWith(
+          isFailure: true,
+        );
+      } finally {
+        yield currentState.copyWith(
+          isSubmiting: false,
+          isFailure: false,
+          isSuccess: false,
+        );
+      }
+    }
+
     if (event is ClearAttendanceFormState) {
       yield AttendanceFormState.initial();
     }
