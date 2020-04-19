@@ -1,3 +1,4 @@
+import 'package:afc_mobile/config/config.dart';
 import 'package:meta/meta.dart';
 
 import 'package:afc_mobile/shared/entities/entities.dart';
@@ -24,7 +25,7 @@ class UserModel extends User {
       email: json['email'],
       firstName: json['first_name'],
       lastName: json['last_name'],
-      avatar: json['links']['avatar'],
+      avatar: Env.baseURL + json['links']['avatar'],
     );
   }
 }

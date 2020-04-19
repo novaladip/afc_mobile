@@ -1,3 +1,4 @@
+import 'package:afc_mobile/features/profile/presentation/presentation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:afc_mobile/features/course/course.dart';
@@ -18,21 +19,22 @@ class _AuthenticatedTeacherState extends State<AuthenticatedTeacher> {
       body: IndexedStack(
         children: <Widget>[
           CourseTeacherPage(),
-          Container(),
+          ProfilePage(),
         ],
         index: index,
       ),
       bottomNavigationBar: BottomNavigationBar(
         onTap: setIndex,
         currentIndex: index,
+        selectedItemColor: Colors.black,
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             title: Text('Course'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            title: Text('Settings'),
+            icon: Icon(Icons.account_circle),
+            title: Text('Profile'),
           ),
         ],
       ),

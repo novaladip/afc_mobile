@@ -1,3 +1,4 @@
+import 'package:afc_mobile/features/profile/presentation/profile_page/bloc/profile_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -40,7 +41,10 @@ class App extends StatelessWidget {
         ),
         BlocProvider<AttendanceFormBloc>(
           create: (_) => getIt<AttendanceFormBloc>(),
-        )
+        ),
+        BlocProvider<ProfileBloc>(
+          create: (_) => getIt<ProfileBloc>(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
