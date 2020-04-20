@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'widgets/widgets.dart';
 import 'bloc/enrollment_bloc.dart';
 import 'package:afc_mobile/common/widgets/widgets.dart';
 
@@ -32,7 +33,9 @@ class _EnrollmentPageState extends State<EnrollmentPage> {
             return ErrorScreen(onRetry: getEnrollments);
           }
 
-          if (state is EnrollmentStateLoaded) {}
+          if (state is EnrollmentStateLoaded) {
+            return EnrollmentList(enrollments: state.enrollments);
+          }
 
           return LoadingIndicator();
         },
