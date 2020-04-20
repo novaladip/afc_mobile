@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:afc_mobile/features/profile/presentation/presentation.dart';
 import 'package:afc_mobile/features/course/course.dart';
 
 class AuthenticatedStudent extends StatefulWidget {
@@ -19,13 +20,14 @@ class _AuthenticatedStudentState extends State<AuthenticatedStudent> {
         children: <Widget>[
           CourseStudentPage(),
           Container(),
-          Container(),
+          ProfilePage(),
         ],
         index: index,
       ),
       bottomNavigationBar: BottomNavigationBar(
         onTap: setIndex,
         currentIndex: index,
+        selectedItemColor: Colors.black,
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),

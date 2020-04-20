@@ -20,6 +20,7 @@ import 'package:afc_mobile/features/profile/application/profile_facade_service.d
 import 'package:afc_mobile/features/auth/application/auth_facade_service.dart';
 import 'package:afc_mobile/features/course/api/api.dart';
 import 'package:afc_mobile/features/course/presentation/course_detail/bloc/course_detail_bloc.dart';
+import 'package:afc_mobile/features/course/presentation/course_student/bloc/course_student_bloc.dart';
 import 'package:afc_mobile/features/course/presentation/course_teacher/bloc/course_teacher_bloc.dart';
 import 'package:afc_mobile/features/profile/api/profile_api.dart';
 import 'package:afc_mobile/features/profile/presentation/profile_page/bloc/profile_bloc.dart';
@@ -65,6 +66,8 @@ Future<void> $initGetIt(GetIt g, {String environment}) async {
       () => CourseApi(courseFacadeService: g<CourseFacadeService>()));
   g.registerLazySingleton<CourseDetailBloc>(
       () => CourseDetailBloc(courseApi: g<CourseApi>()));
+  g.registerLazySingleton<CourseStudentBloc>(
+      () => CourseStudentBloc(courseApi: g<CourseApi>()));
   g.registerLazySingleton<CourseTeacherBloc>(
       () => CourseTeacherBloc(courseApi: g<CourseApi>()));
   g.registerLazySingleton<ProfileApi>(
