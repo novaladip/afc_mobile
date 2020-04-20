@@ -3,6 +3,8 @@ import 'package:afc_mobile/features/course/presentation/course_student/bloc/cour
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'widgets/widgets.dart';
+
 class CourseStudentPage extends StatefulWidget {
   @override
   _CourseStudentPageState createState() => _CourseStudentPageState();
@@ -32,7 +34,7 @@ class _CourseStudentPageState extends State<CourseStudentPage> {
           }
 
           if (state is CourseStudentStateLoaded) {
-            return LoadingIndicator();
+            return ListCourse(courses: state.courses);
           }
 
           return LoadingIndicator();
