@@ -14,7 +14,7 @@ class AuthenticatedPage extends StatelessWidget {
     return BlocBuilder<AuthBloc, AuthState>(
       builder: (context, state) {
         if (state is AuthStateAuthenticated) {
-          if (state.user.role == Role.student) {
+          if (state.user.role.toLowerCase() == Role.student) {
             return AuthenticatedStudent();
           }
           return AuthenticatedTeacher();
