@@ -1,6 +1,6 @@
-import 'package:afc_mobile/config/env.dart';
-import 'package:afc_mobile/features/course/domain/entities/attendance_form.dart';
 import 'package:flutter/material.dart';
+
+import 'package:afc_mobile/features/course/domain/entities/attendance_form.dart';
 
 final statusItem = ["M", "TH"];
 
@@ -33,7 +33,7 @@ class AttendanceItem extends StatelessWidget {
       children: <Widget>[
         CircleAvatar(
           backgroundColor: Colors.transparent,
-          backgroundImage: NetworkImage(Env.baseURL + attendance.avatar),
+          backgroundImage: NetworkImage(attendance.avatar),
         ),
         SizedBox(width: 10),
         Text(

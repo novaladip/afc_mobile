@@ -37,7 +37,6 @@ class SectionDetailBloc extends Bloc<SectionDetailEvent, SectionDetailState> {
   Stream<SectionDetailState> _mapGetSectionDetail(String sectionId) async* {
     try {
       yield SectionDetailStateLoading();
-      await Future.delayed(Duration(seconds: 2));
       final section = await courseApi.getSectionDetail(sectionId);
       attendanceFormBloc.add(PopulateAttendanceFromSectionDetail(section));
       yield SectionDetailStateLoaded(section);
