@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:afc_mobile/features/profile/presentation/presentation.dart';
 import 'package:afc_mobile/features/course/course.dart';
+import 'package:afc_mobile/features/profile/presentation/presentation.dart';
+import 'package:afc_mobile/features/enrollment/presentation/presentation.dart';
 
 class AuthenticatedStudent extends StatefulWidget {
   @override
@@ -19,7 +20,7 @@ class _AuthenticatedStudentState extends State<AuthenticatedStudent> {
       body: IndexedStack(
         children: <Widget>[
           CourseStudentPage(),
-          Container(),
+          EnrollmentPage(),
           ProfilePage(),
         ],
         index: index,

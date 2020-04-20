@@ -1,3 +1,4 @@
+import 'package:afc_mobile/features/enrollment/presentation/enrollment_page/bloc/enrollment_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'config/injection.dart';
@@ -43,5 +44,8 @@ final List<BlocProvider> blocProvider = [
   ),
   BlocProvider<ProfileBloc>(
     create: (_) => getIt<ProfileBloc>(),
+  ),
+  BlocProvider<EnrollmentBloc>(
+    create: (_) => getIt<EnrollmentBloc>(),
   ),
 ];
