@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'app.dart';
-import 'config/config.dart';
+import 'simple_bloc_delegate.dart';
 
 void main() async {
   await setUp();
@@ -12,7 +12,6 @@ void main() async {
 
 Future<void> setUp() async {
   WidgetsFlutterBinding.ensureInitialized();
-  configureInjection(Env.development);
   BlocSupervisor.delegate = SimpleBlocDelegate();
   await Future.wait([
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]),
