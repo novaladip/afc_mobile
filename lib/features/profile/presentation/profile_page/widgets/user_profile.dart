@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'setting.dart';
 import 'profile_item.dart';
 import 'package:afc_mobile/shared/entities/entities.dart';
+import 'package:afc_mobile/features/auth/presentation/presentation.dart';
+import 'package:afc_mobile/features/auth/presentation/splash_screen/bloc/auth_bloc.dart';
 
 class UserProfile extends StatelessWidget {
   final User profile;
@@ -54,7 +57,10 @@ class UserProfile extends StatelessWidget {
           Setting(
             icon: Icons.subdirectory_arrow_right,
             text: 'Sign Out',
-            onPress: () {},
+            onPress: () {
+              context.bloc<AuthBloc>().add(LoggedOut());
+              Navigator.of(context).pushReplacementNamed(LoginPage.routeName);
+            },
           ),
           SizedBox(height: 10),
           Divider(),
