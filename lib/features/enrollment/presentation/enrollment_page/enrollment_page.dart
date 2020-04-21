@@ -29,15 +29,15 @@ class _EnrollmentPageState extends State<EnrollmentPage> {
       ),
       body: BlocBuilder<EnrollmentBloc, EnrollmentState>(
         builder: (context, state) {
-          if (state is EnrollmentStateFailure) {
+          if (state.isFailure) {
             return ErrorScreen(onRetry: getEnrollments);
           }
 
-          if (state is EnrollmentStateLoaded) {
-            return EnrollmentList(enrollments: state.enrollments);
+          if (state.isLoading) {
+            return LoadingIndicator();
           }
 
-          return LoadingIndicator();
+          return EnrollmentList(enrollments: state.enrollments);
         },
       ),
     );
