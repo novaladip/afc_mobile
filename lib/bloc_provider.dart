@@ -1,3 +1,4 @@
+import 'package:afc_mobile/features/course/presentation/course_student/bloc/enroll_course/enroll_course_bloc.dart';
 import 'package:afc_mobile/features/enrollment/presentation/enrollment_page/bloc/enrollment_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -48,4 +49,7 @@ final List<BlocProvider> blocProvider = [
   BlocProvider<EnrollmentBloc>(
     create: (_) => getIt<EnrollmentBloc>(),
   ),
+  BlocProvider<EnrollCourseBloc>(
+    create: (_) => getIt<EnrollCourseBloc>(),
+  )
 ];

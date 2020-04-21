@@ -32,6 +32,7 @@ import 'package:afc_mobile/features/profile/presentation/profile_page/bloc/profi
 import 'package:afc_mobile/features/course/presentation/section_detail/bloc/attendance_form_bloc/attendance_form_bloc.dart';
 import 'package:afc_mobile/features/auth/api/api.dart';
 import 'package:afc_mobile/features/auth/presentation/splash_screen/bloc/auth_bloc.dart';
+import 'package:afc_mobile/features/course/presentation/course_student/bloc/enroll_course/enroll_course_bloc.dart';
 import 'package:afc_mobile/features/auth/presentation/login/bloc/login_bloc.dart';
 import 'package:afc_mobile/features/auth/presentation/register/bloc/register_bloc.dart';
 import 'package:afc_mobile/features/course/presentation/section_detail/bloc/section_detail_bloc.dart';
@@ -94,6 +95,8 @@ Future<void> $initGetIt(GetIt g, {String environment}) async {
   g.registerFactory<AuthApi>(() => AuthApi(g<AuthFacadeService>()));
   g.registerLazySingleton<AuthBloc>(
       () => AuthBloc(authApi: g<AuthApi>(), api: g<Api>()));
+  g.registerLazySingleton<EnrollCourseBloc>(() => EnrollCourseBloc(
+      courseApi: g<CourseApi>(), enrollmentBloc: g<EnrollmentBloc>()));
   g.registerLazySingleton<LoginBloc>(
       () => LoginBloc(authBloc: g<AuthBloc>(), authApi: g<AuthApi>()));
   g.registerLazySingleton<RegisterBloc>(

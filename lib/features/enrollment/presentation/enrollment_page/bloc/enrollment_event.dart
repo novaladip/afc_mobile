@@ -8,3 +8,12 @@ abstract class EnrollmentEvent extends Equatable {
 }
 
 class GetEnrollment extends EnrollmentEvent {}
+
+class NewEnrollment extends EnrollmentEvent {
+  final Enrollment enrollment;
+
+  const NewEnrollment(this.enrollment);
+
+  @override
+  List<Object> get props => [enrollment];
+}

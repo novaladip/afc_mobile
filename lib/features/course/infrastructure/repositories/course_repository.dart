@@ -5,6 +5,7 @@ import 'package:injectable/injectable.dart';
 import 'package:afc_mobile/features/course/domain/entities/course.dart';
 import 'package:afc_mobile/features/course/domain/entities/course_detail.dart';
 import 'package:afc_mobile/features/course/domain/entities/section_detail.dart';
+import 'package:afc_mobile/features/enrollment/domain/entities/enrollment.dart';
 import 'package:afc_mobile/features/course/domain/entities/attendance_form.dart';
 import 'package:afc_mobile/features/course/domain/entities/recognize_result.dart';
 import 'package:afc_mobile/features/course/domain/interfaces/course_interface.dart';
@@ -45,5 +46,10 @@ class CourseRepository implements CourseInterface {
   @override
   Future<void> saveAttendances(List<AttendanceForm> attendances) {
     return attendanceRemoteDataProvider.saveAttendances(attendances);
+  }
+
+  @override
+  Future<Enrollment> enrollCourse(String courseId) {
+    return courseRemoteDataProvider.enrollCourse(courseId);
   }
 }

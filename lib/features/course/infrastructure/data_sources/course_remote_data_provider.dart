@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:afc_mobile/features/enrollment/infrastructure/models/enrollment_model.dart';
 import 'package:dio/dio.dart';
 import 'package:meta/meta.dart';
 import 'package:injectable/injectable.dart';
@@ -66,6 +67,17 @@ class CourseRemoteDataProvider {
 
       final recognizeResult = RecognizeResultModel.fromJson(res.data);
       return recognizeResult;
+    } catch (e) {
+      throw e;
+    }
+  }
+
+  Future<EnrollmentModel> enrollCourse(String courseId) async {
+    try {
+      await Future.delayed(Duration(seconds: 1));
+      final res = await api.dio.post('/enrollment/$courseId');
+      final enrollment = EnrollmentModel.fromJson(res.data);
+      return enrollment;
     } catch (e) {
       throw e;
     }
