@@ -33,10 +33,18 @@ class Styles {
         fontFamily: 'Manrope',
         fontWeight: FontWeight.w600,
       ),
-    ),
+    ).apply(bodyColor: Colors.black),
     appBarTheme: AppBarTheme(
       color: Colors.white,
       iconTheme: IconThemeData(color: Colors.black),
+      textTheme: TextTheme(
+        title: TextStyle(
+          color: Colors.black,
+          fontFamily: 'Manrope',
+          fontSize: 18,
+          fontWeight: FontWeight.w600,
+        ),
+      ),
     ),
   );
 }

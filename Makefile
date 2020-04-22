@@ -1,5 +1,5 @@
-build-android:
+build_android:
 	flutter build apk --target-platform android-arm,android-arm64,android-x64 --split-per-abi
 
-run-injectable:
-	flutter packages pub run build_runner build watch --delete-conflicting-outputs
+run_build_runner:
+	flutter packages pub run build_runner watch --delete-conflicting-outputs

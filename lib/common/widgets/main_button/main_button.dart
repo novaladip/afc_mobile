@@ -51,19 +51,16 @@ class MainButton extends StatelessWidget {
     return ThemeBuilder(
       builder: (context, appTheme) {
         final buttonColor = color != null ? color : appTheme.primaryColor;
-        return ConstrainedBox(
-          constraints: BoxConstraints(
-            minWidth: double.infinity,
-            maxHeight: 50,
-            minHeight: 50,
-          ),
-          child: RaisedButton(
+        return SizedBox(
+          width: double.infinity,
+          height: 50,
+          child: FlatButton(
             disabledColor: outline
                 ? buttonColor.withOpacity(0.2)
                 : buttonColor.withOpacity(0.5),
             color: outline ? Colors.transparent : buttonColor,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(50),
+              borderRadius: BorderRadius.circular(10),
               side: BorderSide(
                 width: 2,
                 color: buttonColor,
