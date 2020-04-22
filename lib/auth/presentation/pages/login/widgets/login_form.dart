@@ -65,7 +65,8 @@ class _LoginFormState extends State<LoginForm> {
                   loginHelp(
                     text: 'Do not have an account? ',
                     buttonText: 'Sign up',
-                    onTap: () {},
+                    onTap: () =>
+                        Navigator.of(context).pushNamed(RegisterPage.routeName),
                   ),
                   SizedBox(height: 15),
                   MainButton(

@@ -12,44 +12,44 @@ T _$identity<T>(T value) => value;
 class _$RegisterEventTearOff {
   const _$RegisterEventTearOff();
 
-  _changeEmail changeEmail(String email) {
-    return _changeEmail(
+  _ChangeEmail changeEmail(String email) {
+    return _ChangeEmail(
       email,
     );
   }
 
-  _changeFirstName changeFirstName(String firstName) {
-    return _changeFirstName(
+  _ChangeFirstName changeFirstName(String firstName) {
+    return _ChangeFirstName(
       firstName,
     );
   }
 
-  _changeLastName changeLastName(String lastName) {
-    return _changeLastName(
+  _ChangeLastName changeLastName(String lastName) {
+    return _ChangeLastName(
       lastName,
     );
   }
 
-  _changePassword changePassword(String password) {
-    return _changePassword(
+  _ChangePassword changePassword(String password) {
+    return _ChangePassword(
       password,
     );
   }
 
-  _changeAvatarPath changeAvatarPath(String avatarPath) {
-    return _changeAvatarPath(
+  _ChangeAvatarPath changeAvatarPath(String avatarPath) {
+    return _ChangeAvatarPath(
       avatarPath,
     );
   }
 
-  _submit submit(bool teacher) {
-    return _submit(
+  _Submit submit(bool teacher) {
+    return _Submit(
       teacher,
     );
   }
 
-  _clearForm clearForm() {
-    return const _clearForm();
+  _ClearForm clearForm() {
+    return const _ClearForm();
   }
 }
 
@@ -80,23 +80,23 @@ mixin _$RegisterEvent {
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result changeEmail(_changeEmail value),
-    @required Result changeFirstName(_changeFirstName value),
-    @required Result changeLastName(_changeLastName value),
-    @required Result changePassword(_changePassword value),
-    @required Result changeAvatarPath(_changeAvatarPath value),
-    @required Result submit(_submit value),
-    @required Result clearForm(_clearForm value),
+    @required Result changeEmail(_ChangeEmail value),
+    @required Result changeFirstName(_ChangeFirstName value),
+    @required Result changeLastName(_ChangeLastName value),
+    @required Result changePassword(_ChangePassword value),
+    @required Result changeAvatarPath(_ChangeAvatarPath value),
+    @required Result submit(_Submit value),
+    @required Result clearForm(_ClearForm value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result changeEmail(_changeEmail value),
-    Result changeFirstName(_changeFirstName value),
-    Result changeLastName(_changeLastName value),
-    Result changePassword(_changePassword value),
-    Result changeAvatarPath(_changeAvatarPath value),
-    Result submit(_submit value),
-    Result clearForm(_clearForm value),
+    Result changeEmail(_ChangeEmail value),
+    Result changeFirstName(_ChangeFirstName value),
+    Result changeLastName(_ChangeLastName value),
+    Result changePassword(_ChangePassword value),
+    Result changeAvatarPath(_ChangeAvatarPath value),
+    Result submit(_Submit value),
+    Result clearForm(_ClearForm value),
     @required Result orElse(),
   });
 }
@@ -116,34 +116,34 @@ class _$RegisterEventCopyWithImpl<$Res>
   final $Res Function(RegisterEvent) _then;
 }
 
-abstract class _$changeEmailCopyWith<$Res> {
-  factory _$changeEmailCopyWith(
-          _changeEmail value, $Res Function(_changeEmail) then) =
-      __$changeEmailCopyWithImpl<$Res>;
+abstract class _$ChangeEmailCopyWith<$Res> {
+  factory _$ChangeEmailCopyWith(
+          _ChangeEmail value, $Res Function(_ChangeEmail) then) =
+      __$ChangeEmailCopyWithImpl<$Res>;
   $Res call({String email});
 }
 
-class __$changeEmailCopyWithImpl<$Res> extends _$RegisterEventCopyWithImpl<$Res>
-    implements _$changeEmailCopyWith<$Res> {
-  __$changeEmailCopyWithImpl(
-      _changeEmail _value, $Res Function(_changeEmail) _then)
-      : super(_value, (v) => _then(v as _changeEmail));
+class __$ChangeEmailCopyWithImpl<$Res> extends _$RegisterEventCopyWithImpl<$Res>
+    implements _$ChangeEmailCopyWith<$Res> {
+  __$ChangeEmailCopyWithImpl(
+      _ChangeEmail _value, $Res Function(_ChangeEmail) _then)
+      : super(_value, (v) => _then(v as _ChangeEmail));
 
   @override
-  _changeEmail get _value => super._value as _changeEmail;
+  _ChangeEmail get _value => super._value as _ChangeEmail;
 
   @override
   $Res call({
     Object email = freezed,
   }) {
-    return _then(_changeEmail(
+    return _then(_ChangeEmail(
       email == freezed ? _value.email : email as String,
     ));
   }
 }
 
-class _$_changeEmail implements _changeEmail {
-  const _$_changeEmail(this.email) : assert(email != null);
+class _$_ChangeEmail implements _ChangeEmail {
+  const _$_ChangeEmail(this.email) : assert(email != null);
 
   @override
   final String email;
@@ -156,7 +156,7 @@ class _$_changeEmail implements _changeEmail {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _changeEmail &&
+        (other is _ChangeEmail &&
             (identical(other.email, email) ||
                 const DeepCollectionEquality().equals(other.email, email)));
   }
@@ -166,8 +166,8 @@ class _$_changeEmail implements _changeEmail {
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(email);
 
   @override
-  _$changeEmailCopyWith<_changeEmail> get copyWith =>
-      __$changeEmailCopyWithImpl<_changeEmail>(this, _$identity);
+  _$ChangeEmailCopyWith<_ChangeEmail> get copyWith =>
+      __$ChangeEmailCopyWithImpl<_ChangeEmail>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -212,13 +212,13 @@ class _$_changeEmail implements _changeEmail {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result changeEmail(_changeEmail value),
-    @required Result changeFirstName(_changeFirstName value),
-    @required Result changeLastName(_changeLastName value),
-    @required Result changePassword(_changePassword value),
-    @required Result changeAvatarPath(_changeAvatarPath value),
-    @required Result submit(_submit value),
-    @required Result clearForm(_clearForm value),
+    @required Result changeEmail(_ChangeEmail value),
+    @required Result changeFirstName(_ChangeFirstName value),
+    @required Result changeLastName(_ChangeLastName value),
+    @required Result changePassword(_ChangePassword value),
+    @required Result changeAvatarPath(_ChangeAvatarPath value),
+    @required Result submit(_Submit value),
+    @required Result clearForm(_ClearForm value),
   }) {
     assert(changeEmail != null);
     assert(changeFirstName != null);
@@ -233,13 +233,13 @@ class _$_changeEmail implements _changeEmail {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result changeEmail(_changeEmail value),
-    Result changeFirstName(_changeFirstName value),
-    Result changeLastName(_changeLastName value),
-    Result changePassword(_changePassword value),
-    Result changeAvatarPath(_changeAvatarPath value),
-    Result submit(_submit value),
-    Result clearForm(_clearForm value),
+    Result changeEmail(_ChangeEmail value),
+    Result changeFirstName(_ChangeFirstName value),
+    Result changeLastName(_ChangeLastName value),
+    Result changePassword(_ChangePassword value),
+    Result changeAvatarPath(_ChangeAvatarPath value),
+    Result submit(_Submit value),
+    Result clearForm(_ClearForm value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -250,42 +250,42 @@ class _$_changeEmail implements _changeEmail {
   }
 }
 
-abstract class _changeEmail implements RegisterEvent {
-  const factory _changeEmail(String email) = _$_changeEmail;
+abstract class _ChangeEmail implements RegisterEvent {
+  const factory _ChangeEmail(String email) = _$_ChangeEmail;
 
   String get email;
-  _$changeEmailCopyWith<_changeEmail> get copyWith;
+  _$ChangeEmailCopyWith<_ChangeEmail> get copyWith;
 }
 
-abstract class _$changeFirstNameCopyWith<$Res> {
-  factory _$changeFirstNameCopyWith(
-          _changeFirstName value, $Res Function(_changeFirstName) then) =
-      __$changeFirstNameCopyWithImpl<$Res>;
+abstract class _$ChangeFirstNameCopyWith<$Res> {
+  factory _$ChangeFirstNameCopyWith(
+          _ChangeFirstName value, $Res Function(_ChangeFirstName) then) =
+      __$ChangeFirstNameCopyWithImpl<$Res>;
   $Res call({String firstName});
 }
 
-class __$changeFirstNameCopyWithImpl<$Res>
+class __$ChangeFirstNameCopyWithImpl<$Res>
     extends _$RegisterEventCopyWithImpl<$Res>
-    implements _$changeFirstNameCopyWith<$Res> {
-  __$changeFirstNameCopyWithImpl(
-      _changeFirstName _value, $Res Function(_changeFirstName) _then)
-      : super(_value, (v) => _then(v as _changeFirstName));
+    implements _$ChangeFirstNameCopyWith<$Res> {
+  __$ChangeFirstNameCopyWithImpl(
+      _ChangeFirstName _value, $Res Function(_ChangeFirstName) _then)
+      : super(_value, (v) => _then(v as _ChangeFirstName));
 
   @override
-  _changeFirstName get _value => super._value as _changeFirstName;
+  _ChangeFirstName get _value => super._value as _ChangeFirstName;
 
   @override
   $Res call({
     Object firstName = freezed,
   }) {
-    return _then(_changeFirstName(
+    return _then(_ChangeFirstName(
       firstName == freezed ? _value.firstName : firstName as String,
     ));
   }
 }
 
-class _$_changeFirstName implements _changeFirstName {
-  const _$_changeFirstName(this.firstName) : assert(firstName != null);
+class _$_ChangeFirstName implements _ChangeFirstName {
+  const _$_ChangeFirstName(this.firstName) : assert(firstName != null);
 
   @override
   final String firstName;
@@ -298,7 +298,7 @@ class _$_changeFirstName implements _changeFirstName {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _changeFirstName &&
+        (other is _ChangeFirstName &&
             (identical(other.firstName, firstName) ||
                 const DeepCollectionEquality()
                     .equals(other.firstName, firstName)));
@@ -309,8 +309,8 @@ class _$_changeFirstName implements _changeFirstName {
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(firstName);
 
   @override
-  _$changeFirstNameCopyWith<_changeFirstName> get copyWith =>
-      __$changeFirstNameCopyWithImpl<_changeFirstName>(this, _$identity);
+  _$ChangeFirstNameCopyWith<_ChangeFirstName> get copyWith =>
+      __$ChangeFirstNameCopyWithImpl<_ChangeFirstName>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -355,13 +355,13 @@ class _$_changeFirstName implements _changeFirstName {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result changeEmail(_changeEmail value),
-    @required Result changeFirstName(_changeFirstName value),
-    @required Result changeLastName(_changeLastName value),
-    @required Result changePassword(_changePassword value),
-    @required Result changeAvatarPath(_changeAvatarPath value),
-    @required Result submit(_submit value),
-    @required Result clearForm(_clearForm value),
+    @required Result changeEmail(_ChangeEmail value),
+    @required Result changeFirstName(_ChangeFirstName value),
+    @required Result changeLastName(_ChangeLastName value),
+    @required Result changePassword(_ChangePassword value),
+    @required Result changeAvatarPath(_ChangeAvatarPath value),
+    @required Result submit(_Submit value),
+    @required Result clearForm(_ClearForm value),
   }) {
     assert(changeEmail != null);
     assert(changeFirstName != null);
@@ -376,13 +376,13 @@ class _$_changeFirstName implements _changeFirstName {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result changeEmail(_changeEmail value),
-    Result changeFirstName(_changeFirstName value),
-    Result changeLastName(_changeLastName value),
-    Result changePassword(_changePassword value),
-    Result changeAvatarPath(_changeAvatarPath value),
-    Result submit(_submit value),
-    Result clearForm(_clearForm value),
+    Result changeEmail(_ChangeEmail value),
+    Result changeFirstName(_ChangeFirstName value),
+    Result changeLastName(_ChangeLastName value),
+    Result changePassword(_ChangePassword value),
+    Result changeAvatarPath(_ChangeAvatarPath value),
+    Result submit(_Submit value),
+    Result clearForm(_ClearForm value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -393,42 +393,42 @@ class _$_changeFirstName implements _changeFirstName {
   }
 }
 
-abstract class _changeFirstName implements RegisterEvent {
-  const factory _changeFirstName(String firstName) = _$_changeFirstName;
+abstract class _ChangeFirstName implements RegisterEvent {
+  const factory _ChangeFirstName(String firstName) = _$_ChangeFirstName;
 
   String get firstName;
-  _$changeFirstNameCopyWith<_changeFirstName> get copyWith;
+  _$ChangeFirstNameCopyWith<_ChangeFirstName> get copyWith;
 }
 
-abstract class _$changeLastNameCopyWith<$Res> {
-  factory _$changeLastNameCopyWith(
-          _changeLastName value, $Res Function(_changeLastName) then) =
-      __$changeLastNameCopyWithImpl<$Res>;
+abstract class _$ChangeLastNameCopyWith<$Res> {
+  factory _$ChangeLastNameCopyWith(
+          _ChangeLastName value, $Res Function(_ChangeLastName) then) =
+      __$ChangeLastNameCopyWithImpl<$Res>;
   $Res call({String lastName});
 }
 
-class __$changeLastNameCopyWithImpl<$Res>
+class __$ChangeLastNameCopyWithImpl<$Res>
     extends _$RegisterEventCopyWithImpl<$Res>
-    implements _$changeLastNameCopyWith<$Res> {
-  __$changeLastNameCopyWithImpl(
-      _changeLastName _value, $Res Function(_changeLastName) _then)
-      : super(_value, (v) => _then(v as _changeLastName));
+    implements _$ChangeLastNameCopyWith<$Res> {
+  __$ChangeLastNameCopyWithImpl(
+      _ChangeLastName _value, $Res Function(_ChangeLastName) _then)
+      : super(_value, (v) => _then(v as _ChangeLastName));
 
   @override
-  _changeLastName get _value => super._value as _changeLastName;
+  _ChangeLastName get _value => super._value as _ChangeLastName;
 
   @override
   $Res call({
     Object lastName = freezed,
   }) {
-    return _then(_changeLastName(
+    return _then(_ChangeLastName(
       lastName == freezed ? _value.lastName : lastName as String,
     ));
   }
 }
 
-class _$_changeLastName implements _changeLastName {
-  const _$_changeLastName(this.lastName) : assert(lastName != null);
+class _$_ChangeLastName implements _ChangeLastName {
+  const _$_ChangeLastName(this.lastName) : assert(lastName != null);
 
   @override
   final String lastName;
@@ -441,7 +441,7 @@ class _$_changeLastName implements _changeLastName {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _changeLastName &&
+        (other is _ChangeLastName &&
             (identical(other.lastName, lastName) ||
                 const DeepCollectionEquality()
                     .equals(other.lastName, lastName)));
@@ -452,8 +452,8 @@ class _$_changeLastName implements _changeLastName {
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(lastName);
 
   @override
-  _$changeLastNameCopyWith<_changeLastName> get copyWith =>
-      __$changeLastNameCopyWithImpl<_changeLastName>(this, _$identity);
+  _$ChangeLastNameCopyWith<_ChangeLastName> get copyWith =>
+      __$ChangeLastNameCopyWithImpl<_ChangeLastName>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -498,13 +498,13 @@ class _$_changeLastName implements _changeLastName {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result changeEmail(_changeEmail value),
-    @required Result changeFirstName(_changeFirstName value),
-    @required Result changeLastName(_changeLastName value),
-    @required Result changePassword(_changePassword value),
-    @required Result changeAvatarPath(_changeAvatarPath value),
-    @required Result submit(_submit value),
-    @required Result clearForm(_clearForm value),
+    @required Result changeEmail(_ChangeEmail value),
+    @required Result changeFirstName(_ChangeFirstName value),
+    @required Result changeLastName(_ChangeLastName value),
+    @required Result changePassword(_ChangePassword value),
+    @required Result changeAvatarPath(_ChangeAvatarPath value),
+    @required Result submit(_Submit value),
+    @required Result clearForm(_ClearForm value),
   }) {
     assert(changeEmail != null);
     assert(changeFirstName != null);
@@ -519,13 +519,13 @@ class _$_changeLastName implements _changeLastName {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result changeEmail(_changeEmail value),
-    Result changeFirstName(_changeFirstName value),
-    Result changeLastName(_changeLastName value),
-    Result changePassword(_changePassword value),
-    Result changeAvatarPath(_changeAvatarPath value),
-    Result submit(_submit value),
-    Result clearForm(_clearForm value),
+    Result changeEmail(_ChangeEmail value),
+    Result changeFirstName(_ChangeFirstName value),
+    Result changeLastName(_ChangeLastName value),
+    Result changePassword(_ChangePassword value),
+    Result changeAvatarPath(_ChangeAvatarPath value),
+    Result submit(_Submit value),
+    Result clearForm(_ClearForm value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -536,42 +536,42 @@ class _$_changeLastName implements _changeLastName {
   }
 }
 
-abstract class _changeLastName implements RegisterEvent {
-  const factory _changeLastName(String lastName) = _$_changeLastName;
+abstract class _ChangeLastName implements RegisterEvent {
+  const factory _ChangeLastName(String lastName) = _$_ChangeLastName;
 
   String get lastName;
-  _$changeLastNameCopyWith<_changeLastName> get copyWith;
+  _$ChangeLastNameCopyWith<_ChangeLastName> get copyWith;
 }
 
-abstract class _$changePasswordCopyWith<$Res> {
-  factory _$changePasswordCopyWith(
-          _changePassword value, $Res Function(_changePassword) then) =
-      __$changePasswordCopyWithImpl<$Res>;
+abstract class _$ChangePasswordCopyWith<$Res> {
+  factory _$ChangePasswordCopyWith(
+          _ChangePassword value, $Res Function(_ChangePassword) then) =
+      __$ChangePasswordCopyWithImpl<$Res>;
   $Res call({String password});
 }
 
-class __$changePasswordCopyWithImpl<$Res>
+class __$ChangePasswordCopyWithImpl<$Res>
     extends _$RegisterEventCopyWithImpl<$Res>
-    implements _$changePasswordCopyWith<$Res> {
-  __$changePasswordCopyWithImpl(
-      _changePassword _value, $Res Function(_changePassword) _then)
-      : super(_value, (v) => _then(v as _changePassword));
+    implements _$ChangePasswordCopyWith<$Res> {
+  __$ChangePasswordCopyWithImpl(
+      _ChangePassword _value, $Res Function(_ChangePassword) _then)
+      : super(_value, (v) => _then(v as _ChangePassword));
 
   @override
-  _changePassword get _value => super._value as _changePassword;
+  _ChangePassword get _value => super._value as _ChangePassword;
 
   @override
   $Res call({
     Object password = freezed,
   }) {
-    return _then(_changePassword(
+    return _then(_ChangePassword(
       password == freezed ? _value.password : password as String,
     ));
   }
 }
 
-class _$_changePassword implements _changePassword {
-  const _$_changePassword(this.password) : assert(password != null);
+class _$_ChangePassword implements _ChangePassword {
+  const _$_ChangePassword(this.password) : assert(password != null);
 
   @override
   final String password;
@@ -584,7 +584,7 @@ class _$_changePassword implements _changePassword {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _changePassword &&
+        (other is _ChangePassword &&
             (identical(other.password, password) ||
                 const DeepCollectionEquality()
                     .equals(other.password, password)));
@@ -595,8 +595,8 @@ class _$_changePassword implements _changePassword {
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(password);
 
   @override
-  _$changePasswordCopyWith<_changePassword> get copyWith =>
-      __$changePasswordCopyWithImpl<_changePassword>(this, _$identity);
+  _$ChangePasswordCopyWith<_ChangePassword> get copyWith =>
+      __$ChangePasswordCopyWithImpl<_ChangePassword>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -641,13 +641,13 @@ class _$_changePassword implements _changePassword {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result changeEmail(_changeEmail value),
-    @required Result changeFirstName(_changeFirstName value),
-    @required Result changeLastName(_changeLastName value),
-    @required Result changePassword(_changePassword value),
-    @required Result changeAvatarPath(_changeAvatarPath value),
-    @required Result submit(_submit value),
-    @required Result clearForm(_clearForm value),
+    @required Result changeEmail(_ChangeEmail value),
+    @required Result changeFirstName(_ChangeFirstName value),
+    @required Result changeLastName(_ChangeLastName value),
+    @required Result changePassword(_ChangePassword value),
+    @required Result changeAvatarPath(_ChangeAvatarPath value),
+    @required Result submit(_Submit value),
+    @required Result clearForm(_ClearForm value),
   }) {
     assert(changeEmail != null);
     assert(changeFirstName != null);
@@ -662,13 +662,13 @@ class _$_changePassword implements _changePassword {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result changeEmail(_changeEmail value),
-    Result changeFirstName(_changeFirstName value),
-    Result changeLastName(_changeLastName value),
-    Result changePassword(_changePassword value),
-    Result changeAvatarPath(_changeAvatarPath value),
-    Result submit(_submit value),
-    Result clearForm(_clearForm value),
+    Result changeEmail(_ChangeEmail value),
+    Result changeFirstName(_ChangeFirstName value),
+    Result changeLastName(_ChangeLastName value),
+    Result changePassword(_ChangePassword value),
+    Result changeAvatarPath(_ChangeAvatarPath value),
+    Result submit(_Submit value),
+    Result clearForm(_ClearForm value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -679,42 +679,42 @@ class _$_changePassword implements _changePassword {
   }
 }
 
-abstract class _changePassword implements RegisterEvent {
-  const factory _changePassword(String password) = _$_changePassword;
+abstract class _ChangePassword implements RegisterEvent {
+  const factory _ChangePassword(String password) = _$_ChangePassword;
 
   String get password;
-  _$changePasswordCopyWith<_changePassword> get copyWith;
+  _$ChangePasswordCopyWith<_ChangePassword> get copyWith;
 }
 
-abstract class _$changeAvatarPathCopyWith<$Res> {
-  factory _$changeAvatarPathCopyWith(
-          _changeAvatarPath value, $Res Function(_changeAvatarPath) then) =
-      __$changeAvatarPathCopyWithImpl<$Res>;
+abstract class _$ChangeAvatarPathCopyWith<$Res> {
+  factory _$ChangeAvatarPathCopyWith(
+          _ChangeAvatarPath value, $Res Function(_ChangeAvatarPath) then) =
+      __$ChangeAvatarPathCopyWithImpl<$Res>;
   $Res call({String avatarPath});
 }
 
-class __$changeAvatarPathCopyWithImpl<$Res>
+class __$ChangeAvatarPathCopyWithImpl<$Res>
     extends _$RegisterEventCopyWithImpl<$Res>
-    implements _$changeAvatarPathCopyWith<$Res> {
-  __$changeAvatarPathCopyWithImpl(
-      _changeAvatarPath _value, $Res Function(_changeAvatarPath) _then)
-      : super(_value, (v) => _then(v as _changeAvatarPath));
+    implements _$ChangeAvatarPathCopyWith<$Res> {
+  __$ChangeAvatarPathCopyWithImpl(
+      _ChangeAvatarPath _value, $Res Function(_ChangeAvatarPath) _then)
+      : super(_value, (v) => _then(v as _ChangeAvatarPath));
 
   @override
-  _changeAvatarPath get _value => super._value as _changeAvatarPath;
+  _ChangeAvatarPath get _value => super._value as _ChangeAvatarPath;
 
   @override
   $Res call({
     Object avatarPath = freezed,
   }) {
-    return _then(_changeAvatarPath(
+    return _then(_ChangeAvatarPath(
       avatarPath == freezed ? _value.avatarPath : avatarPath as String,
     ));
   }
 }
 
-class _$_changeAvatarPath implements _changeAvatarPath {
-  const _$_changeAvatarPath(this.avatarPath) : assert(avatarPath != null);
+class _$_ChangeAvatarPath implements _ChangeAvatarPath {
+  const _$_ChangeAvatarPath(this.avatarPath) : assert(avatarPath != null);
 
   @override
   final String avatarPath;
@@ -727,7 +727,7 @@ class _$_changeAvatarPath implements _changeAvatarPath {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _changeAvatarPath &&
+        (other is _ChangeAvatarPath &&
             (identical(other.avatarPath, avatarPath) ||
                 const DeepCollectionEquality()
                     .equals(other.avatarPath, avatarPath)));
@@ -738,8 +738,8 @@ class _$_changeAvatarPath implements _changeAvatarPath {
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(avatarPath);
 
   @override
-  _$changeAvatarPathCopyWith<_changeAvatarPath> get copyWith =>
-      __$changeAvatarPathCopyWithImpl<_changeAvatarPath>(this, _$identity);
+  _$ChangeAvatarPathCopyWith<_ChangeAvatarPath> get copyWith =>
+      __$ChangeAvatarPathCopyWithImpl<_ChangeAvatarPath>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -784,13 +784,13 @@ class _$_changeAvatarPath implements _changeAvatarPath {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result changeEmail(_changeEmail value),
-    @required Result changeFirstName(_changeFirstName value),
-    @required Result changeLastName(_changeLastName value),
-    @required Result changePassword(_changePassword value),
-    @required Result changeAvatarPath(_changeAvatarPath value),
-    @required Result submit(_submit value),
-    @required Result clearForm(_clearForm value),
+    @required Result changeEmail(_ChangeEmail value),
+    @required Result changeFirstName(_ChangeFirstName value),
+    @required Result changeLastName(_ChangeLastName value),
+    @required Result changePassword(_ChangePassword value),
+    @required Result changeAvatarPath(_ChangeAvatarPath value),
+    @required Result submit(_Submit value),
+    @required Result clearForm(_ClearForm value),
   }) {
     assert(changeEmail != null);
     assert(changeFirstName != null);
@@ -805,13 +805,13 @@ class _$_changeAvatarPath implements _changeAvatarPath {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result changeEmail(_changeEmail value),
-    Result changeFirstName(_changeFirstName value),
-    Result changeLastName(_changeLastName value),
-    Result changePassword(_changePassword value),
-    Result changeAvatarPath(_changeAvatarPath value),
-    Result submit(_submit value),
-    Result clearForm(_clearForm value),
+    Result changeEmail(_ChangeEmail value),
+    Result changeFirstName(_ChangeFirstName value),
+    Result changeLastName(_ChangeLastName value),
+    Result changePassword(_ChangePassword value),
+    Result changeAvatarPath(_ChangeAvatarPath value),
+    Result submit(_Submit value),
+    Result clearForm(_ClearForm value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -822,39 +822,39 @@ class _$_changeAvatarPath implements _changeAvatarPath {
   }
 }
 
-abstract class _changeAvatarPath implements RegisterEvent {
-  const factory _changeAvatarPath(String avatarPath) = _$_changeAvatarPath;
+abstract class _ChangeAvatarPath implements RegisterEvent {
+  const factory _ChangeAvatarPath(String avatarPath) = _$_ChangeAvatarPath;
 
   String get avatarPath;
-  _$changeAvatarPathCopyWith<_changeAvatarPath> get copyWith;
+  _$ChangeAvatarPathCopyWith<_ChangeAvatarPath> get copyWith;
 }
 
-abstract class _$submitCopyWith<$Res> {
-  factory _$submitCopyWith(_submit value, $Res Function(_submit) then) =
-      __$submitCopyWithImpl<$Res>;
+abstract class _$SubmitCopyWith<$Res> {
+  factory _$SubmitCopyWith(_Submit value, $Res Function(_Submit) then) =
+      __$SubmitCopyWithImpl<$Res>;
   $Res call({bool teacher});
 }
 
-class __$submitCopyWithImpl<$Res> extends _$RegisterEventCopyWithImpl<$Res>
-    implements _$submitCopyWith<$Res> {
-  __$submitCopyWithImpl(_submit _value, $Res Function(_submit) _then)
-      : super(_value, (v) => _then(v as _submit));
+class __$SubmitCopyWithImpl<$Res> extends _$RegisterEventCopyWithImpl<$Res>
+    implements _$SubmitCopyWith<$Res> {
+  __$SubmitCopyWithImpl(_Submit _value, $Res Function(_Submit) _then)
+      : super(_value, (v) => _then(v as _Submit));
 
   @override
-  _submit get _value => super._value as _submit;
+  _Submit get _value => super._value as _Submit;
 
   @override
   $Res call({
     Object teacher = freezed,
   }) {
-    return _then(_submit(
+    return _then(_Submit(
       teacher == freezed ? _value.teacher : teacher as bool,
     ));
   }
 }
 
-class _$_submit implements _submit {
-  const _$_submit(this.teacher) : assert(teacher != null);
+class _$_Submit implements _Submit {
+  const _$_Submit(this.teacher) : assert(teacher != null);
 
   @override
   final bool teacher;
@@ -867,7 +867,7 @@ class _$_submit implements _submit {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _submit &&
+        (other is _Submit &&
             (identical(other.teacher, teacher) ||
                 const DeepCollectionEquality().equals(other.teacher, teacher)));
   }
@@ -877,8 +877,8 @@ class _$_submit implements _submit {
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(teacher);
 
   @override
-  _$submitCopyWith<_submit> get copyWith =>
-      __$submitCopyWithImpl<_submit>(this, _$identity);
+  _$SubmitCopyWith<_Submit> get copyWith =>
+      __$SubmitCopyWithImpl<_Submit>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -923,13 +923,13 @@ class _$_submit implements _submit {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result changeEmail(_changeEmail value),
-    @required Result changeFirstName(_changeFirstName value),
-    @required Result changeLastName(_changeLastName value),
-    @required Result changePassword(_changePassword value),
-    @required Result changeAvatarPath(_changeAvatarPath value),
-    @required Result submit(_submit value),
-    @required Result clearForm(_clearForm value),
+    @required Result changeEmail(_ChangeEmail value),
+    @required Result changeFirstName(_ChangeFirstName value),
+    @required Result changeLastName(_ChangeLastName value),
+    @required Result changePassword(_ChangePassword value),
+    @required Result changeAvatarPath(_ChangeAvatarPath value),
+    @required Result submit(_Submit value),
+    @required Result clearForm(_ClearForm value),
   }) {
     assert(changeEmail != null);
     assert(changeFirstName != null);
@@ -944,13 +944,13 @@ class _$_submit implements _submit {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result changeEmail(_changeEmail value),
-    Result changeFirstName(_changeFirstName value),
-    Result changeLastName(_changeLastName value),
-    Result changePassword(_changePassword value),
-    Result changeAvatarPath(_changeAvatarPath value),
-    Result submit(_submit value),
-    Result clearForm(_clearForm value),
+    Result changeEmail(_ChangeEmail value),
+    Result changeFirstName(_ChangeFirstName value),
+    Result changeLastName(_ChangeLastName value),
+    Result changePassword(_ChangePassword value),
+    Result changeAvatarPath(_ChangeAvatarPath value),
+    Result submit(_Submit value),
+    Result clearForm(_ClearForm value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -961,30 +961,30 @@ class _$_submit implements _submit {
   }
 }
 
-abstract class _submit implements RegisterEvent {
-  const factory _submit(bool teacher) = _$_submit;
+abstract class _Submit implements RegisterEvent {
+  const factory _Submit(bool teacher) = _$_Submit;
 
   bool get teacher;
-  _$submitCopyWith<_submit> get copyWith;
+  _$SubmitCopyWith<_Submit> get copyWith;
 }
 
-abstract class _$clearFormCopyWith<$Res> {
-  factory _$clearFormCopyWith(
-          _clearForm value, $Res Function(_clearForm) then) =
-      __$clearFormCopyWithImpl<$Res>;
+abstract class _$ClearFormCopyWith<$Res> {
+  factory _$ClearFormCopyWith(
+          _ClearForm value, $Res Function(_ClearForm) then) =
+      __$ClearFormCopyWithImpl<$Res>;
 }
 
-class __$clearFormCopyWithImpl<$Res> extends _$RegisterEventCopyWithImpl<$Res>
-    implements _$clearFormCopyWith<$Res> {
-  __$clearFormCopyWithImpl(_clearForm _value, $Res Function(_clearForm) _then)
-      : super(_value, (v) => _then(v as _clearForm));
+class __$ClearFormCopyWithImpl<$Res> extends _$RegisterEventCopyWithImpl<$Res>
+    implements _$ClearFormCopyWith<$Res> {
+  __$ClearFormCopyWithImpl(_ClearForm _value, $Res Function(_ClearForm) _then)
+      : super(_value, (v) => _then(v as _ClearForm));
 
   @override
-  _clearForm get _value => super._value as _clearForm;
+  _ClearForm get _value => super._value as _ClearForm;
 }
 
-class _$_clearForm implements _clearForm {
-  const _$_clearForm();
+class _$_ClearForm implements _ClearForm {
+  const _$_ClearForm();
 
   @override
   String toString() {
@@ -993,7 +993,7 @@ class _$_clearForm implements _clearForm {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _clearForm);
+    return identical(this, other) || (other is _ClearForm);
   }
 
   @override
@@ -1042,13 +1042,13 @@ class _$_clearForm implements _clearForm {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result changeEmail(_changeEmail value),
-    @required Result changeFirstName(_changeFirstName value),
-    @required Result changeLastName(_changeLastName value),
-    @required Result changePassword(_changePassword value),
-    @required Result changeAvatarPath(_changeAvatarPath value),
-    @required Result submit(_submit value),
-    @required Result clearForm(_clearForm value),
+    @required Result changeEmail(_ChangeEmail value),
+    @required Result changeFirstName(_ChangeFirstName value),
+    @required Result changeLastName(_ChangeLastName value),
+    @required Result changePassword(_ChangePassword value),
+    @required Result changeAvatarPath(_ChangeAvatarPath value),
+    @required Result submit(_Submit value),
+    @required Result clearForm(_ClearForm value),
   }) {
     assert(changeEmail != null);
     assert(changeFirstName != null);
@@ -1063,13 +1063,13 @@ class _$_clearForm implements _clearForm {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result changeEmail(_changeEmail value),
-    Result changeFirstName(_changeFirstName value),
-    Result changeLastName(_changeLastName value),
-    Result changePassword(_changePassword value),
-    Result changeAvatarPath(_changeAvatarPath value),
-    Result submit(_submit value),
-    Result clearForm(_clearForm value),
+    Result changeEmail(_ChangeEmail value),
+    Result changeFirstName(_ChangeFirstName value),
+    Result changeLastName(_ChangeLastName value),
+    Result changePassword(_ChangePassword value),
+    Result changeAvatarPath(_ChangeAvatarPath value),
+    Result submit(_Submit value),
+    Result clearForm(_ClearForm value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1080,8 +1080,8 @@ class _$_clearForm implements _clearForm {
   }
 }
 
-abstract class _clearForm implements RegisterEvent {
-  const factory _clearForm() = _$_clearForm;
+abstract class _ClearForm implements RegisterEvent {
+  const factory _ClearForm() = _$_ClearForm;
 }
 
 class _$RegisterStateTearOff {
