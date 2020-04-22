@@ -12,4 +12,7 @@ final List<BlocProvider> authBlocProvider = [
   BlocProvider<LoginBloc>(
     create: (_) => getIt<LoginBloc>(),
   ),
+  BlocProvider<RegisterBloc>(
+    create: (_) => getIt<RegisterBloc>(),
+  )
 ];
