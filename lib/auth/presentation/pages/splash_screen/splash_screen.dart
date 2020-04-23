@@ -1,4 +1,6 @@
 import 'package:afc_mobile/auth/auth.dart';
+import 'package:afc_mobile/common/role/role.dart';
+import 'package:afc_mobile/student/student.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -24,6 +26,12 @@ class _SplashScreenState extends State<SplashScreen> {
             },
             authenticated: (user) async {
               await Future.delayed(Duration(seconds: 1));
+
+              if (user.role.toLowerCase() == Role.student) {
+                Navigator.of(context)
+                    .pushReplacementNamed(StudentPage.routeName);
+                return;
+              }
             },
           );
         },
