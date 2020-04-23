@@ -14,7 +14,7 @@ class EnrollmentRemoteProvider {
 
   Future<List<Enrollment>> fetchEnrollments() async {
     try {
-      final res = await api.dio.get('/api/enrollment');
+      final res = await api.dio.get('/enrollment');
       final enrollments =
           (res.data as List).map((json) => Enrollment.fromJson(json)).toList();
       return enrollments;

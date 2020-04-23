@@ -20,7 +20,7 @@ class EnrollmentBloc extends Bloc<EnrollmentEvent, EnrollmentState> {
   });
 
   @override
-  EnrollmentState get initialState => EnrollmentState.initial();
+  EnrollmentState get initialState => EnrollmentState.loading();
 
   @override
   Stream<EnrollmentState> mapEventToState(
@@ -38,13 +38,11 @@ class EnrollmentBloc extends Bloc<EnrollmentEvent, EnrollmentState> {
 
   Stream<EnrollmentState> _mapFetch() async* {
     try {
-      yield state.copyWith(isLoading: true);
+      yield EnrollmentState.loading();
       final enrollments = await enrollmentRepository.fetchEnrollments();
-      yield state.copyWith(enrollments: enrollments);
+      yield EnrollmentState.loaded(enrollments);
     } catch (e) {
-      yield state.copyWith(isFailure: true);
-    } finally {
-      yield state.copyWith(isLoading: false);
+      yield EnrollmentState.failure();
     }
   }
 

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import 'package:afc_mobile/student/student.dart';
+
 class StudentPage extends StatefulWidget {
   static const routeName = '/student-page';
 
@@ -9,7 +11,7 @@ class StudentPage extends StatefulWidget {
 }
 
 class _StudentPageState extends State<StudentPage> {
-  int index = 0;
+  int index = 1;
 
   void setIndex(int value) => setState(() => index = value);
 
@@ -17,9 +19,10 @@ class _StudentPageState extends State<StudentPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: IndexedStack(
+        index: index,
         children: <Widget>[
           Container(),
-          Container(),
+          EnrollmentPage(),
           Container(),
         ],
       ),

@@ -18,6 +18,8 @@ class User extends Equatable {
     @required this.lastName,
   });
 
+  String get fullName => '$firstName $lastName';
+
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
       id: json['id'],
@@ -30,8 +32,4 @@ class User extends Equatable {
 
   @override
   List<Object> get props => [id, avatar, email, firstName, lastName];
-}
-
-extension UserX on User {
-  String get fullName => '$firstName $lastName';
 }

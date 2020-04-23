@@ -8,9 +8,22 @@ abstract class EnrollmentState with _$EnrollmentState {
     final bool isFailure,
   }) = _EnrollmentState;
 
-  factory EnrollmentState.initial() => EnrollmentState(
+  factory EnrollmentState.loading() => EnrollmentState(
         enrollments: [],
         isLoading: true,
+        isFailure: false,
+      );
+
+  factory EnrollmentState.failure() => EnrollmentState(
+        enrollments: [],
+        isLoading: false,
+        isFailure: true,
+      );
+
+  factory EnrollmentState.loaded(List<Enrollment> enrollments) =>
+      EnrollmentState(
+        enrollments: enrollments,
+        isLoading: false,
         isFailure: false,
       );
 }

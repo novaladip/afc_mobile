@@ -32,12 +32,10 @@ class Course extends Equatable {
     );
   }
 
+  String get formattedCloseDate => formatDate(closeDate);
+  String get formattedCreatedAt => formatDate(createdAt);
+
   @override
   List<Object> get props =>
       [id, name, closeDate, createdAt, teacherId, teacher];
-}
-
-extension CourseX on Course {
-  String get formattedCloseDate => formatDate(closeDate);
-  String get formattedCreatedAt => formatDate(createdAt);
 }
