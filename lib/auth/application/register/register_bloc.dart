@@ -49,7 +49,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
 
   Stream<RegisterState> _mapSubmit(bool teacher) async* {
     try {
-      yield state.copyWith(isSubmitting: false);
+      yield state.copyWith(isSubmitting: true);
       await authRepository.register(
         RegisterDto(
           email: state.email,
