@@ -1,9 +1,10 @@
-import 'package:afc_mobile/auth/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:afc_mobile/config/config.dart';
-import 'package:afc_mobile/routes.dart';
+import 'routes.dart';
+import 'config/config.dart';
+import 'package:afc_mobile/auth/auth.dart';
+import 'package:afc_mobile/student/student.dart';
 
 class App extends StatelessWidget {
   @override
@@ -11,6 +12,7 @@ class App extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         ...authBlocProvider,
+        ...studentBlocProvider,
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
