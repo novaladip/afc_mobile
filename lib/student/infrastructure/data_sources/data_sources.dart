@@ -1,1 +1,2 @@
 export 'enrollment_remote_provider.dart';
+export 'course_student_remote_provider.dart';
