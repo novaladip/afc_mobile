@@ -10,12 +10,15 @@ import 'package:afc_mobile/student/infrastructure/data_sources/course_student_re
 import 'package:afc_mobile/student/infrastructure/repositories/course_student_repository.dart';
 import 'package:afc_mobile/student/infrastructure/data_sources/enrollment_remote_provider.dart';
 import 'package:afc_mobile/student/infrastructure/repositories/enrollment_repository.dart';
+import 'package:afc_mobile/profile/infrastructure/data_sources/profile_remote_provider.dart';
+import 'package:afc_mobile/profile/infrastructure/repositories/profile_repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:afc_mobile/injection.dart';
 import 'package:afc_mobile/auth/infrastructure/data_sources/auth_local_provider.dart';
 import 'package:afc_mobile/auth/infrastructure/repository/auth_repository.dart';
 import 'package:afc_mobile/student/application/course_student/course_student_bloc.dart';
 import 'package:afc_mobile/student/application/enrollment/enrollment_bloc.dart';
+import 'package:afc_mobile/profile/application/profile/profile_bloc.dart';
 import 'package:afc_mobile/auth/application/register/register_bloc.dart';
 import 'package:afc_mobile/auth/application/auth/auth_bloc.dart';
 import 'package:afc_mobile/student/application/enroll_course/enroll_course_bloc.dart';
@@ -36,6 +39,10 @@ Future<void> $initGetIt(GetIt g, {String environment}) async {
       () => EnrollmentRemoteProvider(api: g<Api>()));
   g.registerLazySingleton<EnrollmentRepository>(() => EnrollmentRepository(
       enrollmentRemoteProvider: g<EnrollmentRemoteProvider>()));
+  g.registerLazySingleton<ProfileRemoteProvider>(
+      () => ProfileRemoteProvider(api: g<Api>()));
+  g.registerLazySingleton<ProfileRepository>(() =>
+      ProfileRepository(profileRemoteProvider: g<ProfileRemoteProvider>()));
   final sharedPreferences = await registerModule.prefs;
   g.registerFactory<SharedPreferences>(() => sharedPreferences);
   g.registerLazySingleton<AuthLocalProvider>(() => AuthLocalProvider(
@@ -47,6 +54,8 @@ Future<void> $initGetIt(GetIt g, {String environment}) async {
       CourseStudentBloc(courseStudentRepository: g<CourseStudentRepository>()));
   g.registerLazySingleton<EnrollmentBloc>(
       () => EnrollmentBloc(enrollmentRepository: g<EnrollmentRepository>()));
+  g.registerLazySingleton<ProfileBloc>(
+      () => ProfileBloc(profileRepository: g<ProfileRepository>()));
   g.registerLazySingleton<RegisterBloc>(
       () => RegisterBloc(g<AuthRepository>()));
   g.registerLazySingleton<AuthBloc>(() => AuthBloc(g<AuthRepository>()));

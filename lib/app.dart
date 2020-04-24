@@ -3,8 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'routes.dart';
 import 'config/config.dart';
-import 'package:afc_mobile/auth/auth.dart';
-import 'package:afc_mobile/student/student.dart';
+import 'auth/auth.dart';
+import 'profile/profile.dart';
+import 'student/student.dart';
 
 class App extends StatelessWidget {
   @override
@@ -13,6 +14,7 @@ class App extends StatelessWidget {
       providers: [
         ...authBlocProvider,
         ...studentBlocProvider,
+        ...profileBlocProvider,
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

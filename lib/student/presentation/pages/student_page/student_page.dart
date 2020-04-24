@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:afc_mobile/student/student.dart';
+import 'package:afc_mobile/profile/profile.dart';
 
 class StudentPage extends StatefulWidget {
   static const routeName = '/student-page';
@@ -23,7 +24,7 @@ class _StudentPageState extends State<StudentPage> {
         children: <Widget>[
           CourseStudentPage(),
           EnrollmentPage(),
-          Container(),
+          ProfilePage(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
