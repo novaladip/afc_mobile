@@ -4,8 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'package:afc_mobile/student/domain/domain.dart';
-import 'package:afc_mobile/student/infrastructure/infrastructure.dart';
+import 'package:afc_mobile/student/student.dart';
 
 part 'enrollment_event.dart';
 part 'enrollment_state.dart';

@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import 'package:injectable/injectable.dart';
 
 import 'package:afc_mobile/common/api/api.dart';
-import 'package:afc_mobile/student/domain/domain.dart';
+import 'package:afc_mobile/student/student.dart';
 
 @lazySingleton
 class EnrollmentRemoteProvider {

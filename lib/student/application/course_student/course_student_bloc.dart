@@ -4,8 +4,8 @@ import 'package:meta/meta.dart';
 import 'package:injectable/injectable.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import 'package:afc_mobile/student/student.dart';
 import 'package:afc_mobile/common/models/models.dart';
-import 'package:afc_mobile/student/infrastructure/infrastructure.dart';
 
 part 'course_student_event.dart';
 part 'course_student_state.dart';

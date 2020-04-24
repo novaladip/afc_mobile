@@ -1,6 +1,7 @@
 import 'package:meta/meta.dart';
 import 'package:equatable/equatable.dart';
 
+import 'package:afc_mobile/student/student.dart';
 import 'package:afc_mobile/common/utils/utils.dart';
 import 'package:afc_mobile/common/models/models.dart';
 
@@ -34,6 +35,11 @@ class Course extends Equatable {
 
   String get formattedCloseDate => formatDate(closeDate);
   String get formattedCreatedAt => formatDate(createdAt);
+
+  bool isEnrolled(List<Enrollment> enrollments) {
+    final enrollmentIndex = enrollments.indexWhere((e) => e.courseId == id);
+    return enrollmentIndex >= 0;
+  }
 
   @override
   List<Object> get props =>

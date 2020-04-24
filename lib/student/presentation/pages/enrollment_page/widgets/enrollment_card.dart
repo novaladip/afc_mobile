@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:afc_mobile/student/domain/domain.dart';
+import 'package:afc_mobile/student/student.dart';
 
 class EnrollmentCard extends StatelessWidget {
   final Enrollment enrollment;

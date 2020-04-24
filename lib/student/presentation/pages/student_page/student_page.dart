@@ -11,7 +11,7 @@ class StudentPage extends StatefulWidget {
 }
 
 class _StudentPageState extends State<StudentPage> {
-  int index = 1;
+  int index = 0;
 
   void setIndex(int value) => setState(() => index = value);
 
@@ -21,7 +21,7 @@ class _StudentPageState extends State<StudentPage> {
       body: IndexedStack(
         index: index,
         children: <Widget>[
-          Container(),
+          CourseStudentPage(),
           EnrollmentPage(),
           Container(),
         ],
@@ -38,7 +38,8 @@ class _StudentPageState extends State<StudentPage> {
             title: Text('Course'),
           ),
           BottomNavigationBarItem(
-            icon: FaIcon(FontAwesomeIcons.bookOpen),
+            icon: FaIcon(
+                index == 1 ? FontAwesomeIcons.bookOpen : FontAwesomeIcons.book),
             title: Text('Enrollment'),
           ),
           BottomNavigationBarItem(

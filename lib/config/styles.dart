@@ -16,11 +16,11 @@ class Styles {
         fontWeight: FontWeight.w600,
       ),
       body1: TextStyle(
-        fontSize: 16,
+        fontSize: 14,
         fontFamily: 'Comic Neue',
       ),
       body2: TextStyle(
-        fontSize: 15,
+        fontSize: 14,
         fontFamily: 'Comic Neue',
       ),
       overline: TextStyle(
@@ -29,7 +29,7 @@ class Styles {
         color: Colors.grey,
       ),
       display1: TextStyle(
-        fontSize: 20,
+        fontSize: 16,
         fontFamily: 'Manrope',
         fontWeight: FontWeight.w600,
       ),

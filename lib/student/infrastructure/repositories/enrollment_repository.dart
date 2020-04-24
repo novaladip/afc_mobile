@@ -1,8 +1,7 @@
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 
-import 'package:afc_mobile/student/domain/domain.dart';
-import 'package:afc_mobile/student/infrastructure/infrastructure.dart';
+import 'package:afc_mobile/student/student.dart';
 
 @lazySingleton
 class EnrollmentRepository implements EnrollmentInterface {
