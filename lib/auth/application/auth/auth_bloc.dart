@@ -69,7 +69,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     yield AuthState.authenticated(
       JwtPayload(
         id: decodedToken['identity']['id'],
-        role: decodedToken['identity']['role'],
+        role: (decodedToken['identity']['role'] as String).toLowerCase(),
         email: decodedToken['identity']['email'],
         exp: decodedToken['exp'],
       ),

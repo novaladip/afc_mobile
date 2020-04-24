@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'widgets/login_form.dart';
+import 'package:afc_mobile/auth/auth.dart';
+import 'package:afc_mobile/student/student.dart';
+import 'package:afc_mobile/common/role/role.dart';
 
 class LoginPage extends StatefulWidget {
   static const routeName = '/login';
@@ -15,16 +19,29 @@ class _LoginPageState extends State<LoginPage> {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
-      body: Stack(
-        children: <Widget>[
-          Image.asset(
-            'assets/login_background.png',
-            height: size.height,
-            width: size.width,
-            fit: BoxFit.cover,
-          ),
-          LoginForm(),
-        ],
+      body: BlocListener<AuthBloc, AuthState>(
+        listener: (context, state) {
+          state.maybeWhen(
+            orElse: () {}, // Nothing to do here.
+            authenticated: (user) {
+              if (user.role == Role.student) {
+                Navigator.of(context)
+                    .pushReplacementNamed(StudentPage.routeName);
+              }
+            },
+          );
+        },
+        child: Stack(
+          children: <Widget>[
+            Image.asset(
+              'assets/login_background.png',
+              height: size.height,
+              width: size.width,
+              fit: BoxFit.cover,
+            ),
+            LoginForm(),
+          ],
+        ),
       ),
     );
   }
