@@ -16,9 +16,9 @@ class _$EnrollmentEventTearOff {
     return const _Fetch();
   }
 
-  _NewEnrollment newEnrollment(Enrollment eNrollment) {
+  _NewEnrollment newEnrollment(Enrollment enrollment) {
     return _NewEnrollment(
-      eNrollment,
+      enrollment,
     );
   }
 }
@@ -30,12 +30,12 @@ mixin _$EnrollmentEvent {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result fetch(),
-    @required Result newEnrollment(Enrollment eNrollment),
+    @required Result newEnrollment(Enrollment enrollment),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result fetch(),
-    Result newEnrollment(Enrollment eNrollment),
+    Result newEnrollment(Enrollment enrollment),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -100,7 +100,7 @@ class _$_Fetch implements _Fetch {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result fetch(),
-    @required Result newEnrollment(Enrollment eNrollment),
+    @required Result newEnrollment(Enrollment enrollment),
   }) {
     assert(fetch != null);
     assert(newEnrollment != null);
@@ -111,7 +111,7 @@ class _$_Fetch implements _Fetch {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result fetch(),
-    Result newEnrollment(Enrollment eNrollment),
+    Result newEnrollment(Enrollment enrollment),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -155,7 +155,7 @@ abstract class _$NewEnrollmentCopyWith<$Res> {
   factory _$NewEnrollmentCopyWith(
           _NewEnrollment value, $Res Function(_NewEnrollment) then) =
       __$NewEnrollmentCopyWithImpl<$Res>;
-  $Res call({Enrollment eNrollment});
+  $Res call({Enrollment enrollment});
 }
 
 class __$NewEnrollmentCopyWithImpl<$Res>
@@ -170,37 +170,37 @@ class __$NewEnrollmentCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object eNrollment = freezed,
+    Object enrollment = freezed,
   }) {
     return _then(_NewEnrollment(
-      eNrollment == freezed ? _value.eNrollment : eNrollment as Enrollment,
+      enrollment == freezed ? _value.enrollment : enrollment as Enrollment,
     ));
   }
 }
 
 class _$_NewEnrollment implements _NewEnrollment {
-  const _$_NewEnrollment(this.eNrollment) : assert(eNrollment != null);
+  const _$_NewEnrollment(this.enrollment) : assert(enrollment != null);
 
   @override
-  final Enrollment eNrollment;
+  final Enrollment enrollment;
 
   @override
   String toString() {
-    return 'EnrollmentEvent.newEnrollment(eNrollment: $eNrollment)';
+    return 'EnrollmentEvent.newEnrollment(enrollment: $enrollment)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _NewEnrollment &&
-            (identical(other.eNrollment, eNrollment) ||
+            (identical(other.enrollment, enrollment) ||
                 const DeepCollectionEquality()
-                    .equals(other.eNrollment, eNrollment)));
+                    .equals(other.enrollment, enrollment)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(eNrollment);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(enrollment);
 
   @override
   _$NewEnrollmentCopyWith<_NewEnrollment> get copyWith =>
@@ -210,23 +210,23 @@ class _$_NewEnrollment implements _NewEnrollment {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result fetch(),
-    @required Result newEnrollment(Enrollment eNrollment),
+    @required Result newEnrollment(Enrollment enrollment),
   }) {
     assert(fetch != null);
     assert(newEnrollment != null);
-    return newEnrollment(eNrollment);
+    return newEnrollment(enrollment);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result fetch(),
-    Result newEnrollment(Enrollment eNrollment),
+    Result newEnrollment(Enrollment enrollment),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (newEnrollment != null) {
-      return newEnrollment(eNrollment);
+      return newEnrollment(enrollment);
     }
     return orElse();
   }
@@ -258,9 +258,9 @@ class _$_NewEnrollment implements _NewEnrollment {
 }
 
 abstract class _NewEnrollment implements EnrollmentEvent {
-  const factory _NewEnrollment(Enrollment eNrollment) = _$_NewEnrollment;
+  const factory _NewEnrollment(Enrollment enrollment) = _$_NewEnrollment;
 
-  Enrollment get eNrollment;
+  Enrollment get enrollment;
   _$NewEnrollmentCopyWith<_NewEnrollment> get copyWith;
 }
 

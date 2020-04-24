@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-import 'package:afc_mobile/common/widgets/widgets.dart';
+import 'package:afc_mobile/student/student.dart';
 import 'package:afc_mobile/common/models/models.dart';
+import 'package:afc_mobile/common/widgets/widgets.dart';
 
 class CourseCard extends StatelessWidget {
   final Course course;
@@ -18,7 +20,8 @@ class CourseCard extends StatelessWidget {
 
   Widget rightItem(BuildContext context) {
     if (isLoading) {
-      return SpinKitChasingDots(color: Colors.black, size: 24);
+      return SpinKitChasingDots(
+          color: Theme.of(context).primaryColor, size: 24);
     }
 
     final child = Text(
@@ -31,7 +34,11 @@ class CourseCard extends StatelessWidget {
     );
 
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        context
+            .bloc<EnrollCourseBloc>()
+            .add(EnrollCourseEvent.enroll(course.id));
+      },
       child: child,
     );
   }

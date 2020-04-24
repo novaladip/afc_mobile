@@ -1,5 +1,5 @@
-import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
+import 'package:injectable/injectable.dart';
 
 import 'package:afc_mobile/student/student.dart';
 
@@ -14,5 +14,10 @@ class EnrollmentRepository implements EnrollmentInterface {
   @override
   Future<List<Enrollment>> fetchEnrollments() {
     return enrollmentRemoteProvider.fetchEnrollments();
+  }
+
+  @override
+  Future<Enrollment> enrollCourse(String courseId) {
+    return enrollmentRemoteProvider.enrollCourse(courseId);
   }
 }

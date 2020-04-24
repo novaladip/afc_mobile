@@ -22,4 +22,14 @@ class EnrollmentRemoteProvider {
       throw e;
     }
   }
+
+  Future<Enrollment> enrollCourse(String courseId) async {
+    try {
+      final res = await api.dio.post('/enrollment/$courseId');
+      final enrollment = Enrollment.fromJson(res.data);
+      return enrollment;
+    } catch (e) {
+      throw e;
+    }
+  }
 }
