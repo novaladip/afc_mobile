@@ -12,12 +12,10 @@ part 'enroll_course_bloc.freezed.dart';
 
 @lazySingleton
 class EnrollCourseBloc extends Bloc<EnrollCourseEvent, EnrollCourseState> {
-  final EnrollmentBloc enrollmentBloc;
   final EnrollmentRepository enrollmentRepository;
 
   EnrollCourseBloc({
     @required this.enrollmentRepository,
-    @required this.enrollmentBloc,
   });
 
   @override
@@ -33,10 +31,7 @@ class EnrollCourseBloc extends Bloc<EnrollCourseEvent, EnrollCourseState> {
         final enrollment =
             await enrollmentRepository.enrollCourse(event.courseId);
 
-        enrollmentBloc.add(
-          EnrollmentEvent.newEnrollment(enrollment),
-        );
-        yield EnrollCourseState.success(enrollment.course.name);
+        yield EnrollCourseState.success(enrollment);
       } catch (e) {
         yield EnrollCourseState.failure();
       } finally {

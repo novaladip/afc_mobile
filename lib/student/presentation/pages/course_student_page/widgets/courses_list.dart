@@ -37,10 +37,10 @@ class CourseList extends StatelessWidget {
             listener: (context, ecState) {
               ecState.maybeWhen(
                 orElse: () {}, // Nothing to do here
-                success: (courseName) {
+                success: (enrollment) {
                   _showSnackBar(
                     context,
-                    message: '$courseName has been enrolled',
+                    message: '${enrollment.course.name}} has been enrolled',
                   );
                 },
                 failure: () {

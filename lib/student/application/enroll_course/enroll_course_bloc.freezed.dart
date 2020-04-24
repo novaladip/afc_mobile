@@ -134,9 +134,9 @@ class _$EnrollCourseStateTearOff {
     return const _Failure();
   }
 
-  _Success success(String courseName) {
+  _Success success(Enrollment enrollment) {
     return _Success(
-      courseName,
+      enrollment,
     );
   }
 }
@@ -150,14 +150,14 @@ mixin _$EnrollCourseState {
     @required Result idle(),
     @required Result loading(String courseId),
     @required Result failure(),
-    @required Result success(String courseName),
+    @required Result success(Enrollment enrollment),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result idle(),
     Result loading(String courseId),
     Result failure(),
-    Result success(String courseName),
+    Result success(Enrollment enrollment),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -228,7 +228,7 @@ class _$_Idle implements _Idle {
     @required Result idle(),
     @required Result loading(String courseId),
     @required Result failure(),
-    @required Result success(String courseName),
+    @required Result success(Enrollment enrollment),
   }) {
     assert(idle != null);
     assert(loading != null);
@@ -243,7 +243,7 @@ class _$_Idle implements _Idle {
     Result idle(),
     Result loading(String courseId),
     Result failure(),
-    Result success(String courseName),
+    Result success(Enrollment enrollment),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -347,7 +347,7 @@ class _$_Loading implements _Loading {
     @required Result idle(),
     @required Result loading(String courseId),
     @required Result failure(),
-    @required Result success(String courseName),
+    @required Result success(Enrollment enrollment),
   }) {
     assert(idle != null);
     assert(loading != null);
@@ -362,7 +362,7 @@ class _$_Loading implements _Loading {
     Result idle(),
     Result loading(String courseId),
     Result failure(),
-    Result success(String courseName),
+    Result success(Enrollment enrollment),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -447,7 +447,7 @@ class _$_Failure implements _Failure {
     @required Result idle(),
     @required Result loading(String courseId),
     @required Result failure(),
-    @required Result success(String courseName),
+    @required Result success(Enrollment enrollment),
   }) {
     assert(idle != null);
     assert(loading != null);
@@ -462,7 +462,7 @@ class _$_Failure implements _Failure {
     Result idle(),
     Result loading(String courseId),
     Result failure(),
-    Result success(String courseName),
+    Result success(Enrollment enrollment),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -511,7 +511,7 @@ abstract class _Failure implements EnrollCourseState {
 abstract class _$SuccessCopyWith<$Res> {
   factory _$SuccessCopyWith(_Success value, $Res Function(_Success) then) =
       __$SuccessCopyWithImpl<$Res>;
-  $Res call({String courseName});
+  $Res call({Enrollment enrollment});
 }
 
 class __$SuccessCopyWithImpl<$Res> extends _$EnrollCourseStateCopyWithImpl<$Res>
@@ -524,37 +524,37 @@ class __$SuccessCopyWithImpl<$Res> extends _$EnrollCourseStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object courseName = freezed,
+    Object enrollment = freezed,
   }) {
     return _then(_Success(
-      courseName == freezed ? _value.courseName : courseName as String,
+      enrollment == freezed ? _value.enrollment : enrollment as Enrollment,
     ));
   }
 }
 
 class _$_Success implements _Success {
-  const _$_Success(this.courseName) : assert(courseName != null);
+  const _$_Success(this.enrollment) : assert(enrollment != null);
 
   @override
-  final String courseName;
+  final Enrollment enrollment;
 
   @override
   String toString() {
-    return 'EnrollCourseState.success(courseName: $courseName)';
+    return 'EnrollCourseState.success(enrollment: $enrollment)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _Success &&
-            (identical(other.courseName, courseName) ||
+            (identical(other.enrollment, enrollment) ||
                 const DeepCollectionEquality()
-                    .equals(other.courseName, courseName)));
+                    .equals(other.enrollment, enrollment)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(courseName);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(enrollment);
 
   @override
   _$SuccessCopyWith<_Success> get copyWith =>
@@ -566,13 +566,13 @@ class _$_Success implements _Success {
     @required Result idle(),
     @required Result loading(String courseId),
     @required Result failure(),
-    @required Result success(String courseName),
+    @required Result success(Enrollment enrollment),
   }) {
     assert(idle != null);
     assert(loading != null);
     assert(failure != null);
     assert(success != null);
-    return success(courseName);
+    return success(enrollment);
   }
 
   @override
@@ -581,12 +581,12 @@ class _$_Success implements _Success {
     Result idle(),
     Result loading(String courseId),
     Result failure(),
-    Result success(String courseName),
+    Result success(Enrollment enrollment),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (success != null) {
-      return success(courseName);
+      return success(enrollment);
     }
     return orElse();
   }
@@ -624,8 +624,8 @@ class _$_Success implements _Success {
 }
 
 abstract class _Success implements EnrollCourseState {
-  const factory _Success(String courseName) = _$_Success;
+  const factory _Success(Enrollment enrollment) = _$_Success;
 
-  String get courseName;
+  Enrollment get enrollment;
   _$SuccessCopyWith<_Success> get copyWith;
 }

@@ -12,11 +12,20 @@ part 'enrollment_bloc.freezed.dart';
 
 @lazySingleton
 class EnrollmentBloc extends Bloc<EnrollmentEvent, EnrollmentState> {
+  final EnrollCourseBloc enrollCourseBloc;
   final EnrollmentRepository enrollmentRepository;
 
   EnrollmentBloc({
     @required this.enrollmentRepository,
-  });
+    @required this.enrollCourseBloc,
+  }) {
+    enrollCourseBloc.listen(_enrollCourseBlocListener);
+  }
+
+  _enrollCourseBlocListener(EnrollCourseState state) {
+    state.maybeWhen(
+        orElse: () {}, success: (e) => add(EnrollmentEvent.newEnrollment(e)));
+  }
 
   @override
   EnrollmentState get initialState => EnrollmentState.loading();

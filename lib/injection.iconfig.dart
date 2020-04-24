@@ -18,10 +18,10 @@ import 'package:afc_mobile/injection.dart';
 import 'package:afc_mobile/auth/infrastructure/data_sources/auth_local_provider.dart';
 import 'package:afc_mobile/auth/infrastructure/repository/auth_repository.dart';
 import 'package:afc_mobile/student/application/course_student/course_student_bloc.dart';
+import 'package:afc_mobile/student/application/enroll_course/enroll_course_bloc.dart';
 import 'package:afc_mobile/student/application/enrollment/enrollment_bloc.dart';
 import 'package:afc_mobile/auth/application/register/register_bloc.dart';
 import 'package:afc_mobile/auth/application/auth/auth_bloc.dart';
-import 'package:afc_mobile/student/application/enroll_course/enroll_course_bloc.dart';
 import 'package:afc_mobile/auth/application/login/login_bloc.dart';
 import 'package:afc_mobile/profile/application/profile/profile_bloc.dart';
 import 'package:get_it/get_it.dart';
@@ -55,14 +55,14 @@ Future<void> $initGetIt(GetIt g, {String environment}) async {
       authLocalProvider: g<AuthLocalProvider>()));
   g.registerLazySingleton<CourseStudentBloc>(() =>
       CourseStudentBloc(courseStudentRepository: g<CourseStudentRepository>()));
-  g.registerLazySingleton<EnrollmentBloc>(
-      () => EnrollmentBloc(enrollmentRepository: g<EnrollmentRepository>()));
+  g.registerLazySingleton<EnrollCourseBloc>(
+      () => EnrollCourseBloc(enrollmentRepository: g<EnrollmentRepository>()));
+  g.registerLazySingleton<EnrollmentBloc>(() => EnrollmentBloc(
+      enrollmentRepository: g<EnrollmentRepository>(),
+      enrollCourseBloc: g<EnrollCourseBloc>()));
   g.registerLazySingleton<RegisterBloc>(
       () => RegisterBloc(g<AuthRepository>()));
   g.registerLazySingleton<AuthBloc>(() => AuthBloc(g<AuthRepository>()));
-  g.registerLazySingleton<EnrollCourseBloc>(() => EnrollCourseBloc(
-      enrollmentRepository: g<EnrollmentRepository>(),
-      enrollmentBloc: g<EnrollmentBloc>()));
   g.registerLazySingleton<LoginBloc>(() =>
       LoginBloc(authBloc: g<AuthBloc>(), authRepository: g<AuthRepository>()));
   g.registerLazySingleton<ProfileBloc>(() => ProfileBloc(
