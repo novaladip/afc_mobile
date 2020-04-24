@@ -20,6 +20,16 @@ class User extends Equatable {
 
   String get fullName => '$firstName $lastName';
 
+  Map<String, dynamic> get toMap {
+    return {
+      'id': id,
+      'links': {'avatar': avatar},
+      'email': email,
+      'first_name': firstName,
+      'last_name': lastName,
+    };
+  }
+
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
       id: json['id'],
