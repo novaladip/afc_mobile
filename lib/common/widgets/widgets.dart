@@ -5,3 +5,4 @@ export 'main_button/main_button.dart';
 export 'text_input/text_input.dart';
 export 'theme_builder/theme_builder.dart';
 export 'error_screen/error_screen.dart';
+export 'empty_screen/empty_screen.dart';

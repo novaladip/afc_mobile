@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'course_card.dart';
 import 'package:afc_mobile/common/models/models.dart';
+import 'package:afc_mobile/common/widgets/widgets.dart';
 
 class CourseList extends StatelessWidget {
   final List<Course> courses;
@@ -13,6 +14,12 @@ class CourseList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (courses.isEmpty) {
+      return EmptyScreen(
+        message: "Oops there is no course yet, start adding some!",
+      );
+    }
+
     return ListView.builder(
       padding: EdgeInsets.symmetric(horizontal: 15),
       itemCount: courses.length,

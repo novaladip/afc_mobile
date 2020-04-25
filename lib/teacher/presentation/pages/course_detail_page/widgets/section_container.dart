@@ -1,10 +1,11 @@
-import 'package:afc_mobile/common/models/models.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import 'section_card.dart';
 import 'package:afc_mobile/teacher/teacher.dart';
+import 'package:afc_mobile/common/models/models.dart';
+import 'package:afc_mobile/common/widgets/widgets.dart';
 
 class SectionContainer extends StatelessWidget {
   final List<Section> sections;
@@ -36,12 +37,16 @@ class SectionContainer extends StatelessWidget {
           ),
         ),
         Expanded(
-          child: ListView.builder(
-            padding: EdgeInsets.symmetric(horizontal: 20),
-            itemCount: sections.length,
-            itemBuilder: (context, index) =>
-                SectionCard(section: sections[index]),
-          ),
+          child: sections.isEmpty
+              ? EmptyScreen(
+                  message: "Oops there is no section yet, start adding some!",
+                )
+              : ListView.builder(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  itemCount: sections.length,
+                  itemBuilder: (context, index) =>
+                      SectionCard(section: sections[index]),
+                ),
         ),
       ],
     );
