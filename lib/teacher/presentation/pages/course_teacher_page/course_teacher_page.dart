@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'widgets/course_list.dart';
 import 'package:afc_mobile/teacher/teacher.dart';
@@ -22,10 +23,20 @@ class _CourseTeacherState extends State<CourseTeacher> {
           return state.when(
             loading: () => LoadingIndicator(),
             failure: () => ErrorScreen(onRetry: fetchCourses),
-            loaded: (courses) => CourseList(courses: courses),
+            loaded: (courses) => RefreshIndicator(
+              child: CourseList(courses: courses),
+              onRefresh: fetchCourses,
+            ),
           );
         },
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () =>
+            Navigator.of(context).pushNamed(AddCoursePage.routeName),
+        child: FaIcon(FontAwesomeIcons.plusCircle, color: Colors.black),
+        backgroundColor: Colors.white.withOpacity(0.7),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
   }
 
@@ -35,7 +46,7 @@ class _CourseTeacherState extends State<CourseTeacher> {
     super.initState();
   }
 
-  void fetchCourses() {
+  Future<void> fetchCourses() async {
     context.bloc<CourseTeacherBloc>().add(CourseTeacherEvent.fetchCourses());
   }
 }

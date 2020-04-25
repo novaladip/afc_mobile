@@ -14,7 +14,7 @@ class CourseTeacherRepository implements CourseTeacherInterface {
 
   @override
   Future<Course> createCourse(CreateCourseDto dto) {
-    return courseTeacherRemoteProvider.createCourse();
+    return courseTeacherRemoteProvider.createCourse(dto);
   }
 
   @override

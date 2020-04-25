@@ -15,10 +15,21 @@ part 'course_teacher_bloc.freezed.dart';
 @lazySingleton
 class CourseTeacherBloc extends Bloc<CourseTeacherEvent, CourseTeacherState> {
   final CourseTeacherRepository courseTeacherRepository;
+  final AddCourseBloc addCourseBloc;
 
   CourseTeacherBloc({
     @required this.courseTeacherRepository,
-  });
+    @required this.addCourseBloc,
+  }) {
+    addCourseBloc.listen(_addCourseListener);
+  }
+
+  _addCourseListener(AddCourseState state) {
+    state.status.maybeWhen(
+      orElse: () {},
+      success: (course) => add(CourseTeacherEvent.newCourse(course)),
+    );
+  }
 
   @override
   CourseTeacherState get initialState => CourseTeacherState.loading();
@@ -28,6 +39,14 @@ class CourseTeacherBloc extends Bloc<CourseTeacherEvent, CourseTeacherState> {
     CourseTeacherEvent event,
   ) async* {
     yield* event.when(
+      newCourse: (course) async* {
+        yield* state.maybeWhen(
+          orElse: () async* {},
+          loaded: (c) async* {
+            yield CourseTeacherState.loaded([course, ...c]);
+          },
+        );
+      },
       fetchCourses: () async* {
         yield* _mapFetchCourses();
       },

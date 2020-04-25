@@ -12,6 +12,12 @@ T _$identity<T>(T value) => value;
 class _$CourseTeacherEventTearOff {
   const _$CourseTeacherEventTearOff();
 
+  _NewCourse newCourse(Course course) {
+    return _NewCourse(
+      course,
+    );
+  }
+
   _FetchCourses fetchCourses() {
     return const _FetchCourses();
   }
@@ -31,12 +37,14 @@ const $CourseTeacherEvent = _$CourseTeacherEventTearOff();
 mixin _$CourseTeacherEvent {
   @optionalTypeArgs
   Result when<Result extends Object>({
+    @required Result newCourse(Course course),
     @required Result fetchCourses(),
     @required Result refreshCourses(),
     @required Result onLoggedOut(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
+    Result newCourse(Course course),
     Result fetchCourses(),
     Result refreshCourses(),
     Result onLoggedOut(),
@@ -44,12 +52,14 @@ mixin _$CourseTeacherEvent {
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
+    @required Result newCourse(_NewCourse value),
     @required Result fetchCourses(_FetchCourses value),
     @required Result refreshCourses(_RefreshCourses value),
     @required Result onLoggedOut(_OnLoggedOut value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
+    Result newCourse(_NewCourse value),
     Result fetchCourses(_FetchCourses value),
     Result refreshCourses(_RefreshCourses value),
     Result onLoggedOut(_OnLoggedOut value),
@@ -70,6 +80,129 @@ class _$CourseTeacherEventCopyWithImpl<$Res>
   final CourseTeacherEvent _value;
   // ignore: unused_field
   final $Res Function(CourseTeacherEvent) _then;
+}
+
+abstract class _$NewCourseCopyWith<$Res> {
+  factory _$NewCourseCopyWith(
+          _NewCourse value, $Res Function(_NewCourse) then) =
+      __$NewCourseCopyWithImpl<$Res>;
+  $Res call({Course course});
+}
+
+class __$NewCourseCopyWithImpl<$Res>
+    extends _$CourseTeacherEventCopyWithImpl<$Res>
+    implements _$NewCourseCopyWith<$Res> {
+  __$NewCourseCopyWithImpl(_NewCourse _value, $Res Function(_NewCourse) _then)
+      : super(_value, (v) => _then(v as _NewCourse));
+
+  @override
+  _NewCourse get _value => super._value as _NewCourse;
+
+  @override
+  $Res call({
+    Object course = freezed,
+  }) {
+    return _then(_NewCourse(
+      course == freezed ? _value.course : course as Course,
+    ));
+  }
+}
+
+class _$_NewCourse implements _NewCourse {
+  const _$_NewCourse(this.course) : assert(course != null);
+
+  @override
+  final Course course;
+
+  @override
+  String toString() {
+    return 'CourseTeacherEvent.newCourse(course: $course)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _NewCourse &&
+            (identical(other.course, course) ||
+                const DeepCollectionEquality().equals(other.course, course)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(course);
+
+  @override
+  _$NewCourseCopyWith<_NewCourse> get copyWith =>
+      __$NewCourseCopyWithImpl<_NewCourse>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result newCourse(Course course),
+    @required Result fetchCourses(),
+    @required Result refreshCourses(),
+    @required Result onLoggedOut(),
+  }) {
+    assert(newCourse != null);
+    assert(fetchCourses != null);
+    assert(refreshCourses != null);
+    assert(onLoggedOut != null);
+    return newCourse(course);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result newCourse(Course course),
+    Result fetchCourses(),
+    Result refreshCourses(),
+    Result onLoggedOut(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (newCourse != null) {
+      return newCourse(course);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result newCourse(_NewCourse value),
+    @required Result fetchCourses(_FetchCourses value),
+    @required Result refreshCourses(_RefreshCourses value),
+    @required Result onLoggedOut(_OnLoggedOut value),
+  }) {
+    assert(newCourse != null);
+    assert(fetchCourses != null);
+    assert(refreshCourses != null);
+    assert(onLoggedOut != null);
+    return newCourse(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result newCourse(_NewCourse value),
+    Result fetchCourses(_FetchCourses value),
+    Result refreshCourses(_RefreshCourses value),
+    Result onLoggedOut(_OnLoggedOut value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (newCourse != null) {
+      return newCourse(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _NewCourse implements CourseTeacherEvent {
+  const factory _NewCourse(Course course) = _$_NewCourse;
+
+  Course get course;
+  _$NewCourseCopyWith<_NewCourse> get copyWith;
 }
 
 abstract class _$FetchCoursesCopyWith<$Res> {
@@ -108,10 +241,12 @@ class _$_FetchCourses implements _FetchCourses {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
+    @required Result newCourse(Course course),
     @required Result fetchCourses(),
     @required Result refreshCourses(),
     @required Result onLoggedOut(),
   }) {
+    assert(newCourse != null);
     assert(fetchCourses != null);
     assert(refreshCourses != null);
     assert(onLoggedOut != null);
@@ -121,6 +256,7 @@ class _$_FetchCourses implements _FetchCourses {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
+    Result newCourse(Course course),
     Result fetchCourses(),
     Result refreshCourses(),
     Result onLoggedOut(),
@@ -136,10 +272,12 @@ class _$_FetchCourses implements _FetchCourses {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
+    @required Result newCourse(_NewCourse value),
     @required Result fetchCourses(_FetchCourses value),
     @required Result refreshCourses(_RefreshCourses value),
     @required Result onLoggedOut(_OnLoggedOut value),
   }) {
+    assert(newCourse != null);
     assert(fetchCourses != null);
     assert(refreshCourses != null);
     assert(onLoggedOut != null);
@@ -149,6 +287,7 @@ class _$_FetchCourses implements _FetchCourses {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
+    Result newCourse(_NewCourse value),
     Result fetchCourses(_FetchCourses value),
     Result refreshCourses(_RefreshCourses value),
     Result onLoggedOut(_OnLoggedOut value),
@@ -202,10 +341,12 @@ class _$_RefreshCourses implements _RefreshCourses {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
+    @required Result newCourse(Course course),
     @required Result fetchCourses(),
     @required Result refreshCourses(),
     @required Result onLoggedOut(),
   }) {
+    assert(newCourse != null);
     assert(fetchCourses != null);
     assert(refreshCourses != null);
     assert(onLoggedOut != null);
@@ -215,6 +356,7 @@ class _$_RefreshCourses implements _RefreshCourses {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
+    Result newCourse(Course course),
     Result fetchCourses(),
     Result refreshCourses(),
     Result onLoggedOut(),
@@ -230,10 +372,12 @@ class _$_RefreshCourses implements _RefreshCourses {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
+    @required Result newCourse(_NewCourse value),
     @required Result fetchCourses(_FetchCourses value),
     @required Result refreshCourses(_RefreshCourses value),
     @required Result onLoggedOut(_OnLoggedOut value),
   }) {
+    assert(newCourse != null);
     assert(fetchCourses != null);
     assert(refreshCourses != null);
     assert(onLoggedOut != null);
@@ -243,6 +387,7 @@ class _$_RefreshCourses implements _RefreshCourses {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
+    Result newCourse(_NewCourse value),
     Result fetchCourses(_FetchCourses value),
     Result refreshCourses(_RefreshCourses value),
     Result onLoggedOut(_OnLoggedOut value),
@@ -296,10 +441,12 @@ class _$_OnLoggedOut implements _OnLoggedOut {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
+    @required Result newCourse(Course course),
     @required Result fetchCourses(),
     @required Result refreshCourses(),
     @required Result onLoggedOut(),
   }) {
+    assert(newCourse != null);
     assert(fetchCourses != null);
     assert(refreshCourses != null);
     assert(onLoggedOut != null);
@@ -309,6 +456,7 @@ class _$_OnLoggedOut implements _OnLoggedOut {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
+    Result newCourse(Course course),
     Result fetchCourses(),
     Result refreshCourses(),
     Result onLoggedOut(),
@@ -324,10 +472,12 @@ class _$_OnLoggedOut implements _OnLoggedOut {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
+    @required Result newCourse(_NewCourse value),
     @required Result fetchCourses(_FetchCourses value),
     @required Result refreshCourses(_RefreshCourses value),
     @required Result onLoggedOut(_OnLoggedOut value),
   }) {
+    assert(newCourse != null);
     assert(fetchCourses != null);
     assert(refreshCourses != null);
     assert(onLoggedOut != null);
@@ -337,6 +487,7 @@ class _$_OnLoggedOut implements _OnLoggedOut {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
+    Result newCourse(_NewCourse value),
     Result fetchCourses(_FetchCourses value),
     Result refreshCourses(_RefreshCourses value),
     Result onLoggedOut(_OnLoggedOut value),

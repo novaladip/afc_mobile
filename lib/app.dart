@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'routes.dart';
 import 'config/config.dart';
 import 'auth/auth.dart';
+import 'teacher/teacher.dart';
 import 'profile/profile.dart';
 import 'student/student.dart';
 
@@ -15,6 +16,7 @@ class App extends StatelessWidget {
         ...authBlocProvider,
         ...studentBlocProvider,
         ...profileBlocProvider,
+        ...teacherBlocProvider,
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

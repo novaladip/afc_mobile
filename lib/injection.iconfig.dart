@@ -18,6 +18,7 @@ import 'package:afc_mobile/profile/infrastructure/data_sources/profile_remote_pr
 import 'package:afc_mobile/profile/infrastructure/repositories/profile_repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:afc_mobile/injection.dart';
+import 'package:afc_mobile/teacher/application/add_course/add_course_bloc.dart';
 import 'package:afc_mobile/auth/infrastructure/data_sources/auth_local_provider.dart';
 import 'package:afc_mobile/auth/infrastructure/repository/auth_repository.dart';
 import 'package:afc_mobile/student/application/course_student/course_student_bloc.dart';
@@ -60,6 +61,8 @@ Future<void> $initGetIt(GetIt g, {String environment}) async {
       profileCacheProvider: g<ProfileCacheProvider>()));
   final sharedPreferences = await registerModule.prefs;
   g.registerFactory<SharedPreferences>(() => sharedPreferences);
+  g.registerLazySingleton<AddCourseBloc>(() =>
+      AddCourseBloc(courseTeacherRepository: g<CourseTeacherRepository>()));
   g.registerLazySingleton<AuthLocalProvider>(() => AuthLocalProvider(
       sharedPreferences: g<SharedPreferences>(), api: g<Api>()));
   g.registerLazySingleton<AuthRepository>(() => AuthRepository(
@@ -67,8 +70,9 @@ Future<void> $initGetIt(GetIt g, {String environment}) async {
       authLocalProvider: g<AuthLocalProvider>()));
   g.registerLazySingleton<CourseStudentBloc>(() =>
       CourseStudentBloc(courseStudentRepository: g<CourseStudentRepository>()));
-  g.registerLazySingleton<CourseTeacherBloc>(() =>
-      CourseTeacherBloc(courseTeacherRepository: g<CourseTeacherRepository>()));
+  g.registerLazySingleton<CourseTeacherBloc>(() => CourseTeacherBloc(
+      courseTeacherRepository: g<CourseTeacherRepository>(),
+      addCourseBloc: g<AddCourseBloc>()));
   g.registerLazySingleton<EnrollCourseBloc>(
       () => EnrollCourseBloc(enrollmentRepository: g<EnrollmentRepository>()));
   g.registerLazySingleton<RegisterBloc>(
