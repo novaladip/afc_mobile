@@ -6,4 +6,5 @@ final Map<String, Widget Function(BuildContext)> teacherRoute = {
   TeacherPage.routeName: (_) => TeacherPage(),
   AddCoursePage.routeName: (_) => AddCoursePage(),
   CourseDetailPage.routeName: (_) => CourseDetailPage(),
+  SectionDetailPage.routeName: (_) => SectionDetailPage(),
 };

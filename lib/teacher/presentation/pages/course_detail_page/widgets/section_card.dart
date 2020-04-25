@@ -16,7 +16,8 @@ class SectionCard extends StatelessWidget {
     return Card(
       margin: EdgeInsets.only(top: 8, bottom: 8),
       child: InkWell(
-        onTap: () => null,
+        onTap: () => Navigator.of(context)
+            .pushNamed(SectionDetailPage.routeName, arguments: section),
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
           child: Row(

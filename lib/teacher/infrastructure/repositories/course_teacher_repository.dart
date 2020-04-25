@@ -7,9 +7,11 @@ import 'package:afc_mobile/common/models/course_model.dart';
 @lazySingleton
 class CourseTeacherRepository implements CourseTeacherInterface {
   final CourseTeacherRemoteProvider courseTeacherRemoteProvider;
+  final SectionRemoteProvider sectionRemoteProvider;
 
   CourseTeacherRepository({
     @required this.courseTeacherRemoteProvider,
+    @required this.sectionRemoteProvider,
   });
 
   @override
@@ -30,5 +32,10 @@ class CourseTeacherRepository implements CourseTeacherInterface {
   @override
   Future<void> createSection(String courseId, int count) {
     return courseTeacherRemoteProvider.createSection(courseId, count);
+  }
+
+  @override
+  Future<SectionDetail> fetchSectionDetail(String sectionId) {
+    return sectionRemoteProvider.fetchSectionDetail(sectionId);
   }
 }
