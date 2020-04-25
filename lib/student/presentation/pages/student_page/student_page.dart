@@ -12,7 +12,7 @@ class StudentPage extends StatefulWidget {
 }
 
 class _StudentPageState extends State<StudentPage> {
-  int index = 1;
+  int index = 0;
 
   void setIndex(int value) => setState(() => index = value);
 

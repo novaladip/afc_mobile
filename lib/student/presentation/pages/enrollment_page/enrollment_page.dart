@@ -16,18 +16,48 @@ class _EnrollmentPageState extends State<EnrollmentPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocBuilder<EnrollmentBloc, EnrollmentState>(
+      body: BlocConsumer<EnrollmentBloc, EnrollmentState>(
+        listener: (context, state) {
+          state.failureType.maybeWhen(
+            orElse: () {},
+            refresh: () {
+              Scaffold.of(context)
+                ..removeCurrentSnackBar()
+                ..showSnackBar(
+                  SnackBar(
+                    content: Text('Failed to refresh'),
+                    backgroundColor: Colors.red,
+                  ),
+                );
+            },
+          );
+        },
         builder: (context, state) {
-          if (state.isFailure) {
+          final isLoading = state.status.maybeWhen(
+            orElse: () => false,
+            loading: () => true,
+          );
+
+          final isFailure = state.failureType.maybeWhen(
+            orElse: () => false,
+            fetch: () => true,
+          );
+
+          if (isFailure) {
             return ErrorScreen(onRetry: getEnrollments);
           }
 
-          if (state.isLoading) {
+          if (isLoading) {
             return LoadingIndicator();
           }
 
-          return SafeArea(
-            child: EnrollmentList(),
+          return RefreshIndicator(
+            onRefresh: () async {
+              context.bloc<EnrollmentBloc>().add(EnrollmentEvent.refresh());
+            },
+            child: SafeArea(
+              child: EnrollmentList(),
+            ),
           );
         },
       ),

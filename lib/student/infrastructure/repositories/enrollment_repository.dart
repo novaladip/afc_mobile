@@ -14,6 +14,17 @@ class EnrollmentRepository implements EnrollmentInterface {
   });
 
   @override
+  Future<List<Enrollment>> refreshEnrollments() async {
+    final enrollments = await enrollmentRemoteProvider.fetchEnrollments();
+    if (enrollments.isNotEmpty) {
+      // if result is not empty then cache it
+      enrollmentCacheProvider.cache(enrollments);
+    }
+
+    return enrollments;
+  }
+
+  @override
   Future<List<Enrollment>> fetchEnrollments() async {
     var enrollments = await enrollmentCacheProvider.get();
     if (enrollments.isNotEmpty) {

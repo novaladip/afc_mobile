@@ -1,10 +1,10 @@
 import 'dart:async';
-import 'package:afc_mobile/auth/auth.dart';
 import 'package:meta/meta.dart';
 import 'package:bloc/bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import 'package:afc_mobile/auth/auth.dart';
 import 'package:afc_mobile/student/student.dart';
 
 part 'enrollment_event.dart';
@@ -49,6 +49,8 @@ class EnrollmentBloc extends Bloc<EnrollmentEvent, EnrollmentState> {
   ) async* {
     yield* event.when(fetch: () async* {
       yield* _mapFetch();
+    }, refresh: () async* {
+      yield* _mapRefresh();
     }, newEnrollment: (enrollment) async* {
       yield* _mapNewEnrollment(enrollment);
     }, onLoggedOut: () async* {
@@ -63,6 +65,28 @@ class EnrollmentBloc extends Bloc<EnrollmentEvent, EnrollmentState> {
       yield EnrollmentState.loaded(enrollments);
     } catch (e) {
       yield EnrollmentState.failure();
+    }
+  }
+
+  Stream<EnrollmentState> _mapRefresh() async* {
+    var currentState = state;
+    try {
+      yield currentState.copyWith(
+        failureType: _EnrollmentStateFailureType.none(),
+        status: _EnrollmentStateStatus.refresh(),
+      );
+
+      final enrollments = await enrollmentRepository.refreshEnrollments();
+      currentState = state.copyWith(enrollments: enrollments);
+
+      yield currentState.copyWith(status: _EnrollmentStateStatus.loading());
+    } catch (e) {
+      yield state.copyWith(failureType: _EnrollmentStateFailureType.refresh());
+    } finally {
+      yield currentState.copyWith(
+        failureType: _EnrollmentStateFailureType.none(),
+        status: _EnrollmentStateStatus.idle(),
+      );
     }
   }
 
