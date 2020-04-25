@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -24,10 +25,13 @@ class UserProfile extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           SizedBox(height: 10),
-          CircleAvatar(
-            radius: 75,
-            backgroundColor: Colors.transparent,
-            backgroundImage: NetworkImage(profile.avatar),
+          CachedNetworkImage(
+            imageUrl: profile.avatar,
+            imageBuilder: (context, imageProvider) => CircleAvatar(
+              radius: 75,
+              backgroundColor: Colors.transparent,
+              backgroundImage: imageProvider,
+            ),
           ),
           SizedBox(height: 10),
           Divider(),
