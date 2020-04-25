@@ -5,4 +5,5 @@ abstract class EnrollmentEvent with _$EnrollmentEvent {
   const factory EnrollmentEvent.fetch() = _Fetch;
   const factory EnrollmentEvent.newEnrollment(Enrollment enrollment) =
       _NewEnrollment;
+  const factory EnrollmentEvent.onLoggedOut() = _OnLoggedOut;
 }

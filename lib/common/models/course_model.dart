@@ -33,6 +33,17 @@ class Course extends Equatable {
     );
   }
 
+  Map<String, dynamic> get toMap {
+    return {
+      'id': id,
+      'name': name,
+      'close_date': closeDate,
+      'created_at': createdAt,
+      'teacher_id': teacherId,
+      'teacher': teacher.toMap,
+    };
+  }
+
   String get formattedCloseDate => formatDate(closeDate);
   String get formattedCreatedAt => formatDate(createdAt);
 

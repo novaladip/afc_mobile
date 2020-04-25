@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:afc_mobile/auth/auth.dart';
 import 'package:meta/meta.dart';
 import 'package:bloc/bloc.dart';
 import 'package:injectable/injectable.dart';
@@ -12,19 +13,31 @@ part 'enrollment_bloc.freezed.dart';
 
 @lazySingleton
 class EnrollmentBloc extends Bloc<EnrollmentEvent, EnrollmentState> {
+  final AuthBloc authBloc;
   final EnrollCourseBloc enrollCourseBloc;
   final EnrollmentRepository enrollmentRepository;
 
   EnrollmentBloc({
+    @required this.authBloc,
     @required this.enrollmentRepository,
     @required this.enrollCourseBloc,
   }) {
-    enrollCourseBloc.listen(_enrollCourseBlocListener);
+    authBloc.listen(_authListener);
+    enrollCourseBloc.listen(_enrollCourseListener);
   }
 
-  _enrollCourseBlocListener(EnrollCourseState state) {
+  _authListener(AuthState state) {
     state.maybeWhen(
-        orElse: () {}, success: (e) => add(EnrollmentEvent.newEnrollment(e)));
+      orElse: () {},
+      unauthentication: () => add(EnrollmentEvent.onLoggedOut()),
+    );
+  }
+
+  _enrollCourseListener(EnrollCourseState state) {
+    state.maybeWhen(
+      orElse: () {},
+      success: (e) => add(EnrollmentEvent.newEnrollment(e)),
+    );
   }
 
   @override
@@ -34,14 +47,13 @@ class EnrollmentBloc extends Bloc<EnrollmentEvent, EnrollmentState> {
   Stream<EnrollmentState> mapEventToState(
     EnrollmentEvent event,
   ) async* {
-    yield* event.when(
-      fetch: () async* {
-        yield* _mapFetch();
-      },
-      newEnrollment: (enrollment) async* {
-        yield* _mapNewEnrollment(enrollment);
-      },
-    );
+    yield* event.when(fetch: () async* {
+      yield* _mapFetch();
+    }, newEnrollment: (enrollment) async* {
+      yield* _mapNewEnrollment(enrollment);
+    }, onLoggedOut: () async* {
+      yield* _mapOnLoggedOut();
+    });
   }
 
   Stream<EnrollmentState> _mapFetch() async* {
@@ -58,5 +70,10 @@ class EnrollmentBloc extends Bloc<EnrollmentEvent, EnrollmentState> {
     yield state.copyWith(
       enrollments: [enrollment, ...state.enrollments],
     );
+  }
+
+  Stream<EnrollmentState> _mapOnLoggedOut() async* {
+    yield EnrollmentState.loading();
+    await enrollmentRepository.destroyCache();
   }
 }

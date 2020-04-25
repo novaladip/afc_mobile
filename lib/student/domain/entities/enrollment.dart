@@ -27,6 +27,16 @@ class Enrollment {
       course: Course.fromJson(json['course']),
     );
   }
+
+  Map<String, dynamic> get toMap {
+    return {
+      'id': id,
+      'course_id': courseId,
+      'student_id': studentId,
+      'enroll_date': enrollDate,
+      'course': course.toMap,
+    };
+  }
 }
 
 extension EnrollmentX on Enrollment {
