@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:afc_mobile/teacher/teacher.dart';
 import 'package:afc_mobile/common/models/models.dart';
 import 'package:afc_mobile/common/widgets/widgets.dart';
 
@@ -18,7 +19,10 @@ class CourseCard extends StatelessWidget {
         return Card(
           margin: EdgeInsets.symmetric(vertical: 4),
           child: InkWell(
-            onTap: () {},
+            onTap: () => Navigator.of(context).pushNamed(
+              CourseDetailPage.routeName,
+              arguments: course,
+            ),
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 10, vertical: 8),
               child: Column(

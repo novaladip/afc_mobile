@@ -25,6 +25,16 @@ class CourseTeacherRemoteProvider {
     }
   }
 
+  Future<CourseDetail> fetchCourse(String courseId) async {
+    try {
+      final res = await api.dio.get('/course/$courseId');
+      final course = CourseDetail.fromJson(res.data);
+      return course;
+    } catch (e) {
+      throw e;
+    }
+  }
+
   Future<Course> createCourse(CreateCourseDto dto) async {
     try {
       final data =

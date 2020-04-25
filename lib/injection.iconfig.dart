@@ -21,6 +21,7 @@ import 'package:afc_mobile/injection.dart';
 import 'package:afc_mobile/teacher/application/add_course/add_course_bloc.dart';
 import 'package:afc_mobile/auth/infrastructure/data_sources/auth_local_provider.dart';
 import 'package:afc_mobile/auth/infrastructure/repository/auth_repository.dart';
+import 'package:afc_mobile/teacher/application/course_detail/course_detail_bloc.dart';
 import 'package:afc_mobile/student/application/course_student/course_student_bloc.dart';
 import 'package:afc_mobile/teacher/application/course_teacher/course_teacher_bloc.dart';
 import 'package:afc_mobile/student/application/enroll_course/enroll_course_bloc.dart';
@@ -68,6 +69,8 @@ Future<void> $initGetIt(GetIt g, {String environment}) async {
   g.registerLazySingleton<AuthRepository>(() => AuthRepository(
       authRemoteProvider: g<AuthRemoteProvider>(),
       authLocalProvider: g<AuthLocalProvider>()));
+  g.registerLazySingleton<CourseDetailBloc>(() =>
+      CourseDetailBloc(courseTeacherRepository: g<CourseTeacherRepository>()));
   g.registerLazySingleton<CourseStudentBloc>(() =>
       CourseStudentBloc(courseStudentRepository: g<CourseStudentRepository>()));
   g.registerLazySingleton<CourseTeacherBloc>(() => CourseTeacherBloc(

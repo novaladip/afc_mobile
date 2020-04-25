@@ -10,4 +10,7 @@ final List<BlocProvider> teacherBlocProvider = [
   BlocProvider<AddCourseBloc>(
     create: (_) => getIt<AddCourseBloc>(),
   ),
+  BlocProvider<CourseDetailBloc>(
+    create: (_) => getIt<CourseDetailBloc>(),
+  ),
 ];
