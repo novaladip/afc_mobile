@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'widgets/course_list.dart';
 import 'package:afc_mobile/teacher/teacher.dart';
 import 'package:afc_mobile/common/widgets/widgets.dart';
 
@@ -21,7 +22,7 @@ class _CourseTeacherState extends State<CourseTeacher> {
           return state.when(
             loading: () => LoadingIndicator(),
             failure: () => ErrorScreen(onRetry: fetchCourses),
-            loaded: (c) => LoadingIndicator(),
+            loaded: (courses) => CourseList(courses: courses),
           );
         },
       ),
