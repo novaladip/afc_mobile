@@ -28,10 +28,13 @@ class CourseCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text(
-                    course.name,
-                    style: appTheme.textTheme.display1.copyWith(
-                      color: Colors.black,
+                  Hero(
+                    tag: course.id,
+                    child: Text(
+                      course.name,
+                      style: appTheme.textTheme.display1.copyWith(
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                   SizedBox(height: 4),

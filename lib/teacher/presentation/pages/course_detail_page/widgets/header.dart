@@ -23,10 +23,13 @@ class Header extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
-                  Text(
-                    course.name,
-                    style:
-                        appTheme.textTheme.title.copyWith(color: Colors.white),
+                  Hero(
+                    tag: course.id,
+                    child: Text(
+                      course.name,
+                      style: appTheme.textTheme.title
+                          .copyWith(color: Colors.white),
+                    ),
                   ),
                   SizedBox(height: 8),
                 ],
