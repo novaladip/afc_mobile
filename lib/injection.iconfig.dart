@@ -8,6 +8,8 @@ import 'package:afc_mobile/common/api/api.dart';
 import 'package:afc_mobile/auth/infrastructure/data_sources/auth_remote_provider.dart';
 import 'package:afc_mobile/student/infrastructure/data_sources/course_student_remote_provider.dart';
 import 'package:afc_mobile/student/infrastructure/repositories/course_student_repository.dart';
+import 'package:afc_mobile/teacher/infrastructure/data_sources/course_teacher_remote_provider.dart';
+import 'package:afc_mobile/teacher/infrastructure/repositories/course_teacher_repository.dart';
 import 'package:afc_mobile/student/infrastructure/data_sources/enrollment_cache_provider.dart';
 import 'package:afc_mobile/student/infrastructure/data_sources/enrollment_remote_provider.dart';
 import 'package:afc_mobile/student/infrastructure/repositories/enrollment_repository.dart';
@@ -19,6 +21,7 @@ import 'package:afc_mobile/injection.dart';
 import 'package:afc_mobile/auth/infrastructure/data_sources/auth_local_provider.dart';
 import 'package:afc_mobile/auth/infrastructure/repository/auth_repository.dart';
 import 'package:afc_mobile/student/application/course_student/course_student_bloc.dart';
+import 'package:afc_mobile/teacher/application/course_teacher/course_teacher_bloc.dart';
 import 'package:afc_mobile/student/application/enroll_course/enroll_course_bloc.dart';
 import 'package:afc_mobile/auth/application/register/register_bloc.dart';
 import 'package:afc_mobile/auth/application/auth/auth_bloc.dart';
@@ -37,6 +40,11 @@ Future<void> $initGetIt(GetIt g, {String environment}) async {
   g.registerLazySingleton<CourseStudentRepository>(() =>
       CourseStudentRepository(
           courseStudentRemoteProvider: g<CourseStudentRemoteProvider>()));
+  g.registerLazySingleton<CourseTeacherRemoteProvider>(
+      () => CourseTeacherRemoteProvider(api: g<Api>()));
+  g.registerLazySingleton<CourseTeacherRepository>(() =>
+      CourseTeacherRepository(
+          courseTeacherRemoteProvider: g<CourseTeacherRemoteProvider>()));
   g.registerLazySingleton<EnrollmentCacheProvider>(
       () => EnrollmentCacheProvider());
   g.registerLazySingleton<EnrollmentRemoteProvider>(
@@ -59,6 +67,8 @@ Future<void> $initGetIt(GetIt g, {String environment}) async {
       authLocalProvider: g<AuthLocalProvider>()));
   g.registerLazySingleton<CourseStudentBloc>(() =>
       CourseStudentBloc(courseStudentRepository: g<CourseStudentRepository>()));
+  g.registerLazySingleton<CourseTeacherBloc>(() =>
+      CourseTeacherBloc(courseTeacherRepository: g<CourseTeacherRepository>()));
   g.registerLazySingleton<EnrollCourseBloc>(
       () => EnrollCourseBloc(enrollmentRepository: g<EnrollmentRepository>()));
   g.registerLazySingleton<RegisterBloc>(

@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'widgets/login_form.dart';
 import 'package:afc_mobile/auth/auth.dart';
 import 'package:afc_mobile/student/student.dart';
+import 'package:afc_mobile/teacher/teacher.dart';
 import 'package:afc_mobile/common/role/role.dart';
 
 class LoginPage extends StatefulWidget {
@@ -27,6 +28,10 @@ class _LoginPageState extends State<LoginPage> {
               if (user.role == Role.student) {
                 Navigator.of(context)
                     .pushReplacementNamed(StudentPage.routeName);
+                return;
+              } else {
+                Navigator.of(context)
+                    .pushReplacementNamed(TeacherPage.routeName);
               }
             },
           );

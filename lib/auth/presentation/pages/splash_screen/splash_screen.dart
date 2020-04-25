@@ -1,9 +1,11 @@
-import 'package:afc_mobile/auth/auth.dart';
-import 'package:afc_mobile/common/role/role.dart';
-import 'package:afc_mobile/student/student.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+
+import 'package:afc_mobile/auth/auth.dart';
+import 'package:afc_mobile/student/student.dart';
+import 'package:afc_mobile/teacher/teacher.dart';
+import 'package:afc_mobile/common/role/role.dart';
 
 class SplashScreen extends StatefulWidget {
   static const routeName = '/';
@@ -31,6 +33,9 @@ class _SplashScreenState extends State<SplashScreen> {
                 Navigator.of(context)
                     .pushReplacementNamed(StudentPage.routeName);
                 return;
+              } else {
+                Navigator.of(context)
+                    .pushReplacementNamed(TeacherPage.routeName);
               }
             },
           );
