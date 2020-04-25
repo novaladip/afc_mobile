@@ -5,4 +5,5 @@ abstract class CourseTeacherInterface {
   Future<List<Course>> fetchCourses();
   Future<Course> createCourse(CreateCourseDto dto);
   Future<CourseDetail> fetchCourse(String courseId);
+  Future<void> createSection(String courseId, int count);
 }

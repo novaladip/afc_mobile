@@ -26,4 +26,9 @@ class CourseTeacherRepository implements CourseTeacherInterface {
   Future<CourseDetail> fetchCourse(String courseId) {
     return courseTeacherRemoteProvider.fetchCourse(courseId);
   }
+
+  @override
+  Future<void> createSection(String courseId, int count) {
+    return courseTeacherRemoteProvider.createSection(courseId, count);
+  }
 }

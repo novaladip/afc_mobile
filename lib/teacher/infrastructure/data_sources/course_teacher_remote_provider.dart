@@ -35,6 +35,16 @@ class CourseTeacherRemoteProvider {
     }
   }
 
+  Future<void> createSection(String courseId, int count) async {
+    try {
+      final data = FormData.fromMap({'course_id': courseId, 'count': count});
+      await api.dio.post('/section', data: data);
+    } catch (e) {
+      print(e);
+      throw e;
+    }
+  }
+
   Future<Course> createCourse(CreateCourseDto dto) async {
     try {
       final data =

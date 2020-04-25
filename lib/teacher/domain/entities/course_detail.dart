@@ -40,6 +40,28 @@ class CourseDetail extends Equatable {
         teacher: User.fromJson(json['teacher']),
       );
 
+  CourseDetail copyWith({
+    String id,
+    String name,
+    String createdAt,
+    String closeDate,
+    String teacherId,
+    List<Section> sections,
+    List<User> students,
+    User teacher,
+  }) {
+    return CourseDetail(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      createdAt: createdAt ?? this.createdAt,
+      closeDate: closeDate ?? this.closeDate,
+      teacherId: teacherId ?? this.teacherId,
+      sections: sections ?? this.sections,
+      students: students ?? this.students,
+      teacher: teacher ?? this.teacher,
+    );
+  }
+
   @override
   List<Object> get props =>
       [id, name, createdAt, closeDate, teacherId, sections, students, teacher];

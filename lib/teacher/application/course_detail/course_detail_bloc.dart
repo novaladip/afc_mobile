@@ -12,10 +12,32 @@ part 'course_detail_bloc.freezed.dart';
 @lazySingleton
 class CourseDetailBloc extends Bloc<CourseDetailEvent, CourseDetailState> {
   final CourseTeacherRepository courseTeacherRepository;
+  final CreateSectionBloc createSectionBloc;
 
   CourseDetailBloc({
     @required this.courseTeacherRepository,
-  });
+    @required this.createSectionBloc,
+  }) {
+    createSectionBloc.listen(_createSectionListener);
+  }
+
+  _createSectionListener(CreateSectionState state) {
+    state.maybeWhen(
+      orElse: () {},
+      success: (count) {
+        final now = DateTime.now().toString();
+        add(
+          CourseDetailEvent.newSection(
+            Section(
+              count: count,
+              id: '',
+              date: now,
+            ),
+          ),
+        );
+      },
+    );
+  }
 
   @override
   CourseDetailState get initialState => CourseDetailState.loading();
@@ -36,15 +58,15 @@ class CourseDetailBloc extends Bloc<CourseDetailEvent, CourseDetailState> {
   }
 
   Stream<CourseDetailState> _mapNewSection(Section section) async* {
-    // yield* state.maybeWhen(
-    //   orElse: () async* {},
-    //   loaded: (course, status) async* {
-    //     final newSection = [...course.sections, section];
-    //     course.sections.removeRange(0, course.sections.length);
-    //     course.sections.addAll(newSection);
-    //     yield CourseDetailState.loaded(course: course, status: Status.idle());
-    //   },
-    // );
+    yield* state.maybeWhen(
+      orElse: () async* {},
+      loaded: (course, status) async* {
+        yield CourseDetailState.loaded(
+          course: course.copyWith(sections: [...course.sections, section]),
+          status: Status.idle(),
+        );
+      },
+    );
   }
 
   Stream<CourseDetailState> _mapFetch(String courseId) async* {

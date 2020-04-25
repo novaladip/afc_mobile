@@ -1,4 +1,7 @@
+import 'package:afc_mobile/common/models/models.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import 'section_card.dart';
 import 'package:afc_mobile/teacher/teacher.dart';
@@ -28,7 +31,7 @@ class SectionContainer extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              createSectionButton(),
+              CreateSectionButton(sectionLength: sections.length),
             ],
           ),
         ),
@@ -43,14 +46,79 @@ class SectionContainer extends StatelessWidget {
       ],
     );
   }
+}
 
-  Widget createSectionButton() {
-    return OutlineButton(
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(50))),
-      borderSide: BorderSide(color: Colors.purple, width: 2),
-      onPressed: () {},
-      child: Text('Create Section'),
+class CreateSectionButton extends StatelessWidget {
+  final int sectionLength;
+
+  const CreateSectionButton({
+    Key key,
+    this.sectionLength,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocConsumer<CreateSectionBloc, CreateSectionState>(
+      listener: (context, state) {
+        state.maybeWhen(
+          failure: () {
+            _showSnackbar(
+              context,
+              title: 'Failed to create section',
+              color: Colors.red,
+            );
+          },
+          success: (count) {
+            _showSnackbar(
+              context,
+              title: 'Section $count has been created',
+            );
+          },
+          orElse: () {},
+        );
+      },
+      builder: (context, state) {
+        const shape = RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(50)),
+        );
+        final isLoading = state.maybeWhen(
+          orElse: () => false,
+          loading: () => true,
+        );
+
+        return OutlineButton(
+          shape: shape,
+          borderSide: BorderSide(color: Colors.purple, width: 2),
+          onPressed: () => !isLoading ? onSubmit(context) : null,
+          child: isLoading
+              ? SpinKitDoubleBounce(color: Colors.blueAccent, size: 24)
+              : Text('Create Section'),
+        );
+      },
     );
+  }
+
+  void _showSnackbar(
+    BuildContext context, {
+    Color color = Colors.green,
+    @required String title,
+  }) {
+    Scaffold.of(context)
+      ..removeCurrentSnackBar()
+      ..showSnackBar(
+        SnackBar(
+          backgroundColor: color,
+          content: Text(title),
+        ),
+      );
+  }
+
+  void onSubmit(BuildContext context) {
+    context.bloc<CreateSectionBloc>().add(
+          CreateSectionButtonPressed(
+            count: sectionLength + 1,
+            courseId: (ModalRoute.of(context).settings.arguments as Course).id,
+          ),
+        );
   }
 }

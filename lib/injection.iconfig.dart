@@ -10,6 +10,7 @@ import 'package:afc_mobile/student/infrastructure/data_sources/course_student_re
 import 'package:afc_mobile/student/infrastructure/repositories/course_student_repository.dart';
 import 'package:afc_mobile/teacher/infrastructure/data_sources/course_teacher_remote_provider.dart';
 import 'package:afc_mobile/teacher/infrastructure/repositories/course_teacher_repository.dart';
+import 'package:afc_mobile/teacher/application/create_section/create_section_bloc.dart';
 import 'package:afc_mobile/student/infrastructure/data_sources/enrollment_cache_provider.dart';
 import 'package:afc_mobile/student/infrastructure/data_sources/enrollment_remote_provider.dart';
 import 'package:afc_mobile/student/infrastructure/repositories/enrollment_repository.dart';
@@ -47,6 +48,8 @@ Future<void> $initGetIt(GetIt g, {String environment}) async {
   g.registerLazySingleton<CourseTeacherRepository>(() =>
       CourseTeacherRepository(
           courseTeacherRemoteProvider: g<CourseTeacherRemoteProvider>()));
+  g.registerLazySingleton<CreateSectionBloc>(() =>
+      CreateSectionBloc(courseTeacherRepository: g<CourseTeacherRepository>()));
   g.registerLazySingleton<EnrollmentCacheProvider>(
       () => EnrollmentCacheProvider());
   g.registerLazySingleton<EnrollmentRemoteProvider>(
@@ -69,8 +72,9 @@ Future<void> $initGetIt(GetIt g, {String environment}) async {
   g.registerLazySingleton<AuthRepository>(() => AuthRepository(
       authRemoteProvider: g<AuthRemoteProvider>(),
       authLocalProvider: g<AuthLocalProvider>()));
-  g.registerLazySingleton<CourseDetailBloc>(() =>
-      CourseDetailBloc(courseTeacherRepository: g<CourseTeacherRepository>()));
+  g.registerLazySingleton<CourseDetailBloc>(() => CourseDetailBloc(
+      courseTeacherRepository: g<CourseTeacherRepository>(),
+      createSectionBloc: g<CreateSectionBloc>()));
   g.registerLazySingleton<CourseStudentBloc>(() =>
       CourseStudentBloc(courseStudentRepository: g<CourseStudentRepository>()));
   g.registerLazySingleton<CourseTeacherBloc>(() => CourseTeacherBloc(
