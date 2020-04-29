@@ -32,10 +32,11 @@ class SectionDetail extends Equatable {
       count: json['count'],
       courseId: json['course_id'],
       date: json['date'],
-      photo:
-          (json['photo'] as String).isEmpty ? "" : Env.baseURL + json['photo'],
+      photo: (json['photo'] as String).isEmpty
+          ? ""
+          : Env.baseURL + "/api/section/photo/" + json['photo'],
       photoResult: (json['photo_result'] as String).isNotEmpty
-          ? Env.baseURL + json['photo_result']
+          ? Env.baseURL + "/api/section/photo/" + json['photo_result']
           : '',
       attendances: (json['attendances'] as List)
           .map((a) => Attendance.fromJson(a))
