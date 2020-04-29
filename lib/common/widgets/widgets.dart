@@ -6,3 +6,4 @@ export 'text_input/text_input.dart';
 export 'theme_builder/theme_builder.dart';
 export 'error_screen/error_screen.dart';
 export 'empty_screen/empty_screen.dart';
+export 'text_input_photo/text_input_photo.dart';

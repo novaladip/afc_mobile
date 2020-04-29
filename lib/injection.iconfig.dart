@@ -28,6 +28,7 @@ import 'package:afc_mobile/teacher/application/course_detail/course_detail_bloc.
 import 'package:afc_mobile/student/application/course_student/course_student_bloc.dart';
 import 'package:afc_mobile/teacher/application/course_teacher/course_teacher_bloc.dart';
 import 'package:afc_mobile/student/application/enroll_course/enroll_course_bloc.dart';
+import 'package:afc_mobile/section/application/recognize_form/recognize_form_bloc.dart';
 import 'package:afc_mobile/auth/application/register/register_bloc.dart';
 import 'package:afc_mobile/section/application/section_detail/section_detail_bloc.dart';
 import 'package:afc_mobile/auth/application/auth/auth_bloc.dart';
@@ -89,10 +90,13 @@ Future<void> $initGetIt(GetIt g, {String environment}) async {
       addCourseBloc: g<AddCourseBloc>()));
   g.registerLazySingleton<EnrollCourseBloc>(
       () => EnrollCourseBloc(enrollmentRepository: g<EnrollmentRepository>()));
+  g.registerLazySingleton<RecognizeFormBloc>(
+      () => RecognizeFormBloc(sectionRepository: g<SectionRepository>()));
   g.registerLazySingleton<RegisterBloc>(
       () => RegisterBloc(g<AuthRepository>()));
-  g.registerLazySingleton<SectionDetailBloc>(
-      () => SectionDetailBloc(sectionRepository: g<SectionRepository>()));
+  g.registerLazySingleton<SectionDetailBloc>(() => SectionDetailBloc(
+      sectionRepository: g<SectionRepository>(),
+      recognizeFormBloc: g<RecognizeFormBloc>()));
   g.registerLazySingleton<AuthBloc>(() => AuthBloc(g<AuthRepository>()));
   g.registerLazySingleton<EnrollmentBloc>(() => EnrollmentBloc(
         authBloc: g<AuthBloc>(),

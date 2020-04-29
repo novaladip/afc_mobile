@@ -13,10 +13,21 @@ part 'section_detail_bloc.freezed.dart';
 @lazySingleton
 class SectionDetailBloc extends Bloc<SectionDetailEvent, SectionDetailState> {
   final SectionRepository sectionRepository;
+  final RecognizeFormBloc recognizeFormBloc;
 
   SectionDetailBloc({
     @required this.sectionRepository,
-  });
+    @required this.recognizeFormBloc,
+  }) {
+    recognizeFormBloc.listen(_recognizeFormListener);
+  }
+
+  _recognizeFormListener(RecognizeFormState formState) {
+    formState.status.maybeWhen(
+      orElse: () {},
+      success: (s) => add(SectionDetailEvent.refresh()),
+    );
+  }
 
   @override
   SectionDetailState get initialState => SectionDetailState.loading();
@@ -36,8 +47,8 @@ class SectionDetailBloc extends Bloc<SectionDetailEvent, SectionDetailState> {
   }
 
   Stream<SectionDetailState> _mapRefresh() async* {
-    state.maybeWhen(
-      orElse: () {},
+    yield* state.maybeWhen(
+      orElse: () async* {},
       loaded: (section, status) async* {
         SectionDetail newSection;
         try {
@@ -58,7 +69,7 @@ class SectionDetailBloc extends Bloc<SectionDetailEvent, SectionDetailState> {
           );
         } finally {
           yield SectionDetailState.loaded(
-            section: newSection == null ? section : newSection,
+            section: newSection ?? section,
             status: StatusState.idle(),
           );
         }

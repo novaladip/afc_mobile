@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:meta/meta.dart';
 import 'package:injectable/injectable.dart';
 
@@ -17,6 +18,26 @@ class SectionRemoteProvider {
       final res = await api.dio.get('/section/$sectionId');
       final section = SectionDetail.fromJson(res.data);
       return section;
+    } catch (e) {
+      throw e;
+    }
+  }
+
+  Future<RecognizeResult> recognizeStudent(
+      String sectionId, String photoPath) async {
+    try {
+      final data = FormData.fromMap({
+        'photo': MultipartFile.fromFileSync(
+          photoPath,
+          filename: photoPath.split('.').last,
+        ),
+      });
+      final res = await api.dio.post(
+        '/section/$sectionId/recognize/student',
+        data: data,
+      );
+      final result = RecognizeResult.fromJson(res.data);
+      return result;
     } catch (e) {
       throw e;
     }

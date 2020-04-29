@@ -18,6 +18,7 @@ class _SectionDetailPageState extends State<SectionDetailPage>
     with SingleTickerProviderStateMixin {
   bool initial = true;
   TabController _controller;
+  RecognizeFormBloc _recognizeFormBloc;
 
   @override
   Widget build(BuildContext context) {
@@ -90,6 +91,7 @@ class _SectionDetailPageState extends State<SectionDetailPage>
   @override
   void initState() {
     _controller = TabController(length: 2, vsync: this);
+    _recognizeFormBloc = context.bloc<RecognizeFormBloc>();
     super.initState();
   }
 
@@ -99,5 +101,12 @@ class _SectionDetailPageState extends State<SectionDetailPage>
       fetchSectionDetail();
     }
     super.didChangeDependencies();
+  }
+
+  @override
+  void dispose() {
+    _recognizeFormBloc.add(RecognizeFormEvent.clear());
+
+    super.dispose();
   }
 }

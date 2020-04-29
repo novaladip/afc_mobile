@@ -13,4 +13,9 @@ class SectionRepository implements SectionInterface {
   Future<SectionDetail> fetchSectionDetail(String sectionId) {
     return sectionRemoteProvider.fetchSectionDetail(sectionId);
   }
+
+  @override
+  Future<RecognizeResult> recognizeStudent(String sectionId, String photoPath) {
+    return sectionRemoteProvider.recognizeStudent(sectionId, photoPath);
+  }
 }
