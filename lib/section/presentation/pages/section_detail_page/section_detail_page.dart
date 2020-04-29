@@ -19,6 +19,7 @@ class _SectionDetailPageState extends State<SectionDetailPage>
   bool initial = true;
   TabController _controller;
   RecognizeFormBloc _recognizeFormBloc;
+  AttendancesFormBloc _attendancesFormBloc;
 
   @override
   Widget build(BuildContext context) {
@@ -92,6 +93,7 @@ class _SectionDetailPageState extends State<SectionDetailPage>
   void initState() {
     _controller = TabController(length: 2, vsync: this);
     _recognizeFormBloc = context.bloc<RecognizeFormBloc>();
+    _attendancesFormBloc = context.bloc<AttendancesFormBloc>();
     super.initState();
   }
 
@@ -106,7 +108,7 @@ class _SectionDetailPageState extends State<SectionDetailPage>
   @override
   void dispose() {
     _recognizeFormBloc.add(RecognizeFormEvent.clear());
-
+    _attendancesFormBloc.add(AttendancesFormEvent.onClear());
     super.dispose();
   }
 }

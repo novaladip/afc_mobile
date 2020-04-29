@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -34,19 +33,14 @@ class SectionResult extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  CachedNetworkImage(
-                    imageUrl: section.photoResult,
-                    height: 175,
-                    width: double.infinity,
-                    fit: BoxFit.fitWidth,
-                  ),
+                  ZoomableImage(url: section.photoResult),
                   Padding(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 15,
                       vertical: 10,
                     ),
                     child: Text(
-                      'Section List',
+                      'Student List',
                       style: Theme.of(context)
                           .textTheme
                           .display1

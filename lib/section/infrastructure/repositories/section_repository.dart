@@ -18,4 +18,9 @@ class SectionRepository implements SectionInterface {
   Future<RecognizeResult> recognizeStudent(String sectionId, String photoPath) {
     return sectionRemoteProvider.recognizeStudent(sectionId, photoPath);
   }
+
+  @override
+  Future<void> bulkUpdateAttendances(List<AttendanceFormDto> attendances) {
+    return sectionRemoteProvider.bulkUpdateAttendances(attendances);
+  }
 }

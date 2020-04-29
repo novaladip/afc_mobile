@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 
 import 'package:afc_mobile/section/section.dart';
 import 'package:afc_mobile/teacher/teacher.dart';
@@ -13,7 +12,9 @@ class RecognizeForm extends StatefulWidget {
 }
 
 class _RecognizeFormState extends State<RecognizeForm> {
-  bool isSuccess = false;
+  // set isSuccess default to true
+  // when the state is change to success, it will change to false on the listener.
+  bool isSuccess = true;
 
   @override
   Widget build(BuildContext context) {
@@ -46,13 +47,7 @@ class _RecognizeFormState extends State<RecognizeForm> {
         return Column(
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
-            if (state.result != null)
-              CachedNetworkImage(
-                imageUrl: state.result.photo,
-                height: 175,
-                width: double.infinity,
-                fit: BoxFit.fitWidth,
-              ),
+            if (state.result != null) ZoomableImage(url: state.result.photo),
             BaseContainer(
               child: Column(
                 children: <Widget>[

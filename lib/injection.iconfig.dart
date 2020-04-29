@@ -30,11 +30,12 @@ import 'package:afc_mobile/teacher/application/course_teacher/course_teacher_blo
 import 'package:afc_mobile/student/application/enroll_course/enroll_course_bloc.dart';
 import 'package:afc_mobile/section/application/recognize_form/recognize_form_bloc.dart';
 import 'package:afc_mobile/auth/application/register/register_bloc.dart';
-import 'package:afc_mobile/section/application/section_detail/section_detail_bloc.dart';
+import 'package:afc_mobile/section/application/attendances_form/attendances_form_bloc.dart';
 import 'package:afc_mobile/auth/application/auth/auth_bloc.dart';
 import 'package:afc_mobile/student/application/enrollment/enrollment_bloc.dart';
 import 'package:afc_mobile/auth/application/login/login_bloc.dart';
 import 'package:afc_mobile/profile/application/profile/profile_bloc.dart';
+import 'package:afc_mobile/section/application/section_detail/section_detail_bloc.dart';
 import 'package:get_it/get_it.dart';
 
 Future<void> $initGetIt(GetIt g, {String environment}) async {
@@ -94,9 +95,8 @@ Future<void> $initGetIt(GetIt g, {String environment}) async {
       () => RecognizeFormBloc(sectionRepository: g<SectionRepository>()));
   g.registerLazySingleton<RegisterBloc>(
       () => RegisterBloc(g<AuthRepository>()));
-  g.registerLazySingleton<SectionDetailBloc>(() => SectionDetailBloc(
-      sectionRepository: g<SectionRepository>(),
-      recognizeFormBloc: g<RecognizeFormBloc>()));
+  g.registerLazySingleton<AttendancesFormBloc>(() =>
+      AttendancesFormBloc(g<SectionRepository>(), g<RecognizeFormBloc>()));
   g.registerLazySingleton<AuthBloc>(() => AuthBloc(g<AuthRepository>()));
   g.registerLazySingleton<EnrollmentBloc>(() => EnrollmentBloc(
         authBloc: g<AuthBloc>(),
@@ -107,6 +107,11 @@ Future<void> $initGetIt(GetIt g, {String environment}) async {
       LoginBloc(authBloc: g<AuthBloc>(), authRepository: g<AuthRepository>()));
   g.registerLazySingleton<ProfileBloc>(() => ProfileBloc(
       profileRepository: g<ProfileRepository>(), authBloc: g<AuthBloc>()));
+  g.registerLazySingleton<SectionDetailBloc>(() => SectionDetailBloc(
+        sectionRepository: g<SectionRepository>(),
+        recognizeFormBloc: g<RecognizeFormBloc>(),
+        attendancesFormBloc: g<AttendancesFormBloc>(),
+      ));
 }
 
 class _$RegisterModule extends RegisterModule {}

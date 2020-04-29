@@ -14,18 +14,28 @@ part 'section_detail_bloc.freezed.dart';
 class SectionDetailBloc extends Bloc<SectionDetailEvent, SectionDetailState> {
   final SectionRepository sectionRepository;
   final RecognizeFormBloc recognizeFormBloc;
+  final AttendancesFormBloc attendancesFormBloc;
 
   SectionDetailBloc({
     @required this.sectionRepository,
     @required this.recognizeFormBloc,
+    @required this.attendancesFormBloc,
   }) {
     recognizeFormBloc.listen(_recognizeFormListener);
+    attendancesFormBloc.listen(_attendanceFormListener);
   }
 
   _recognizeFormListener(RecognizeFormState formState) {
     formState.status.maybeWhen(
       orElse: () {},
       success: (s) => add(SectionDetailEvent.refresh()),
+    );
+  }
+
+  _attendanceFormListener(AttendancesFormState attendancesFormState) {
+    attendancesFormState.status.maybeWhen(
+      orElse: () {},
+      success: () => add(SectionDetailEvent.refresh()),
     );
   }
 
@@ -81,6 +91,8 @@ class SectionDetailBloc extends Bloc<SectionDetailEvent, SectionDetailState> {
     try {
       yield SectionDetailState.loading();
       final section = await sectionRepository.fetchSectionDetail(sectionId);
+      attendancesFormBloc
+          .add(AttendancesFormEvent.populateFromSectionDetail(section));
       yield SectionDetailState.loaded(
         section: section,
         status: StatusState.idle(),

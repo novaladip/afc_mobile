@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'recognize_form.dart';
+import 'attedances_form.dart';
 
 class SectionUpdate extends StatefulWidget {
   @override
@@ -10,11 +11,14 @@ class SectionUpdate extends StatefulWidget {
 class _SectionUpdateState extends State<SectionUpdate> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.max,
-      children: <Widget>[
-        RecognizeForm(),
-      ],
+    return SingleChildScrollView(
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        children: <Widget>[
+          RecognizeForm(),
+          AttendancesForm(),
+        ],
+      ),
     );
   }
 }

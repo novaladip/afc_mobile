@@ -8,5 +8,8 @@ final List<BlocProvider> sectionBlocProvider = [
   ),
   BlocProvider<RecognizeFormBloc>(
     create: (_) => getIt(),
-  )
+  ),
+  BlocProvider<AttendancesFormBloc>(
+    create: (_) => getIt(),
+  ),
 ];

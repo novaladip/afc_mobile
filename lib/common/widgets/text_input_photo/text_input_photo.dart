@@ -45,7 +45,9 @@ class TextInputPhoto extends StatelessWidget {
           children: <Widget>[
             leading,
             SizedBox(width: 5),
-            Text(label),
+            Flexible(
+              child: Text(label, overflow: TextOverflow.fade),
+            ),
           ],
         ),
       ),

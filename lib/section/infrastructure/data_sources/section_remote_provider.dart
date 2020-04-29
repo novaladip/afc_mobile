@@ -42,4 +42,16 @@ class SectionRemoteProvider {
       throw e;
     }
   }
+
+  Future<void> bulkUpdateAttendances(
+    List<AttendanceFormDto> attendances,
+  ) async {
+    try {
+      final data = attendances.map((a) => a.toMap).toList();
+      await api.dio.put('/attendance/update/bulk', data: {'attendances': data});
+    } catch (e) {
+      print(e);
+      throw e;
+    }
+  }
 }

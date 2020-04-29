@@ -31,7 +31,7 @@ class AttendanceCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 4),
-      padding: EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+      padding: EdgeInsets.symmetric(vertical: 4, horizontal: 15),
       child: Row(
         children: <Widget>[
           CircleAvatar(
@@ -50,7 +50,7 @@ class AttendanceCard extends StatelessWidget {
           ),
           Spacer(),
           Text(
-            attendance.status.isEmpty ? "Tidak Hadir" : attendance.status,
+            status,
             style: TextStyle(
               color: statusColor,
               fontWeight: FontWeight.w600,
