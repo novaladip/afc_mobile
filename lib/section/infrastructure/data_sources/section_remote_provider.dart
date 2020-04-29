@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import 'package:injectable/injectable.dart';
 
 import 'package:afc_mobile/common/api/api.dart';
-import 'package:afc_mobile/teacher/teacher.dart';
+import 'package:afc_mobile/section/section.dart';
 
 @injectable
 class SectionRemoteProvider {

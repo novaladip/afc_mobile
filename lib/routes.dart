@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
-import 'package:afc_mobile/auth/auth.dart';
-import 'package:afc_mobile/student/student.dart';
-import 'package:afc_mobile/teacher/teacher.dart';
+import 'auth/auth.dart';
+import 'student/student.dart';
+import 'teacher/teacher.dart';
+import 'section/section.dart';
 
 Map<String, Widget Function(BuildContext)> buildRoutes() {
   return {
     ...authRoute,
     ...studentRoute,
     ...teacherRoute,
+    ...sectionRoute,
   };
 }

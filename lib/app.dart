@@ -7,6 +7,7 @@ import 'auth/auth.dart';
 import 'teacher/teacher.dart';
 import 'profile/profile.dart';
 import 'student/student.dart';
+import 'section/section.dart';
 
 class App extends StatelessWidget {
   @override
@@ -17,6 +18,7 @@ class App extends StatelessWidget {
         ...studentBlocProvider,
         ...profileBlocProvider,
         ...teacherBlocProvider,
+        ...sectionBlocProvider,
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

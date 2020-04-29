@@ -3,7 +3,7 @@ import 'package:bloc/bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'package:afc_mobile/teacher/teacher.dart';
+import 'package:afc_mobile/section/section.dart';
 import 'package:afc_mobile/common/utils/utils.dart';
 
 part 'section_detail_event.dart';
@@ -12,10 +12,10 @@ part 'section_detail_bloc.freezed.dart';
 
 @lazySingleton
 class SectionDetailBloc extends Bloc<SectionDetailEvent, SectionDetailState> {
-  final CourseTeacherRepository courseTeacherRepository;
+  final SectionRepository sectionRepository;
 
   SectionDetailBloc({
-    @required this.courseTeacherRepository,
+    @required this.sectionRepository,
   });
 
   @override
@@ -46,8 +46,7 @@ class SectionDetailBloc extends Bloc<SectionDetailEvent, SectionDetailState> {
             status: StatusState.refresh(),
           );
 
-          newSection =
-              await courseTeacherRepository.fetchSectionDetail(section.id);
+          newSection = await sectionRepository.fetchSectionDetail(section.id);
           yield SectionDetailState.loaded(
             section: newSection,
             status: StatusState.idle(),
@@ -70,8 +69,7 @@ class SectionDetailBloc extends Bloc<SectionDetailEvent, SectionDetailState> {
   Stream<SectionDetailState> _mapFetch(String sectionId) async* {
     try {
       yield SectionDetailState.loading();
-      final section =
-          await courseTeacherRepository.fetchSectionDetail(sectionId);
+      final section = await sectionRepository.fetchSectionDetail(sectionId);
       yield SectionDetailState.loaded(
         section: section,
         status: StatusState.idle(),

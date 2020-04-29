@@ -4,6 +4,7 @@ import 'package:loading_overlay/loading_overlay.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'widgets/widgets.dart';
+import 'package:afc_mobile/section/section.dart';
 import 'package:afc_mobile/teacher/teacher.dart';
 
 class SectionDetailPage extends StatefulWidget {

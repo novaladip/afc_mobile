@@ -1,9 +1,9 @@
 import 'package:meta/meta.dart';
 import 'package:equatable/equatable.dart';
-
-import 'package:afc_mobile/config/config.dart';
-import 'package:afc_mobile/teacher/teacher.dart';
 import 'package:afc_mobile/common/models/models.dart';
+import 'package:afc_mobile/config/env.dart';
+
+import 'attendance.dart';
 
 class SectionDetail extends Equatable {
   final String id;

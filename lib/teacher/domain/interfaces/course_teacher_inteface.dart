@@ -6,5 +6,4 @@ abstract class CourseTeacherInterface {
   Future<Course> createCourse(CreateCourseDto dto);
   Future<CourseDetail> fetchCourse(String courseId);
   Future<void> createSection(String courseId, int count);
-  Future<SectionDetail> fetchSectionDetail(String sectionId);
 }

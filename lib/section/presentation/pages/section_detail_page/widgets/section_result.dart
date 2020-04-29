@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:afc_mobile/teacher/teacher.dart';
+import 'package:afc_mobile/section/section.dart';
 import 'package:afc_mobile/common/widgets/widgets.dart';
 
 class SectionResult extends StatelessWidget {
