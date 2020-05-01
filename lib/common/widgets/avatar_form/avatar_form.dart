@@ -35,7 +35,7 @@ class AvatarForm extends StatelessWidget {
   void _showDialog(BuildContext context) {
     showDialog(
       context: context,
-      child: CupertinoAlertDialog(
+      child: AlertDialog(
         title: Text('Choose Image'),
         content: Text('From camera or gallery?'),
         actions: <Widget>[

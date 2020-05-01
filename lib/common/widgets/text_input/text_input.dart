@@ -20,6 +20,7 @@ class TextInput extends StatelessWidget {
   final Color labelColor;
   final String initialValue;
   final Function(String) onChanged;
+  final double borderRadius;
 
   const TextInput({
     Key key,
@@ -31,7 +32,7 @@ class TextInput extends StatelessWidget {
     this.textInputAction = TextInputAction.unspecified,
     this.onFieldSubmitted,
     this.controller,
-    this.marginVertical = 15,
+    this.marginVertical = 8,
     this.obscureText = false,
     this.onSaved,
     this.errorText,
@@ -42,6 +43,7 @@ class TextInput extends StatelessWidget {
     this.labelColor = Colors.grey,
     this.initialValue,
     this.onChanged,
+    this.borderRadius = 10,
   }) : super(key: key);
 
   @override
@@ -65,24 +67,24 @@ class TextInput extends StatelessWidget {
         onChanged: onChanged,
         onFieldSubmitted: (_) => onFieldSubmitted(),
         decoration: InputDecoration(
-          contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+          contentPadding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
           labelStyle: TextStyle(color: labelColor),
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(
               color: _color,
               width: 1,
             ),
-            borderRadius: BorderRadius.all(Radius.circular(15)),
+            borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
           ),
           focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(
               color: _color,
               width: 2,
             ),
-            borderRadius: BorderRadius.all(Radius.circular(15)),
+            borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
           ),
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(15)),
+            borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
           ),
           filled: true,
           labelText: labelText,

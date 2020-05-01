@@ -1,20 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:afc_mobile/bloc_provider.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:afc_mobile/config/config.dart';
+import 'routes.dart';
+import 'config/config.dart';
+import 'auth/auth.dart';
+import 'teacher/teacher.dart';
+import 'profile/profile.dart';
+import 'student/student.dart';
+import 'section/section.dart';
 
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: blocProvider,
+      providers: [
+        ...authBlocProvider,
+        ...studentBlocProvider,
+        ...profileBlocProvider,
+        ...teacherBlocProvider,
+        ...sectionBlocProvider,
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'AFC',
-        theme: Style.lightTheme,
-        routes: buildRoutes(),
+        theme: Styles.lightTheme,
         initialRoute: "/",
+        routes: buildRoutes(),
       ),
     );
   }
