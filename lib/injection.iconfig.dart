@@ -27,6 +27,7 @@ import 'package:afc_mobile/auth/infrastructure/repository/auth_repository.dart';
 import 'package:afc_mobile/teacher/application/course_detail/course_detail_bloc.dart';
 import 'package:afc_mobile/student/application/course_student/course_student_bloc.dart';
 import 'package:afc_mobile/teacher/application/course_teacher/course_teacher_bloc.dart';
+import 'package:afc_mobile/profile/application/edit_profile/edit_profile_bloc.dart';
 import 'package:afc_mobile/student/application/enroll_course/enroll_course_bloc.dart';
 import 'package:afc_mobile/section/application/recognize_form/recognize_form_bloc.dart';
 import 'package:afc_mobile/auth/application/register/register_bloc.dart';
@@ -89,6 +90,8 @@ Future<void> $initGetIt(GetIt g, {String environment}) async {
   g.registerLazySingleton<CourseTeacherBloc>(() => CourseTeacherBloc(
       courseTeacherRepository: g<CourseTeacherRepository>(),
       addCourseBloc: g<AddCourseBloc>()));
+  g.registerLazySingleton<EditProfileBloc>(
+      () => EditProfileBloc(profileRepository: g<ProfileRepository>()));
   g.registerLazySingleton<EnrollCourseBloc>(
       () => EnrollCourseBloc(enrollmentRepository: g<EnrollmentRepository>()));
   g.registerLazySingleton<RecognizeFormBloc>(
@@ -106,7 +109,10 @@ Future<void> $initGetIt(GetIt g, {String environment}) async {
   g.registerLazySingleton<LoginBloc>(() =>
       LoginBloc(authBloc: g<AuthBloc>(), authRepository: g<AuthRepository>()));
   g.registerLazySingleton<ProfileBloc>(() => ProfileBloc(
-      profileRepository: g<ProfileRepository>(), authBloc: g<AuthBloc>()));
+        profileRepository: g<ProfileRepository>(),
+        authBloc: g<AuthBloc>(),
+        editProfileBloc: g<EditProfileBloc>(),
+      ));
   g.registerLazySingleton<SectionDetailBloc>(() => SectionDetailBloc(
         sectionRepository: g<SectionRepository>(),
         recognizeFormBloc: g<RecognizeFormBloc>(),

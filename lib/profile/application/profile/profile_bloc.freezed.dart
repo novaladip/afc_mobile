@@ -12,6 +12,10 @@ T _$identity<T>(T value) => value;
 class _$ProfileEventTearOff {
   const _$ProfileEventTearOff();
 
+  _Refresh refresh() {
+    return const _Refresh();
+  }
+
   _Fetch fetch() {
     return const _Fetch();
   }
@@ -31,12 +35,14 @@ const $ProfileEvent = _$ProfileEventTearOff();
 mixin _$ProfileEvent {
   @optionalTypeArgs
   Result when<Result extends Object>({
+    @required Result refresh(),
     @required Result fetch(),
     @required Result updated(),
     @required Result onLoggedOut(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
+    Result refresh(),
     Result fetch(),
     Result updated(),
     Result onLoggedOut(),
@@ -44,12 +50,14 @@ mixin _$ProfileEvent {
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
+    @required Result refresh(_Refresh value),
     @required Result fetch(_Fetch value),
     @required Result updated(_Updated value),
     @required Result onLoggedOut(_OnLoggedOut value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
+    Result refresh(_Refresh value),
     Result fetch(_Fetch value),
     Result updated(_Updated value),
     Result onLoggedOut(_OnLoggedOut value),
@@ -69,6 +77,103 @@ class _$ProfileEventCopyWithImpl<$Res> implements $ProfileEventCopyWith<$Res> {
   final ProfileEvent _value;
   // ignore: unused_field
   final $Res Function(ProfileEvent) _then;
+}
+
+abstract class _$RefreshCopyWith<$Res> {
+  factory _$RefreshCopyWith(_Refresh value, $Res Function(_Refresh) then) =
+      __$RefreshCopyWithImpl<$Res>;
+}
+
+class __$RefreshCopyWithImpl<$Res> extends _$ProfileEventCopyWithImpl<$Res>
+    implements _$RefreshCopyWith<$Res> {
+  __$RefreshCopyWithImpl(_Refresh _value, $Res Function(_Refresh) _then)
+      : super(_value, (v) => _then(v as _Refresh));
+
+  @override
+  _Refresh get _value => super._value as _Refresh;
+}
+
+class _$_Refresh implements _Refresh {
+  const _$_Refresh();
+
+  @override
+  String toString() {
+    return 'ProfileEvent.refresh()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _Refresh);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result refresh(),
+    @required Result fetch(),
+    @required Result updated(),
+    @required Result onLoggedOut(),
+  }) {
+    assert(refresh != null);
+    assert(fetch != null);
+    assert(updated != null);
+    assert(onLoggedOut != null);
+    return refresh();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result refresh(),
+    Result fetch(),
+    Result updated(),
+    Result onLoggedOut(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (refresh != null) {
+      return refresh();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result refresh(_Refresh value),
+    @required Result fetch(_Fetch value),
+    @required Result updated(_Updated value),
+    @required Result onLoggedOut(_OnLoggedOut value),
+  }) {
+    assert(refresh != null);
+    assert(fetch != null);
+    assert(updated != null);
+    assert(onLoggedOut != null);
+    return refresh(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result refresh(_Refresh value),
+    Result fetch(_Fetch value),
+    Result updated(_Updated value),
+    Result onLoggedOut(_OnLoggedOut value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (refresh != null) {
+      return refresh(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Refresh implements ProfileEvent {
+  const factory _Refresh() = _$_Refresh;
 }
 
 abstract class _$FetchCopyWith<$Res> {
@@ -104,10 +209,12 @@ class _$_Fetch implements _Fetch {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
+    @required Result refresh(),
     @required Result fetch(),
     @required Result updated(),
     @required Result onLoggedOut(),
   }) {
+    assert(refresh != null);
     assert(fetch != null);
     assert(updated != null);
     assert(onLoggedOut != null);
@@ -117,6 +224,7 @@ class _$_Fetch implements _Fetch {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
+    Result refresh(),
     Result fetch(),
     Result updated(),
     Result onLoggedOut(),
@@ -132,10 +240,12 @@ class _$_Fetch implements _Fetch {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
+    @required Result refresh(_Refresh value),
     @required Result fetch(_Fetch value),
     @required Result updated(_Updated value),
     @required Result onLoggedOut(_OnLoggedOut value),
   }) {
+    assert(refresh != null);
     assert(fetch != null);
     assert(updated != null);
     assert(onLoggedOut != null);
@@ -145,6 +255,7 @@ class _$_Fetch implements _Fetch {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
+    Result refresh(_Refresh value),
     Result fetch(_Fetch value),
     Result updated(_Updated value),
     Result onLoggedOut(_OnLoggedOut value),
@@ -195,10 +306,12 @@ class _$_Updated implements _Updated {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
+    @required Result refresh(),
     @required Result fetch(),
     @required Result updated(),
     @required Result onLoggedOut(),
   }) {
+    assert(refresh != null);
     assert(fetch != null);
     assert(updated != null);
     assert(onLoggedOut != null);
@@ -208,6 +321,7 @@ class _$_Updated implements _Updated {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
+    Result refresh(),
     Result fetch(),
     Result updated(),
     Result onLoggedOut(),
@@ -223,10 +337,12 @@ class _$_Updated implements _Updated {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
+    @required Result refresh(_Refresh value),
     @required Result fetch(_Fetch value),
     @required Result updated(_Updated value),
     @required Result onLoggedOut(_OnLoggedOut value),
   }) {
+    assert(refresh != null);
     assert(fetch != null);
     assert(updated != null);
     assert(onLoggedOut != null);
@@ -236,6 +352,7 @@ class _$_Updated implements _Updated {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
+    Result refresh(_Refresh value),
     Result fetch(_Fetch value),
     Result updated(_Updated value),
     Result onLoggedOut(_OnLoggedOut value),
@@ -288,10 +405,12 @@ class _$_OnLoggedOut implements _OnLoggedOut {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
+    @required Result refresh(),
     @required Result fetch(),
     @required Result updated(),
     @required Result onLoggedOut(),
   }) {
+    assert(refresh != null);
     assert(fetch != null);
     assert(updated != null);
     assert(onLoggedOut != null);
@@ -301,6 +420,7 @@ class _$_OnLoggedOut implements _OnLoggedOut {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
+    Result refresh(),
     Result fetch(),
     Result updated(),
     Result onLoggedOut(),
@@ -316,10 +436,12 @@ class _$_OnLoggedOut implements _OnLoggedOut {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
+    @required Result refresh(_Refresh value),
     @required Result fetch(_Fetch value),
     @required Result updated(_Updated value),
     @required Result onLoggedOut(_OnLoggedOut value),
   }) {
+    assert(refresh != null);
     assert(fetch != null);
     assert(updated != null);
     assert(onLoggedOut != null);
@@ -329,6 +451,7 @@ class _$_OnLoggedOut implements _OnLoggedOut {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
+    Result refresh(_Refresh value),
     Result fetch(_Fetch value),
     Result updated(_Updated value),
     Result onLoggedOut(_OnLoggedOut value),

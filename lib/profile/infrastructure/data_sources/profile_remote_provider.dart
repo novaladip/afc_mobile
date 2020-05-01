@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:meta/meta.dart';
 import 'package:injectable/injectable.dart';
 
@@ -17,6 +18,18 @@ class ProfileRemoteProvider {
       final res = await api.dio.get('/user/profile');
       final profile = User.fromJson(res.data);
       return profile;
+    } catch (e) {
+      throw e;
+    }
+  }
+
+  Future<void> updateProfile(String avatarPath) async {
+    try {
+      final data = FormData.fromMap({
+        'avatar': MultipartFile.fromFileSync(avatarPath,
+            filename: avatarPath.split('/').last)
+      });
+      await api.dio.put('/user/profile', data: data);
     } catch (e) {
       throw e;
     }

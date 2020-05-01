@@ -15,18 +15,29 @@ part 'profile_bloc.freezed.dart';
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   final AuthBloc authBloc;
   final ProfileRepository profileRepository;
+  final EditProfileBloc editProfileBloc;
 
   ProfileBloc({
     @required this.profileRepository,
     @required this.authBloc,
+    @required this.editProfileBloc,
   }) {
-    authBloc.listen((_authStateListener));
+    authBloc.listen(_authStateListener);
+    editProfileBloc.listen(_editProfileStateListener);
   }
 
   void _authStateListener(AuthState authState) {
     authState.maybeWhen(
       orElse: () => null,
       unauthentication: () => add(ProfileEvent.onLoggedOut()),
+    );
+  }
+
+  void _editProfileStateListener(EditProfileState editProfileState) {
+    print(editProfileState.avatarPath);
+    editProfileState.status.maybeWhen(
+      orElse: () => null,
+      success: () => add(ProfileEvent.refresh()),
     );
   }
 
@@ -38,6 +49,9 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     ProfileEvent event,
   ) async* {
     yield* event.when(
+        refresh: () async* {
+          yield* _mapRefresh();
+        },
         fetch: () async* {
           yield* _mapFetch();
         },
@@ -45,6 +59,20 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
         onLoggedOut: () async* {
           yield* _onLoggedOut();
         });
+  }
+
+  Stream<ProfileState> _mapRefresh() async* {
+    yield* state.maybeWhen(
+      orElse: () async* {},
+      loaded: (profile) async* {
+        try {
+          final newProfile = await profileRepository.refreshProfile();
+          yield ProfileState.loaded(newProfile);
+        } catch (e) {
+          yield ProfileState.loaded(profile);
+        }
+      },
+    );
   }
 
   Stream<ProfileState> _mapFetch() async* {

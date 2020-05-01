@@ -58,7 +58,6 @@ class TextInputPhoto extends StatelessWidget {
     final image = await ImagePicker.pickImage(
       preferredCameraDevice: CameraDevice.rear,
       source: useCamera ? ImageSource.camera : ImageSource.gallery,
-      imageQuality: 90,
     );
     if (image == null) {
       return;

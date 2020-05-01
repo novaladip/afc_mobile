@@ -28,7 +28,20 @@ class ProfileRepository implements ProfileInterface {
     return profile;
   }
 
+  @override
   Future<void> destroyCache() {
     return profileCacheProvider.drop();
+  }
+
+  @override
+  Future<User> refreshProfile() async {
+    final profile = await profileRemoteProvider.fetchProfile();
+    profileCacheProvider.cache(profile);
+    return profile;
+  }
+
+  @override
+  Future<void> updateProfile(String avatarPath) {
+    return profileRemoteProvider.updateProfile(avatarPath);
   }
 }

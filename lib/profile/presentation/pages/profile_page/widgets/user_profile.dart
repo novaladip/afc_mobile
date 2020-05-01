@@ -7,6 +7,7 @@ import 'profile_item.dart';
 import 'setting_item.dart';
 import 'package:afc_mobile/auth/auth.dart';
 import 'package:afc_mobile/common/models/models.dart';
+import 'package:afc_mobile/profile/profile.dart';
 
 class UserProfile extends StatelessWidget {
   final User profile;
@@ -50,9 +51,10 @@ class UserProfile extends StatelessWidget {
           SizedBox(height: 10),
           Divider(),
           SettingItem(
-            text: 'Change Avatar',
-            icon: Icons.photo_camera,
-            onPress: () {},
+            text: 'Change Profile',
+            icon: Icons.account_circle,
+            onPress: () =>
+                Navigator.of(context).pushNamed(EditProfilePage.routeName),
           ),
           SettingItem(
             text: 'Change Password',
