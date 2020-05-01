@@ -22,7 +22,15 @@ class _ProfilePageState extends State<ProfilePage> {
           return state.when(
             loading: () => LoadingIndicator(),
             failure: () => ErrorScreen(onRetry: fetchProfile),
-            loaded: (profile) => UserProfile(profile: profile),
+            loaded: (profile) => RefreshIndicator(
+              onRefresh: () async {
+                context.bloc<ProfileBloc>().add(ProfileEvent.refresh());
+              },
+              child: SingleChildScrollView(
+                physics: AlwaysScrollableScrollPhysics(),
+                child: UserProfile(profile: profile),
+              ),
+            ),
           );
         },
       ),
