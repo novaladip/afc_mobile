@@ -1,4 +1,5 @@
 import 'package:afc_mobile/common/models/models.dart';
+import 'package:afc_mobile/teacher/presentation/pages/course_detail_page/widgets/course_not_started.dart';
 import 'package:afc_mobile/teacher/teacher.dart';
 import 'package:flutter/material.dart';
 import 'package:afc_mobile/common/widgets/widgets.dart';
@@ -13,6 +14,8 @@ class BaseLayout extends StatefulWidget {
 }
 
 class _BaseLayoutState extends State<BaseLayout> {
+  final now = DateTime.now();
+  Course course;
   bool initial = true;
 
   @override
@@ -52,12 +55,16 @@ class _BaseLayoutState extends State<BaseLayout> {
                 ),
                 width: appTheme.width * 0.98,
                 height: appTheme.height * 0.72,
-                child: state.when(
-                  loading: () => LoadingIndicator(),
-                  failure: () => ErrorScreen(onRetry: fetchCourse),
-                  loaded: (course, status) =>
-                      SectionContainer(sections: course.sections),
-                ),
+                child: now.isBefore(DateTime.parse(course.closeDate))
+                    ? CourseNotStarted(
+                        closeDate: course.closeDate,
+                      )
+                    : state.when(
+                        loading: () => LoadingIndicator(),
+                        failure: () => ErrorScreen(onRetry: fetchCourse),
+                        loaded: (course, status) =>
+                            SectionContainer(sections: course.sections),
+                      ),
               ),
             ],
           ),
@@ -67,7 +74,7 @@ class _BaseLayoutState extends State<BaseLayout> {
   }
 
   void fetchCourse() {
-    final course = ModalRoute.of(context).settings.arguments as Course;
+    course = ModalRoute.of(context).settings.arguments as Course;
     context.bloc<CourseDetailBloc>().add(CourseDetailEvent.fetch(course.id));
   }
 
