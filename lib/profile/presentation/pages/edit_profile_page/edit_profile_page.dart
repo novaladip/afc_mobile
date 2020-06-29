@@ -23,6 +23,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Edit Profile'),
+        brightness: Brightness.light,
       ),
       body: BlocConsumer<EditProfileBloc, EditProfileState>(
         listener: (context, state) {

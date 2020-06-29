@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'widgets/register_form.dart';
 
@@ -14,7 +15,9 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-      body: Stack(
+        body: AnnotatedRegion<SystemUiOverlayStyle>(
+      value: SystemUiOverlayStyle.dark,
+      child: Stack(
         children: <Widget>[
           Image.asset(
             'assets/register_background.png',
@@ -25,6 +28,6 @@ class _RegisterPageState extends State<RegisterPage> {
           RegisterForm(),
         ],
       ),
-    );
+    ));
   }
 }

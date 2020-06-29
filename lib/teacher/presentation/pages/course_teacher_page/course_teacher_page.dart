@@ -17,6 +17,7 @@ class _CourseTeacherState extends State<CourseTeacher> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Course'),
+        brightness: Brightness.light,
       ),
       body: BlocBuilder<CourseTeacherBloc, CourseTeacherState>(
         builder: (context, state) {

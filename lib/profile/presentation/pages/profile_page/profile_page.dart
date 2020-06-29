@@ -16,6 +16,7 @@ class _ProfilePageState extends State<ProfilePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Profile'),
+        brightness: Brightness.light,
       ),
       body: BlocBuilder<ProfileBloc, ProfileState>(
         builder: (context, state) {

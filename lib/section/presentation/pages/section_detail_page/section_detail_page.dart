@@ -55,6 +55,7 @@ class _SectionDetailPageState extends State<SectionDetailPage>
           child: Scaffold(
             appBar: AppBar(
               title: Text('Section ${section.count}'),
+              brightness: Brightness.light,
               bottom: TabBar(
                 indicatorColor: Colors.black,
                 controller: _controller,
