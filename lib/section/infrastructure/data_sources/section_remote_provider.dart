@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:meta/meta.dart';
 import 'package:injectable/injectable.dart';
+import 'package:flutter_image_compress/flutter_image_compress.dart';
 
 import 'package:afc_mobile/common/api/api.dart';
 import 'package:afc_mobile/section/section.dart';
@@ -26,18 +27,24 @@ class SectionRemoteProvider {
   Future<RecognizeResult> recognizeStudent(
       String sectionId, String photoPath) async {
     try {
-      final data = FormData.fromMap({
+      final result = await FlutterImageCompress.compressAndGetFile(
+        photoPath,
+        photoPath,
+        keepExif: true,
+        quality: 50,
+      );
+      final formData = FormData.fromMap({
         'photo': MultipartFile.fromFileSync(
-          photoPath,
+          result.path,
           filename: photoPath.split('.').last,
         ),
       });
       final res = await api.dio.post(
         '/section/$sectionId/recognize/student',
-        data: data,
+        data: formData,
       );
-      final result = RecognizeResult.fromJson(res.data);
-      return result;
+      final data = RecognizeResult.fromJson(res.data);
+      return data;
     } catch (e) {
       throw e;
     }
