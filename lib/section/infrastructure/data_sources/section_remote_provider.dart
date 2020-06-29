@@ -29,9 +29,8 @@ class SectionRemoteProvider {
     try {
       final result = await FlutterImageCompress.compressAndGetFile(
         photoPath,
-        photoPath,
-        keepExif: true,
-        quality: 50,
+        photoPath + "compreessed." + photoPath.split('.').last,
+        quality: 60,
       );
       final formData = FormData.fromMap({
         'photo': MultipartFile.fromFileSync(
@@ -46,6 +45,7 @@ class SectionRemoteProvider {
       final data = RecognizeResult.fromJson(res.data);
       return data;
     } catch (e) {
+      print(e);
       throw e;
     }
   }
