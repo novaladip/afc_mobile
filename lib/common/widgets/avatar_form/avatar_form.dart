@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:flutter_exif_rotation/flutter_exif_rotation.dart';
 
 import 'package:afc_mobile/common/widgets/widgets.dart';
 import 'package:flutter/cupertino.dart';
@@ -8,8 +9,9 @@ import 'package:image_picker/image_picker.dart';
 class AvatarForm extends StatelessWidget {
   final Function(File file) onChange;
   final File value;
+  final picker = ImagePicker();
 
-  const AvatarForm({
+  AvatarForm({
     Key key,
     @required this.onChange,
     @required this.value,
@@ -23,13 +25,15 @@ class AvatarForm extends StatelessWidget {
   }
 
   Future<void> getImage(bool useCamera) async {
-    final image = await ImagePicker.pickImage(
+    final image = await picker.getImage(
         source: useCamera ? ImageSource.camera : ImageSource.gallery);
     if (image == null) {
       return;
     }
 
-    onChange(image);
+    final fixedImage = await FlutterExifRotation.rotateImage(path: image.path);
+
+    onChange(fixedImage);
   }
 
   void _showDialog(BuildContext context) {

@@ -1,10 +1,10 @@
 import 'dart:io';
-
+import 'package:flutter_exif_rotation/flutter_exif_rotation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 class TextInputPhoto extends StatelessWidget {
-  const TextInputPhoto({
+  TextInputPhoto({
     Key key,
     @required this.value,
     @required this.onChange,
@@ -12,6 +12,7 @@ class TextInputPhoto extends StatelessWidget {
 
   final String value;
   final Function(String photoPath) onChange;
+  final picker = ImagePicker();
 
   String get label =>
       value.isEmpty ? 'Press to choose a photo' : value.split("/").last;
@@ -55,7 +56,7 @@ class TextInputPhoto extends StatelessWidget {
   }
 
   Future<void> getImage(bool useCamera) async {
-    final image = await ImagePicker.pickImage(
+    final image = await picker.getImage(
       preferredCameraDevice: CameraDevice.rear,
       source: useCamera ? ImageSource.camera : ImageSource.gallery,
     );
@@ -63,7 +64,9 @@ class TextInputPhoto extends StatelessWidget {
       return;
     }
 
-    onChange(image.path);
+    final fixedImage = await FlutterExifRotation.rotateImage(path: image.path);
+
+    onChange(fixedImage.path);
   }
 
   void _showDialog(BuildContext context) {
