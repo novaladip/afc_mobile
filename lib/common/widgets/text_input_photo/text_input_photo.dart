@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'package:flutter_exif_rotation/flutter_exif_rotation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -47,7 +46,7 @@ class TextInputPhoto extends StatelessWidget {
             leading,
             SizedBox(width: 5),
             Flexible(
-              child: Text(label, overflow: TextOverflow.fade),
+              child: Text(label, overflow: TextOverflow.ellipsis),
             ),
           ],
         ),
@@ -64,9 +63,7 @@ class TextInputPhoto extends StatelessWidget {
       return;
     }
 
-    final fixedImage = await FlutterExifRotation.rotateImage(path: image.path);
-
-    onChange(fixedImage.path);
+    onChange(image.path);
   }
 
   void _showDialog(BuildContext context) {

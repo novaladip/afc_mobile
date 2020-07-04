@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_exif_rotation/flutter_exif_rotation.dart';
 import 'package:meta/meta.dart';
 import 'package:injectable/injectable.dart';
 import 'package:flutter_image_compress/flutter_image_compress.dart';
@@ -27,10 +28,12 @@ class SectionRemoteProvider {
   Future<RecognizeResult> recognizeStudent(
       String sectionId, String photoPath) async {
     try {
+      final fixedImage = await FlutterExifRotation.rotateImage(path: photoPath);
+
       final result = await FlutterImageCompress.compressAndGetFile(
-        photoPath,
-        photoPath + "compreessed." + photoPath.split('.').last,
-        quality: 60,
+        fixedImage.path,
+        fixedImage.path + "compreessed." + photoPath.split('.').last,
+        quality: 80,
       );
       final formData = FormData.fromMap({
         'photo': MultipartFile.fromFileSync(
