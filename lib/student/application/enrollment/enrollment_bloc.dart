@@ -21,7 +21,7 @@ class EnrollmentBloc extends Bloc<EnrollmentEvent, EnrollmentState> {
     @required this.authBloc,
     @required this.enrollmentRepository,
     @required this.enrollCourseBloc,
-  }) {
+  }) : super(EnrollmentState.loading()) {
     authBloc.listen(_authListener);
     enrollCourseBloc.listen(_enrollCourseListener);
   }
@@ -39,9 +39,6 @@ class EnrollmentBloc extends Bloc<EnrollmentEvent, EnrollmentState> {
       success: (e) => add(EnrollmentEvent.newEnrollment(e)),
     );
   }
-
-  @override
-  EnrollmentState get initialState => EnrollmentState.loading();
 
   @override
   Stream<EnrollmentState> mapEventToState(

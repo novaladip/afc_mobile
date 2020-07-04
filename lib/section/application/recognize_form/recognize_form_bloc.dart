@@ -17,10 +17,7 @@ class RecognizeFormBloc extends Bloc<RecognizeFormEvent, RecognizeFormState> {
 
   RecognizeFormBloc({
     @required this.sectionRepository,
-  });
-
-  @override
-  RecognizeFormState get initialState => RecognizeFormState.initial();
+  }) : super(RecognizeFormState.initial());
 
   @override
   Stream<RecognizeFormState> mapEventToState(

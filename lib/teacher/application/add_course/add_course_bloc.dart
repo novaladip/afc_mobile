@@ -18,10 +18,7 @@ class AddCourseBloc extends Bloc<AddCourseEvent, AddCourseState> {
 
   AddCourseBloc({
     @required this.courseTeacherRepository,
-  });
-
-  @override
-  AddCourseState get initialState => AddCourseState.initial();
+  }) : super(AddCourseState.initial());
 
   @override
   Stream<AddCourseState> mapEventToState(

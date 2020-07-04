@@ -20,7 +20,7 @@ class SectionDetailBloc extends Bloc<SectionDetailEvent, SectionDetailState> {
     @required this.sectionRepository,
     @required this.recognizeFormBloc,
     @required this.attendancesFormBloc,
-  }) {
+  }) : super(SectionDetailState.loading()) {
     recognizeFormBloc.listen(_recognizeFormListener);
     attendancesFormBloc.listen(_attendanceFormListener);
   }
@@ -38,9 +38,6 @@ class SectionDetailBloc extends Bloc<SectionDetailEvent, SectionDetailState> {
       success: () => add(SectionDetailEvent.refresh()),
     );
   }
-
-  @override
-  SectionDetailState get initialState => SectionDetailState.loading();
 
   @override
   Stream<SectionDetailState> mapEventToState(

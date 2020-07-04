@@ -16,10 +16,7 @@ class EnrollCourseBloc extends Bloc<EnrollCourseEvent, EnrollCourseState> {
 
   EnrollCourseBloc({
     @required this.enrollmentRepository,
-  });
-
-  @override
-  EnrollCourseState get initialState => EnrollCourseState.idle();
+  }) : super(EnrollCourseState.idle());
 
   @override
   Stream<EnrollCourseState> mapEventToState(

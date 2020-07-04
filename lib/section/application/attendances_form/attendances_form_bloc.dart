@@ -20,7 +20,7 @@ class AttendancesFormBloc
   AttendancesFormBloc(
     this.sectionRepository,
     this.recognizeFormBloc,
-  ) {
+  ) : super(AttendancesFormState.initial()) {
     recognizeFormBloc.listen(_recognizeFormListener);
   }
 
@@ -31,9 +31,6 @@ class AttendancesFormBloc
           AttendancesFormEvent.populateFromRecognizeResult(result.attendances)),
     );
   }
-
-  @override
-  AttendancesFormState get initialState => AttendancesFormState.initial();
 
   @override
   Stream<AttendancesFormState> mapEventToState(

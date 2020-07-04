@@ -21,7 +21,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     @required this.profileRepository,
     @required this.authBloc,
     @required this.editProfileBloc,
-  }) {
+  }) : super(ProfileState.loading()) {
     authBloc.listen(_authStateListener);
     editProfileBloc.listen(_editProfileStateListener);
   }
@@ -40,9 +40,6 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       success: () => add(ProfileEvent.refresh()),
     );
   }
-
-  @override
-  ProfileState get initialState => ProfileState.loading();
 
   @override
   Stream<ProfileState> mapEventToState(

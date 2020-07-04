@@ -12,19 +12,19 @@ class RecognizeForm extends StatefulWidget {
 }
 
 class _RecognizeFormState extends State<RecognizeForm> {
-  // set isSuccess default to true
-  // when the state is change to success, it will change to false on the listener.
-  bool isSuccess = true;
-
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<RecognizeFormBloc, RecognizeFormState>(
+      listenWhen: (previous, current) {
+        if (previous.status == current.status) {
+          return false;
+        }
+
+        return true;
+      },
       listener: (context, state) {
         state.status.maybeWhen(
             orElse: () {},
-            submitting: () {
-              isSuccess = false;
-            },
             failure: () {
               showBasicSnackBar(
                 context,
@@ -33,14 +33,11 @@ class _RecognizeFormState extends State<RecognizeForm> {
               );
             },
             success: (result) {
-              if (!isSuccess) {
-                isSuccess = true;
-                showBasicSnackBar(
-                  context,
-                  title:
-                      'We found ${result.facesFound} founds & ${result.knownFaces} known faces',
-                );
-              }
+              showBasicSnackBar(
+                context,
+                title:
+                    'We found ${result.facesFound} founds & ${result.knownFaces} known faces',
+              );
             });
       },
       builder: (context, state) {

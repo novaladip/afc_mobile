@@ -17,7 +17,7 @@ class CourseDetailBloc extends Bloc<CourseDetailEvent, CourseDetailState> {
   CourseDetailBloc({
     @required this.courseTeacherRepository,
     @required this.createSectionBloc,
-  }) {
+  }) : super(CourseDetailState.loading()) {
     createSectionBloc.listen(_createSectionListener);
   }
 
@@ -38,9 +38,6 @@ class CourseDetailBloc extends Bloc<CourseDetailEvent, CourseDetailState> {
       },
     );
   }
-
-  @override
-  CourseDetailState get initialState => CourseDetailState.loading();
 
   @override
   Stream<CourseDetailState> mapEventToState(

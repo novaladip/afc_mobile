@@ -20,7 +20,7 @@ class CourseTeacherBloc extends Bloc<CourseTeacherEvent, CourseTeacherState> {
   CourseTeacherBloc({
     @required this.courseTeacherRepository,
     @required this.addCourseBloc,
-  }) {
+  }) : super(CourseTeacherState.loading()) {
     addCourseBloc.listen(_addCourseListener);
   }
 
@@ -30,9 +30,6 @@ class CourseTeacherBloc extends Bloc<CourseTeacherEvent, CourseTeacherState> {
       success: (course) => add(CourseTeacherEvent.newCourse(course)),
     );
   }
-
-  @override
-  CourseTeacherState get initialState => CourseTeacherState.loading();
 
   @override
   Stream<CourseTeacherState> mapEventToState(

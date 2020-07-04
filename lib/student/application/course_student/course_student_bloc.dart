@@ -17,10 +17,7 @@ class CourseStudentBloc extends Bloc<CourseStudentEvent, CourseStudentState> {
 
   CourseStudentBloc({
     @required this.courseStudentRepository,
-  });
-
-  @override
-  CourseStudentState get initialState => CourseStudentState.loading();
+  }) : super(CourseStudentState.loading());
 
   @override
   Stream<CourseStudentState> mapEventToState(

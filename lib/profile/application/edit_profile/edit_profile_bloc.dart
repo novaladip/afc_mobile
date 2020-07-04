@@ -16,10 +16,7 @@ class EditProfileBloc extends Bloc<EditProfileEvent, EditProfileState> {
 
   EditProfileBloc({
     @required this.profileRepository,
-  });
-
-  @override
-  EditProfileState get initialState => EditProfileState.initial();
+  }) : super(EditProfileState.initial());
 
   @override
   Stream<EditProfileState> mapEventToState(

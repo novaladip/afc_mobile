@@ -17,10 +17,7 @@ class CreateSectionBloc extends Bloc<CreateSectionEvent, CreateSectionState> {
 
   CreateSectionBloc({
     @required this.courseTeacherRepository,
-  });
-
-  @override
-  CreateSectionState get initialState => CreateSectionState.initial();
+  }) : super(CreateSectionState.initial());
 
   @override
   Stream<CreateSectionState> mapEventToState(
