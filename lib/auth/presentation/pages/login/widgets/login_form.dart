@@ -28,7 +28,7 @@ class _LoginFormState extends State<LoginForm> {
                   ..showSnackBar(
                     SnackBar(
                       backgroundColor: Colors.red,
-                      content: Text('Invalid email or password'),
+                      content: Text('Email atau password salah'),
                     ),
                   );
               }
@@ -58,13 +58,8 @@ class _LoginFormState extends State<LoginForm> {
                   ),
                   SizedBox(height: 8),
                   loginHelp(
-                    text: 'Forgot your password? ',
-                    buttonText: 'Reset now',
-                    onTap: () {},
-                  ),
-                  loginHelp(
-                    text: 'Do not have an account? ',
-                    buttonText: 'Sign up',
+                    text: 'Belum punya akun? ',
+                    buttonText: 'Daftar',
                     onTap: () =>
                         Navigator.of(context).pushNamed(RegisterPage.routeName),
                   ),
@@ -72,7 +67,7 @@ class _LoginFormState extends State<LoginForm> {
                   MainButton(
                     outline: true,
                     loading: state.isSubmitting,
-                    text: 'Sign In',
+                    text: 'Login',
                     onPressed: onSubmit,
                   ),
                 ],

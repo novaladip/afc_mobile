@@ -5,11 +5,11 @@ class InputValidator {
     ).hasMatch(value);
 
     if (value.isEmpty) {
-      return "$fieldName is cannot be empty";
+      return "$fieldName tidak boleh kosong";
     }
 
     if (!isValid) {
-      return "Invalid email address";
+      return "Email salah";
     }
 
     return null;
@@ -17,7 +17,7 @@ class InputValidator {
 
   static String required(String value, String fieldName) {
     if (value.isEmpty) {
-      return '$fieldName is cannot be empty';
+      return '$fieldName tidak boleh kosong';
     }
 
     return null;

@@ -41,29 +41,24 @@ class UserProfile extends StatelessWidget {
             value: profile.email,
           ),
           ProfileItem(
-            text: 'First Name',
+            text: 'Nama Depan',
             value: profile.firstName,
           ),
           ProfileItem(
-            text: 'Last Name',
+            text: 'Nama Belakang',
             value: profile.lastName,
           ),
           SizedBox(height: 10),
           Divider(),
           SettingItem(
-            text: 'Change Profile',
+            text: 'Ubah Profile',
             icon: Icons.account_circle,
             onPress: () =>
                 Navigator.of(context).pushNamed(EditProfilePage.routeName),
           ),
           SettingItem(
-            text: 'Change Password',
-            icon: FontAwesomeIcons.key,
-            onPress: () {},
-          ),
-          SettingItem(
             icon: FontAwesomeIcons.signOutAlt,
-            text: 'Sign Out',
+            text: 'Keluar',
             onPress: () {
               context.bloc<AuthBloc>().add(AuthEvent.loggedOut());
               Navigator.of(context).pushReplacementNamed(LoginPage.routeName);

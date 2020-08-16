@@ -45,7 +45,7 @@ class AttendanceCard extends StatelessWidget {
             attendance.student.fullName,
             style: Theme.of(context)
                 .textTheme
-                .body1
+                .bodyText2
                 .copyWith(fontWeight: FontWeight.w600),
           ),
           Spacer(),

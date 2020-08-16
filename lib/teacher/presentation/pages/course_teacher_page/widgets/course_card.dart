@@ -32,21 +32,22 @@ class CourseCard extends StatelessWidget {
                     tag: course.id,
                     child: Text(
                       course.name,
-                      style: appTheme.textTheme.display1.copyWith(
+                      style: appTheme.textTheme.headline6.copyWith(
                         color: Colors.black,
+                        fontSize: 16,
                       ),
                     ),
                   ),
                   SizedBox(height: 4),
                   buildCaption(
                     appTheme,
-                    text: 'Created at ',
+                    text: 'Dibuat: ',
                     value: course.formattedCreatedAt,
                   ),
                   SizedBox(height: 2),
                   buildCaption(
                     appTheme,
-                    text: 'Close date ',
+                    text: 'Tanggal Mulai: ',
                     value: course.formattedCloseDate,
                   ),
                 ],

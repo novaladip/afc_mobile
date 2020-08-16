@@ -30,7 +30,7 @@ class _AddCourseFormState extends State<AddCourseForm> {
               ..removeCurrentSnackBar()
               ..showSnackBar(SnackBar(
                 backgroundColor: Colors.red,
-                content: Text('Failed to create course'),
+                content: Text('Terjadi kesalahan, silahkan coba lagi.'),
               ));
           },
         );
@@ -44,7 +44,7 @@ class _AddCourseFormState extends State<AddCourseForm> {
             child: Column(
               children: <Widget>[
                 TextInput(
-                  labelText: 'Course Name',
+                  labelText: 'Nama Kelas',
                   color: Colors.black,
                   textInputAction: TextInputAction.done,
                   onChanged: (value) =>
@@ -57,7 +57,7 @@ class _AddCourseFormState extends State<AddCourseForm> {
                   child: AbsorbPointer(
                     absorbing: true,
                     child: TextInput(
-                      labelText: 'Close Date',
+                      labelText: 'Tanggal Mulai',
                       color: Colors.black,
                       controller: dateTextInput,
                     ),

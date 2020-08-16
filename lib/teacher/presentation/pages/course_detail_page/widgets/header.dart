@@ -27,8 +27,11 @@ class Header extends StatelessWidget {
                     tag: course.id,
                     child: Text(
                       course.name,
-                      style: appTheme.textTheme.title
-                          .copyWith(color: Colors.white),
+                      style: appTheme.textTheme.headline1.copyWith(
+                        color: Colors.white,
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                   SizedBox(height: 8),

@@ -25,10 +25,10 @@ class CourseCard extends StatelessWidget {
     }
 
     final child = Text(
-      isEnrolled ? 'ENROLLED' : 'ENROLL',
+      isEnrolled ? 'TERDAFTAR' : 'DAFTAR',
       style: TextStyle(
         color: isEnrolled ? Colors.grey : Theme.of(context).primaryColor,
-        fontSize: 16,
+        fontSize: 14,
         fontWeight: FontWeight.bold,
       ),
     );
@@ -60,17 +60,18 @@ class CourseCard extends StatelessWidget {
                   children: <Widget>[
                     Text(
                       course.name,
-                      style: appTheme.textTheme.display1.copyWith(
+                      style: appTheme.textTheme.headline6.copyWith(
+                        fontSize: 16,
                         color: Colors.black,
                       ),
                     ),
                     SizedBox(height: 8),
                     Row(
                       children: <Widget>[
-                        Text('Teach by '),
+                        Text('Dosen: '),
                         Text(
                           course.teacher.fullName,
-                          style: appTheme.textTheme.body1.copyWith(
+                          style: appTheme.textTheme.bodyText2.copyWith(
                             fontWeight: FontWeight.w600,
                           ),
                         ),

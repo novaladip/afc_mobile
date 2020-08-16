@@ -25,7 +25,7 @@ class SectionContainer extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Text(
-                'Section List',
+                'Daftar Pertemuan',
                 style: TextStyle(
                   fontFamily: 'Manrope',
                   fontSize: 16,
@@ -39,7 +39,7 @@ class SectionContainer extends StatelessWidget {
         Expanded(
           child: sections.isEmpty
               ? EmptyScreen(
-                  message: "Oops there is no section yet, start adding some!",
+                  message: "Belum ada data pertemuan!",
                 )
               : ListView.builder(
                   padding: EdgeInsets.symmetric(horizontal: 20),
@@ -69,14 +69,14 @@ class CreateSectionButton extends StatelessWidget {
           failure: () {
             _showSnackbar(
               context,
-              title: 'Failed to create section',
+              title: 'Gagal membuat pertemuan',
               color: Colors.red,
             );
           },
           success: (count) {
             _showSnackbar(
               context,
-              title: 'Section $count has been created',
+              title: 'Pertemuan $count berhasil dibuat',
             );
           },
           orElse: () {},
@@ -97,7 +97,7 @@ class CreateSectionButton extends StatelessWidget {
           onPressed: () => !isLoading ? onSubmit(context) : null,
           child: isLoading
               ? SpinKitDoubleBounce(color: Colors.blueAccent, size: 24)
-              : Text('Create Section'),
+              : Text('Buat Pertemuan'),
         );
       },
     );

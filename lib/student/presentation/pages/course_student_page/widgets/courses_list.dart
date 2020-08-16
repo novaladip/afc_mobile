@@ -40,13 +40,14 @@ class CourseList extends StatelessWidget {
                 success: (enrollment) {
                   _showSnackBar(
                     context,
-                    message: '${enrollment.course.name}} has been enrolled',
+                    message:
+                        'Berhasil mendaftar ke kelas ${enrollment.course.name}',
                   );
                 },
                 failure: () {
                   _showSnackBar(
                     context,
-                    message: 'Failed to enroll course',
+                    message: 'Terjadi kesalahan, silahkan coba lagi.',
                     color: Colors.red,
                   );
                 },

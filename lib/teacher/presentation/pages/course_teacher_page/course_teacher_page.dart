@@ -16,7 +16,7 @@ class _CourseTeacherState extends State<CourseTeacher> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Course'),
+        title: Text('Kelas'),
         brightness: Brightness.light,
       ),
       body: BlocBuilder<CourseTeacherBloc, CourseTeacherState>(

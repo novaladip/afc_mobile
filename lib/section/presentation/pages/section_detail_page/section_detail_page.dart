@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loading_overlay/loading_overlay.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'widgets/widgets.dart';
 import 'package:afc_mobile/section/section.dart';
@@ -54,7 +53,7 @@ class _SectionDetailPageState extends State<SectionDetailPage>
           ),
           child: Scaffold(
             appBar: AppBar(
-              title: Text('Section ${section.count}'),
+              title: Text('Pertemuan ${section.count}'),
               brightness: Brightness.light,
               bottom: TabBar(
                 indicatorColor: Colors.black,
@@ -62,13 +61,8 @@ class _SectionDetailPageState extends State<SectionDetailPage>
                 labelColor: Colors.black,
                 unselectedLabelColor: Colors.grey,
                 tabs: <Widget>[
-                  Tab(
-                      text: 'Result',
-                      icon: FaIcon(FontAwesomeIcons.cannabis,
-                          color: Colors.green)),
-                  Tab(
-                      text: 'Update',
-                      icon: FaIcon(FontAwesomeIcons.cameraRetro)),
+                  Tab(text: 'Hasil'),
+                  Tab(text: 'Update'),
                 ],
               ),
             ),

@@ -16,8 +16,7 @@ class _AttendancesFormState extends State<AttendancesForm> {
       listener: (context, state) {
         state.status.maybeWhen(
           orElse: () {},
-          success: () =>
-              showBasicSnackBar(context, title: 'Section 1 has been updated'),
+          success: () => showBasicSnackBar(context, title: 'Update berhasil'),
           failure: (message) =>
               showBasicSnackBar(context, title: message, color: Colors.red),
         );
@@ -33,11 +32,11 @@ class _AttendancesFormState extends State<AttendancesForm> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Text(
-                    'Student List',
-                    style: Theme.of(context)
-                        .textTheme
-                        .display1
-                        .copyWith(color: Colors.black),
+                    'DAFTAR ABSENSI',
+                    style: Theme.of(context).textTheme.headline6.copyWith(
+                          fontSize: 16,
+                          color: Colors.black,
+                        ),
                   ),
                   InkWell(
                     onTap: () => context
@@ -45,18 +44,20 @@ class _AttendancesFormState extends State<AttendancesForm> {
                         .add(AttendancesFormEvent.onSubmit()),
                     child: state.status.maybeWhen(
                       orElse: () => Text(
-                        'SAVE',
-                        style: Theme.of(context)
-                            .textTheme
-                            .display1
-                            .copyWith(color: Theme.of(context).primaryColor),
+                        'SIMPAN',
+                        style: Theme.of(context).textTheme.bodyText1.copyWith(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Theme.of(context).primaryColor,
+                            ),
                       ),
                       submitting: () => Text(
-                        'SAVING',
-                        style: Theme.of(context)
-                            .textTheme
-                            .display1
-                            .copyWith(color: Colors.grey),
+                        'MENYIMPAN',
+                        style: Theme.of(context).textTheme.bodyText1.copyWith(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Theme.of(context).primaryColor,
+                            ),
                       ),
                     ),
                   ),
@@ -71,12 +72,12 @@ class _AttendancesFormState extends State<AttendancesForm> {
               itemBuilder: (context, index) => AttendanceForm(
                 key: Key(state.attendances[index].id),
                 dto: state.attendances[index],
-                onChange: (v) => context
-                    .bloc<AttendancesFormBloc>()
-                    .add(AttendancesFormEvent.onFormChange(
-                      index: index,
-                      status: v,
-                    )),
+                onChange: (v) => context.bloc<AttendancesFormBloc>().add(
+                      AttendancesFormEvent.onFormChange(
+                        index: index,
+                        status: v,
+                      ),
+                    ),
               ),
             ),
           ],
@@ -125,7 +126,7 @@ class AttendanceForm extends StatelessWidget {
           dto.fullName,
           style: Theme.of(context)
               .textTheme
-              .body1
+              .bodyText2
               .copyWith(fontWeight: FontWeight.w600),
         ),
       ],

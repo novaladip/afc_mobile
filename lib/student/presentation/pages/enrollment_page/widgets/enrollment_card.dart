@@ -45,7 +45,7 @@ class EnrollmentCard extends StatelessWidget {
     return Row(
       children: <Widget>[
         Text(
-          'Teach by ',
+          'Dosen: ',
           style: TextStyle(
             fontSize: 14,
           ),

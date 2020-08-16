@@ -57,7 +57,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   SizedBox(height: 10),
                   MainButton(
                     color: Colors.black,
-                    text: 'Submit',
+                    text: 'Simpan',
                     loading: state.status.maybeWhen(
                       orElse: () => false,
                       submitting: () => true,
@@ -103,12 +103,12 @@ class DisabledTextInputEditProfile extends StatelessWidget {
               ),
               TextInput(
                 enabled: false,
-                labelText: 'First Name',
+                labelText: 'Nama Depan',
                 initialValue: profile.firstName,
               ),
               TextInput(
                 enabled: false,
-                labelText: 'Last Name',
+                labelText: 'Nama Belakang',
                 initialValue: profile.lastName,
               ),
             ],

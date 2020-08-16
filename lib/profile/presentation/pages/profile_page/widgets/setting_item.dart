@@ -20,18 +20,18 @@ class SettingItem extends StatelessWidget {
         margin: EdgeInsets.symmetric(vertical: 8),
         child: Row(
           children: <Widget>[
-            Icon(icon, size: 20),
+            Icon(icon, size: 15),
             SizedBox(width: 8),
             Text(
               text,
               style: TextStyle(
-                fontSize: 16,
+                fontSize: 15,
                 fontWeight: FontWeight.w600,
                 fontFamily: 'Comic Neue',
               ),
             ),
             Spacer(),
-            Icon(Icons.arrow_forward_ios, size: 18),
+            Icon(Icons.arrow_forward_ios, size: 15),
           ],
         ),
       ),

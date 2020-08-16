@@ -13,8 +13,7 @@ class SectionResult extends StatelessWidget {
     @required this.onRetry,
   }) : super(key: key);
 
-  Widget get emptyScreen =>
-      EmptyScreen(message: "Ops there is no data yet, update now.");
+  Widget get emptyScreen => EmptyScreen(message: "Ops belum ada data absensi.");
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +24,7 @@ class SectionResult extends StatelessWidget {
           loading: () => LoadingIndicator(),
           loaded: (section, status) {
             if (section.photoResult.isEmpty) {
-              return EmptyScreen(
-                  message: "Ops there is no data yet, update now.");
+              return emptyScreen;
             }
 
             return SingleChildScrollView(
@@ -34,19 +32,7 @@ class SectionResult extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   ZoomableImage(url: section.photoResult),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 15,
-                      vertical: 10,
-                    ),
-                    child: Text(
-                      'Student List',
-                      style: Theme.of(context)
-                          .textTheme
-                          .display1
-                          .copyWith(color: Colors.black),
-                    ),
-                  ),
+                  SizedBox(height: 8),
                   ListView.builder(
                     shrinkWrap: true,
                     physics: BouncingScrollPhysics(),

@@ -58,10 +58,10 @@ class _SplashScreenState extends State<SplashScreen> {
                   Spacer(),
                   Text(
                     'Absent Face Recognition',
-                    style: Theme.of(context)
-                        .textTheme
-                        .title
-                        .copyWith(color: Colors.black),
+                    style: Theme.of(context).textTheme.headline6.copyWith(
+                          color: Colors.black,
+                          fontSize: 18,
+                        ),
                   ),
                   Spacer(),
                   SpinKitChasingDots(

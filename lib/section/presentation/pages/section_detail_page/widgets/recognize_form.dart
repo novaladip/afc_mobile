@@ -28,7 +28,7 @@ class _RecognizeFormState extends State<RecognizeForm> {
             failure: () {
               showBasicSnackBar(
                 context,
-                title: "Oops something went wrong, please try again.",
+                title: "Oops terjadi kesalah, silahkan coba lagi.",
                 color: Colors.red,
               );
             },
@@ -36,7 +36,7 @@ class _RecognizeFormState extends State<RecognizeForm> {
               showBasicSnackBar(
                 context,
                 title:
-                    'We found ${result.facesFound} founds & ${result.knownFaces} known faces',
+                    'Ditemukan ${result.facesFound} wajah \nDitemukan ${result.knownFaces} wajah dikenali',
               );
             });
       },

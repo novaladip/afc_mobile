@@ -35,7 +35,7 @@ class _TeacherPageState extends State<TeacherPage> {
         items: [
           BottomNavigationBarItem(
             icon: FaIcon(FontAwesomeIcons.list),
-            title: Text('Course'),
+            title: Text('Kelas'),
           ),
           BottomNavigationBarItem(
             icon: FaIcon(FontAwesomeIcons.userTie),

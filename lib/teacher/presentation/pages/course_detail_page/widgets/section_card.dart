@@ -27,7 +27,7 @@ class SectionCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Text(
-                'Section ${section.count}',
+                'Pertemuan - ${section.count}',
                 style: TextStyle(fontWeight: FontWeight.w500),
               ),
               Text(formatDate(section.date)),

@@ -54,7 +54,7 @@ class _RegisterFormState extends State<RegisterForm> {
             ..showSnackBar(
               SnackBar(
                 backgroundColor: Colors.red,
-                content: Text('Register failed'),
+                content: Text('Register gagal, silahkan coba lagi.'),
               ),
             );
         }
@@ -81,24 +81,24 @@ class _RegisterFormState extends State<RegisterForm> {
                     registerBloc.add(RegisterEvent.changeEmail(value)),
               ),
               TextInput(
-                labelText: 'First Name',
+                labelText: 'Nama Depan',
                 initialValue: '',
                 textInputAction: TextInputAction.next,
                 focusNode: fNameFocusNode,
                 onFieldSubmitted: lNameFocusNode.requestFocus,
                 validator: (value) =>
-                    InputValidator.required(value, 'First Name'),
+                    InputValidator.required(value, 'Nama depan'),
                 onChanged: (value) =>
                     registerBloc.add(RegisterEvent.changeFirstName(value)),
               ),
               TextInput(
-                labelText: 'Last Name',
+                labelText: 'Nama Belakang',
                 initialValue: '',
                 textInputAction: TextInputAction.next,
                 focusNode: lNameFocusNode,
                 onFieldSubmitted: passwordFocusNode.requestFocus,
                 validator: (value) =>
-                    InputValidator.required(value, 'Last Name'),
+                    InputValidator.required(value, 'Nama belakang'),
                 onChanged: (value) =>
                     registerBloc.add(RegisterEvent.changeLastName(value)),
               ),
@@ -115,13 +115,13 @@ class _RegisterFormState extends State<RegisterForm> {
               ),
               SizedBox(height: 8),
               MainButton(
-                text: 'Register as Teacher',
+                text: 'Daftar sebagai Dosen',
                 onPressed: () => onSubmit(true, state.avatarPath),
               ),
               SizedBox(height: 8),
               MainButton(
                 outline: true,
-                text: 'Register as Student',
+                text: 'Daftar sebagai Mahasiswa',
                 onPressed: () => onSubmit(false, state.avatarPath),
               ),
             ],

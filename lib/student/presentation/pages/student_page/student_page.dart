@@ -36,12 +36,12 @@ class _StudentPageState extends State<StudentPage> {
         items: [
           BottomNavigationBarItem(
             icon: FaIcon(FontAwesomeIcons.list),
-            title: Text('Course'),
+            title: Text('Kelas'),
           ),
           BottomNavigationBarItem(
             icon: FaIcon(
                 index == 1 ? FontAwesomeIcons.bookOpen : FontAwesomeIcons.book),
-            title: Text('Enrollment'),
+            title: Text('Kelas Terdaftar'),
           ),
           BottomNavigationBarItem(
             icon: FaIcon(FontAwesomeIcons.userCircle),

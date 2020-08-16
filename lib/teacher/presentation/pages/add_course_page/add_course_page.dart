@@ -22,10 +22,12 @@ class _AddCoursePageState extends State<AddCoursePage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(15.0),
                 child: Text(
-                  'Add Course',
-                  style: Theme.of(context).textTheme.title,
+                  'Buat Kelas',
+                  style: Theme.of(context).textTheme.headline6.copyWith(
+                        fontSize: 21,
+                      ),
                 ),
               ),
               AddCourseForm(),

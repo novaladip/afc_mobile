@@ -21,11 +21,11 @@ class ProfileItem extends StatelessWidget {
           children: <Widget>[
             Text(
               text,
-              style: appTheme.textTheme.body1,
+              style: appTheme.textTheme.bodyText1,
             ),
             Text(
               value,
-              style: appTheme.textTheme.body1.copyWith(
+              style: appTheme.textTheme.bodyText1.copyWith(
                 fontWeight: FontWeight.w600,
               ),
             ),
