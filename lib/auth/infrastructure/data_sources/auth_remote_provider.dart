@@ -14,6 +14,7 @@ class AuthRemoteProvider {
       final res = await _api.dio.post('/user/login', data: dto.toFormData);
       return res.data['bearer_token'];
     } catch (e) {
+      print(e);
       throw e;
     }
   }

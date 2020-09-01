@@ -40,8 +40,14 @@ class AvatarForm extends StatelessWidget {
     showDialog(
       context: context,
       child: AlertDialog(
-        title: Text('Choose Image'),
-        content: Text('From camera or gallery?'),
+        title: Text(
+          'Pilih gambar',
+          style: Theme.of(context).textTheme.bodyText1,
+        ),
+        content: Text(
+          'Dari camera atau gallery?',
+          style: Theme.of(context).textTheme.bodyText1,
+        ),
         actions: <Widget>[
           FlatButton(
               child: Text('Camera'),

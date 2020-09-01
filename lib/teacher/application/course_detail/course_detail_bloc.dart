@@ -24,18 +24,7 @@ class CourseDetailBloc extends Bloc<CourseDetailEvent, CourseDetailState> {
   _createSectionListener(CreateSectionState state) {
     state.maybeWhen(
       orElse: () {},
-      success: (count) {
-        final now = DateTime.now().toString();
-        add(
-          CourseDetailEvent.newSection(
-            Section(
-              count: count,
-              id: '',
-              date: now,
-            ),
-          ),
-        );
-      },
+      success: (count) => add(CourseDetailEvent.refresh()),
     );
   }
 
@@ -47,7 +36,14 @@ class CourseDetailBloc extends Bloc<CourseDetailEvent, CourseDetailState> {
       fetch: (courseId) async* {
         yield* _mapFetch(courseId);
       },
-      refresh: () async* {},
+      refresh: () async* {
+        yield* state.maybeWhen(
+          loaded: (course, _) async* {
+            yield* _mapRefresh(course.id);
+          },
+          orElse: () async* {},
+        );
+      },
       newSection: (section) async* {
         yield* _mapNewSection(section);
       },
@@ -77,5 +73,13 @@ class CourseDetailBloc extends Bloc<CourseDetailEvent, CourseDetailState> {
     } catch (e) {
       yield CourseDetailState.failure();
     }
+  }
+
+  Stream<CourseDetailState> _mapRefresh(String courseId) async* {
+    final course = await courseTeacherRepository.fetchCourse(courseId);
+    yield CourseDetailState.loaded(
+      course: course,
+      status: Status.idle(),
+    );
   }
 }

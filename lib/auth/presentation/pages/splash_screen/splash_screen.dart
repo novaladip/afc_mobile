@@ -24,7 +24,8 @@ class _SplashScreenState extends State<SplashScreen> {
             initial: () => null,
             unauthentication: () async {
               await Future.delayed(Duration(seconds: 1));
-              Navigator.of(context).pushReplacementNamed(LoginPage.routeName);
+              Navigator.of(context)
+                  .pushReplacementNamed(OnboardingPage.routeName);
             },
             authenticated: (user) async {
               await Future.delayed(Duration(seconds: 1));
