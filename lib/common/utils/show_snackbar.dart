@@ -8,6 +8,7 @@ void showBasicSnackBar(
   final snackbar = SnackBar(
     content: Text(title),
     backgroundColor: color,
+    duration: Duration(seconds: 5),
   );
 
   Scaffold.of(context)
